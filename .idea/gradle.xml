@@ -11,7 +11,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/cameralibrary" />
             <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/zizichat" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

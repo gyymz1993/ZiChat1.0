@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ZiChat1.0.iml" filepath="$PROJECT_DIR$/ZiChat1.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZiChat1.1.iml" filepath="$PROJECT_DIR$/ZiChat1.1.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cameralibrary/cameralibrary.iml" filepath="$PROJECT_DIR$/cameralibrary/cameralibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://D:\AsProject\ZiChat1.0\library\pullToRefershLibraryMy.iml" filepath="D:\AsProject\ZiChat1.0\library\pullToRefershLibraryMy.iml" />
       <module fileurl="file://D:\AsProject\ZiChat1.0\app\skWeiChatBaidu.iml" filepath="D:\AsProject\ZiChat1.0\app\skWeiChatBaidu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zizichat/zizichat.iml" filepath="$PROJECT_DIR$/zizichat/zizichat.iml" />
     </modules>
   </component>
 </project>
