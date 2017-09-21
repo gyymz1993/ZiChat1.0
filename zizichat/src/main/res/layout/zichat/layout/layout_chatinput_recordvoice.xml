@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/aurora_rl_recordvoice_top_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp">
+
+        <Chronometer
+            android:id="@+id/aurora_chronometer_recordvoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/chat_time_hint"
+            android:textSize="16sp"
+            android:visibility="invisible"
+            android:text="1111"
+            />
+
+        <TextView
+            android:id="@+id/aurora_tv_recordvoice_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="11111" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/aurora_ll_recordvoice_preview_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/aurora_rl_recordvoice_top_container"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.lsjr.zizi.view.ProgressButton
+            android:id="@+id/aurora_pb_recordvoice_play_audio"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            app:roundColor="#E1E1E3"
+            app:roundProgressColor="#29B5EA" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/aurora_btn_recordvoice_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/aurora_recordvoice_left_btn_bg"
+                android:padding="8dp"
+                android:text="@string/cancel"
+                android:textColor="#29B5EA"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/aurora_btn_recordvoice_send"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/aurora_recordvoice_right_btn_bg"
+                android:padding="8dp"
+                android:text="@string/send"
+                android:textColor="#29B5EA"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/aurora_ll_recordvoice_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:id="@+id/btnAudio"
+                android:layout_gravity="center"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
+                android:src="@drawable/aurora_preview_record_video_start"
+                android:text="@string/please_to_talk"
+                android:textColor="@color/gray1"
+                />
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/selector_common_item"
+    >
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/catagory_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#E0E0E0"
+        android:paddingBottom="5dip"
+        android:paddingLeft="15dip"
+        android:paddingTop="5dip"
+        android:textColor="#454545" />
+
+    <RelativeLayout
+        android:id="@+id/id_root_ry"
+        android:layout_width="fill_parent"
+        android:layout_height="55dip"
+        android:gravity="center_vertical"
+        android:minHeight="55dip"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar_img"
+            android:layout_width="37dip"
+            android:layout_height="37dip"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:src="@mipmap/default_header"/>
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/avatar_normal" />
+
+        <LinearLayout
+            android:id="@+id/info_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/avatar_img"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <TextView
+
+                android:id="@+id/nick_name_tv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="1111"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/des_tv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/grey"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/avatar_img"
+            >
+
+            <View
+                style="@style/Line"
+                android:background="#FFEBEBEB"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

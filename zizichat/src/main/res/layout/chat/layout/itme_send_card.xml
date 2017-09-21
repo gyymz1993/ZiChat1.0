@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 显示时间 -->
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:text="下午 5点"
+        android:textColor="@color/chat_time_hint"
+        android:textSize="12sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/album_dp_15"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="10dp">
+
+        <!-- 重试 -->
+
+        <LinearLayout
+            android:id="@+id/llError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="重试"
+                android:visibility="gone"
+                />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivError"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:src="@mipmap/img_error"/>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pbSending"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/chat_name_color"
+                android:text="@string/app_name"
+                android:layout_marginBottom="5dip"/>
+
+
+            <RelativeLayout
+                android:id="@+id/chat_content_layout"
+                android:layout_width="275dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/album_dp_10"
+                 >
+
+                <ProgressBar
+                    android:id="@+id/card_progress"
+                    style="@android:style/Widget.ProgressBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="3dp"
+                    android:layout_toRightOf="@id/chat_warp_view" />
+
+                <RelativeLayout
+                    android:id="@+id/chat_warp_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/chat_shape_send"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    tools:ignore="RtlHardcoded">
+
+                    <!-- 所有Item该布局的子布局不能超过210dp -->
+
+                    <ImageView
+                        android:id="@+id/chat_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:padding="5dip"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:maxWidth="70dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_head_card" />
+
+                    <LinearLayout
+                        android:padding="5dip"
+                        android:layout_marginLeft="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:layout_toRightOf="@id/chat_head" >
+
+                        <TextView
+                            android:id="@+id/person_title"
+                            android:lines="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="我的名片,点击查看哦"
+                            android:textColor="#880000ff"
+                            android:textSize="@dimen/SmallerTextSize" />
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:id="@+id/person_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="#FF212121"
+                            android:text="filename"
+                            android:textSize="@dimen/SmallerTextSize" />
+                        <TextView
+                            android:layout_gravity="center_horizontal"
+                            android:id="@+id/person_sex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:textColor="#FF212121"
+                            android:text="filename"
+                            android:textSize="@dimen/SmallerTextSize" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <ImageView
+                    android:id="@+id/failed_img_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="3dp"
+                    android:layout_toLeftOf="@id/chat_from_warp_view"
+                    android:background="@drawable/im_send_failed_bg"
+                    android:contentDescription="@string/app_name"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </LinearLayout>
+        <!-- 人物头像 -->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:src="@mipmap/default_header"/>
+    </LinearLayout>
+
+</LinearLayout>

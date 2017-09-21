@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/llNewFriend"
+        android:layout_width="fill_parent"
+        android:layout_height="55dip"
+        android:background="@drawable/selector_common_item"
+        android:gravity="center_vertical"
+        android:minHeight="55dip"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivNewFriend"
+                android:layout_width="37dip"
+                android:layout_height="37dip"
+                android:layout_gravity="center_vertical"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:src="@drawable/ic_new_friend"/>
+
+            <ImageView
+                android:visibility="gone"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="10px"
+                android:src="@drawable/ic_new_friend" />
+
+            <TextView
+                android:id="@+id/tvNewFriendUnread"
+                android:layout_width="15px"
+                android:layout_height="15px"
+                android:layout_alignRight="@id/ivNewFriend"
+                android:layout_alignTop="@id/ivNewFriend"
+                android:layout_marginRight="-8px"
+                android:layout_marginTop="-5px"
+                android:background="@mipmap/bg_unread"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="24px"
+                android:visibility="gone" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <TextView
+            android:layout_marginLeft="@dimen/album_dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_friend"
+            android:textColor="@color/black0"
+            android:textSize="35px" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        style="@style/Line"
+        android:background="@color/line_color"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:visibility="gone"
+        android:id="@+id/llNearFriend"
+        android:layout_width="fill_parent"
+        android:layout_height="55dip"
+        android:background="@drawable/selector_common_item"
+        android:gravity="center_vertical"
+        android:minHeight="55dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:visibility="gone"
+
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="10px"
+                android:src="@drawable/ic_new_friend" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ig_nearfriend"
+                android:layout_width="45dip"
+                android:layout_height="45dip"
+                android:layout_gravity="center_vertical"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:src="@drawable/ic_new_friend"/>
+
+            <TextView
+                android:id="@+id/tv_nearfriend"
+                android:layout_width="15px"
+                android:layout_height="15px"
+                android:layout_alignRight="@id/ivNewFriend"
+                android:layout_alignTop="@id/ivNewFriend"
+                android:layout_marginRight="-8px"
+                android:layout_marginTop="-5px"
+                android:background="@mipmap/bg_unread"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="24px"
+                android:visibility="gone" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <TextView
+            android:layout_marginLeft="@dimen/album_dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="附近的人"
+            android:textColor="@color/black0"
+            android:textSize="35px" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        style="@style/Line"
+        android:background="@color/line_color"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip" />
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/llGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/selector_common_item"
+        android:gravity="center_vertical"
+        android:minHeight="55dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:visibility="gone"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="10px"
+                android:src="@drawable/ic_group_cheat" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="37dip"
+                android:layout_height="37dip"
+                android:layout_gravity="center_vertical"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:src="@drawable/ic_group_cheat"/>
+
+            <TextView
+                android:id="@+id/tvNewGroupUnread"
+                android:layout_width="15px"
+                android:layout_height="15px"
+                android:layout_alignRight="@id/ivNewFriend"
+                android:layout_alignTop="@id/ivNewFriend"
+                android:layout_marginRight="-8px"
+                android:layout_marginTop="-5px"
+                android:background="@mipmap/bg_unread"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="24px"
+                android:visibility="gone" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <TextView
+            android:layout_marginLeft="@dimen/album_dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/group_cheat"
+            android:textColor="@color/black0"
+            android:textSize="35px" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        style="@style/Line"
+        android:background="@color/line_color"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip" />
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:visibility="gone"
+        android:id="@+id/llContact"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/selector_common_item"
+        android:gravity="center_vertical"
+        android:minHeight="55dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:visibility="gone"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="10px"
+                android:src="@drawable/ic_group_cheat" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="45dip"
+                android:layout_height="45dip"
+                android:layout_gravity="center_vertical"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:src="@drawable/ic_group_cheat"/>
+
+            <TextView
+                android:layout_width="15px"
+                android:layout_height="15px"
+                android:layout_alignRight="@id/ivNewFriend"
+                android:layout_alignTop="@id/ivNewFriend"
+                android:layout_marginRight="-8px"
+                android:layout_marginTop="-5px"
+                android:background="@mipmap/bg_unread"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="24px"
+                android:visibility="gone" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <TextView
+            android:layout_marginLeft="@dimen/album_dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机通讯录"
+            android:textColor="@color/black0"
+            android:textSize="35px" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        style="@style/Line"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip" />
+
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#E0E0E0"
+        android:paddingBottom="5dip"
+        android:paddingLeft="15dip"
+        android:paddingTop="5dip"
+        android:textColor="#454545"
+        android:visibility="gone" />
+
+</com.zhy.autolayout.AutoLinearLayout>

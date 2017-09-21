@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 显示时间 -->
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:text="下午 5点"
+        android:textColor="@color/chat_time_hint"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="10dp">
+
+        <!-- 人物头像 -->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:src="@mipmap/default_header" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 昵称，当在群组中则要显示 -->
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/chat_name_color"
+                android:text="@string/app_name"
+                android:layout_marginBottom="5dip" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <!--显示图片类型-->
+                <com.lsjr.zizi.view.BubbleImageView
+                    android:id="@+id/chat_file_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="150dp"
+                    android:minHeight="80dp"
+                    android:minWidth="80dp"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone"
+                    app:bubble_angle="10dp"
+                    app:bubble_arrowHeight="10dp"
+                    app:bubble_arrowLocation="left"
+                    app:bubble_arrowOffset="-5dp"
+                    app:bubble_arrowTop="20dp"
+                    app:bubble_arrowWidth="8dp" />
+
+                <!--显示未知类型-->
+                    <RelativeLayout
+                        android:id="@+id/chat_file_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="70dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/chat_shape_receive"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        tools:ignore="RtlHardcoded">
+
+                        <ImageView
+                            android:id="@+id/chat_to_file"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/app_name"
+                            android:maxWidth="70dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/file" />
+
+                        <TextView
+                            android:layout_marginLeft="5dip"
+                            android:textColor="@color/black"
+                            android:id="@+id/file_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/chat_to_file"
+                            android:ellipsize="end"
+                            android:maxWidth="100dip"
+                            android:text="hellpo"
+                            android:textSize="@dimen/SmallerTextSize" />
+                    </RelativeLayout>
+
+
+                <ProgressBar
+                    android:id="@+id/pbSending"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/llError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ivError"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:src="@mipmap/img_error"/>
+
+                    <TextView
+                        android:id="@+id/tvRetry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="重试"
+                        android:visibility="gone"/>
+                </LinearLayout>
+
+
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    style="@android:style/Widget.ProgressBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    tools:ignore="RtlHardcoded" />
+
+                <ImageView
+                    android:id="@+id/unread_img_view"
+                    android:layout_width="8dip"
+                    android:layout_height="8dip"
+                    android:layout_marginLeft="3dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/new_tips"
+                    tools:ignore="RtlHardcoded" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

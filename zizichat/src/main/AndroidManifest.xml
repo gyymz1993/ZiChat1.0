@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lsjr.zizi">
+    <!--  requires com.huawei.android.launcher.permission.READ_SETTINGS, or grantUriPermission()-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher2.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher2.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher3.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher3.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="org.adw.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="org.adw.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+
+    <!-- 通过GPS得到精确位置 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 通过网络得到粗略位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 访问网络. 某些位置信息需要从网络服务器获取 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 访问WiFi状态. 需要WiFi信息用于网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 修改WiFi状态. 发起WiFi扫描, 需要WiFi信息用于网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!-- 访问网络状态, 检测网络的可用性. 需要网络运营商相关信息用于网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 访问网络的变化, 需要某些信息用于网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <!-- 访问手机当前状态, 需要某些信息用于网络定位 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <!-- 蓝牙分享所需的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/icon_new_logo"
+        android:name=".MyApp"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon_new_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--地图-->
+        <meta-data
+            android:name="TencentMapSDK"
+            android:value="TYQBZ-MRBKU-K7FVL-4JBW5-DOG5O-SZB4A"/>
+
+        <meta-data
+            android:name="design_width"
+            android:value="720">
+        </meta-data>
+        <meta-data
+            android:name="design_height"
+            android:value="1280">
+        </meta-data>
+
+
+        <activity android:name=".mvp.home.session.SplashActivity"
+            android:theme="@style/Theme.AppStartLoadTranslucent"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".mvp.home.HomeActivity"
+            android:theme="@style/Theme.WindowStaus"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateUnspecified|adjustNothing"
+            />
+
+        <activity
+            android:name=".mvp.home.photo.ImageGridActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullWindowTheme"
+            >
+        </activity>
+
+        <activity
+            android:name=".mvp.home.photo.TakePhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullWindowTheme"/>
+
+        <activity
+            android:name=".mvp.home.photo.MyLocationActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".mvp.home.session.ChatActivity"
+            android:launchMode="singleTop"
+            />
+        <activity android:name=".mvp.upload.UploadActivity"/>
+        <activity android:name=".mvp.home.session.GroupActivity"/>
+        <activity android:name=".mvp.home.session.NearbyActivity"/>
+        <activity android:name=".mvp.home.photo.SingleImagePreviewActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".mvp.home.session.BasicInfoActivity"
+            android:launchMode="singleTop"
+            />
+        <activity android:name=".mvp.circledemo.activity.MainActivity"/>
+        <activity android:name=".mvp.home.session.LoginStatusActivity" />
+        <activity android:name=".mvp.home.photo.CircleActivity"/>
+
+        <activity android:name=".mvp.home.session.FriendCircleActivity" />
+        <activity android:name=".mvp.home.session.CreateGroupActivity"/>
+        <activity android:name=".mvp.home.session.GroupManagerActivity"/>
+        <activity android:name=".mvp.home.photo.FileReceiverActivity"/>
+        <activity android:name=".mvp.home.session.SendFriendCircleActivity"/>
+        <activity android:name=".mvp.home.photo.ImagePagerActivity"/>
+
+        <activity android:name=".mvp.home.session.SeachFriendActivity"/>
+        <activity android:name=".mvp.home.session.NewFriendActivity"/>
+        <activity android:name=".mvp.home.session.PhoneContactActivity"/>
+        <activity android:name=".mvp.home.session.RegisterActivity"/>
+        <activity android:name=".mvp.home.session.LoginActivity"/>
+        <activity android:name=".mvp.home.session.ScanActivity" />
+        <activity android:name=".mvp.home.session.UpdateInfoActivity"/>
+        <activity android:name=".mvp.home.zichat.CreatNewGroupActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            />
+        <activity android:name=".mvp.home.zichat.GroupInfoActivity"/>
+        <activity android:name=".mvp.home.zichat.UpdateSourceActivity"/>
+
+
+        <service android:name=".mvp.service.AppService"/>
+        <service android:name=".mvp.service.DataService"/>
+        <service android:name=".chat.xmpp.CoreService"/>
+
+        <!-- 4.4版本新增的CommandService声明，提升小米和魅族手机上的实际推送到达率 -->
+        <service
+            android:name="com.baidu.android.pushservice.CommandService"
+            android:exported="true" />
+
+        <!-- CoreService -->
+        <!-- 百度Location -->
+        <!-- push结束 -->
+
+        <meta-data android:name="com.lsjr.zizi.loader.GlideCache"
+            android:value="GlideCache"/>
+
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.lsjr.zizi.fileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path" />
+        </provider>
+
+
+
+        <!-- push service start -->
+        <!-- 用于接收系统消息以保证PushService正常运行 -->
+        <receiver
+            android:name="com.baidu.android.pushservice.PushServiceReceiver"
+            android:process=":bdservice_v1">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+                <action android:name="com.baidu.android.pushservice.action.media.CLICK" />
+                <!-- 以下四项为可选的action声明，可大大提高service存活率和消息到达速度 -->
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <!-- Push服务接收客户端发送的各种请求 -->
+        <receiver
+            android:name="com.baidu.android.pushservice.RegistrationReceiver"
+            android:process=":bdservice_v1">
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.METHOD" />
+                <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.baidu.android.pushservice.PushService"
+            android:exported="true"
+            android:process=":bdservice_v1">
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

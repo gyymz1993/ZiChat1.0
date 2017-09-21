@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@drawable/selector_common_item"
+        android:id="@+id/item_table_bar"
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        >
+
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:padding="5dp" />
+
+        <TextView
+            android:text="邀请新成员"
+            android:id="@+id/tv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dip"
+            android:gravity="center_vertical"
+            android:textColor="@color/black_text"
+            android:drawableLeft="@drawable/icon_add_group_one"
+            android:drawablePadding="10dip"
+            android:padding="3dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#FF212121"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="25dip"
+            android:layout_height="25dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:paddingLeft="4dip"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dip"
+            android:src="@mipmap/icon_more"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dip"
+            android:gravity="center_vertical"
+            android:padding="3dp"
+            android:textColor="#FF212121"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</LinearLayout>

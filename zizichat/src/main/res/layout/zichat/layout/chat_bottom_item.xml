@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+   >
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <!--     android:drawableBottom="@drawable/selector_edit_focus" -->
+        <EditText
+            android:id="@+id/etContent"
+            android:layout_width="match_parent"
+            android:layout_marginRight="55dp"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:background="@null"
+            android:visibility="visible"
+            android:textColorHint="#FFC9C9C9"
+            android:paddingLeft="@dimen/album_dp_15"
+            android:maxLines="4"
+            android:paddingTop="5dip"
+            android:paddingRight="35dp"
+            android:hint="请输入消息..."
+
+            />
+
+        <!--  style="?android:attr/borderlessButtonStyle"-->
+        <!-- android:background="@drawable/shape_session_btn_voice_normal"-->
+        <Button
+            android:id="@+id/btnAudio"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/audio_bg_seletor"
+            android:text="@string/please_to_talk"
+            android:textColor="@color/black"
+            android:visibility="gone"/>
+
+
+        <Button
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/album_dp_15"
+            android:id="@+id/btnSend"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_session_btn_send"
+            android:text="@string/send"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            style="@style/Line"
+            android:background="@color/line_color"
+            />
+
+
+        <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+        <ImageView
+            android:id="@+id/ivAudio"
+            style="@style/layout_horizontal"
+            android:layout_width="22dip"
+            android:layout_height="22dp"
+            android:src="@drawable/chat_bto_yuyin"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+        <ImageView
+            android:id="@+id/ivEmo"
+            style="@style/layout_horizontal"
+            android:layout_width="22dip"
+            android:layout_height="22dp"
+            android:src="@drawable/chat_bto_biaoqing"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:visibility="gone"
+            >
+        <ImageView
+            android:id="@+id/ivMore"
+            style="@style/layout_horizontal"
+            android:layout_width="22dip"
+            android:layout_height="22dp"
+            android:src="@drawable/chat_bto_dingwei"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/ivLocation"
+                style="@style/layout_horizontal"
+                android:layout_width="22dip"
+                android:layout_height="22dp"
+                android:src="@drawable/chat_bto_dingwei"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+        <ImageView
+            android:id="@+id/ivAlbum"
+            style="@style/layout_horizontal"
+            android:layout_width="22dip"
+            android:layout_height="22dp"
+            android:src="@drawable/chat_bto_image"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+        <ImageView
+            android:id="@+id/rlTakePhoto"
+            style="@style/layout_horizontal"
+            android:layout_width="22dip"
+            android:layout_height="22dp"
+            android:src="@drawable/chat_bto_shiping"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+        <ImageView
+            android:id="@+id/rlTakeCrama"
+            style="@style/layout_horizontal"
+            android:layout_width="22dip"
+            android:layout_height="22dp"
+            android:src="@drawable/chat_bto_zhaoxiangji"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layout_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+
+        <ImageView
+            android:layout_width="22dip"
+            android:layout_height="22dp"
+            android:src="@drawable/chat_bto_phone"/>
+
+        </LinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        style="@style/Line"
+        android:background="@color/line_color"
+        />
+
+</com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

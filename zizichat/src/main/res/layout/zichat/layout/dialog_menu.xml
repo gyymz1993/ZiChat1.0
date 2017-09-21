@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lsjr.zizi.view.AutoCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    app:cardElevation="5dp">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_bg"
+        android:orientation="vertical"
+        android:padding="0.5px">
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/tvCreateGroup"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:layout_gravity="center"
+        >
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="22dip"
+            android:layout_height="22dip"
+            android:src="@mipmap/icon_add_contact"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="100px"
+            android:layout_margin="10dip"
+            android:gravity="center_vertical"
+            android:text="@string/create_group"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            style="@style/Line"
+            android:background="#444"
+            />
+
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/tvAddFriend"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_gravity="center"
+            >
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="22dip"
+                android:layout_height="22dip"
+                android:src="@mipmap/ic_add_friend"
+                />
+
+            <TextView
+                android:layout_margin="10dip"
+                android:layout_width="wrap_content"
+                android:layout_height="100px"
+                android:gravity="center_vertical"
+                android:text="@string/add_friend"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+        <View
+            style="@style/Line"
+            android:background="#444"
+            />
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/tvScan"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_gravity="center"
+            >
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="22dip"
+                android:layout_height="22dip"
+                android:src="@mipmap/ic_sacn"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="100px"
+                android:layout_margin="10dip"
+                android:gravity="center_vertical"
+                android:text="@string/scan_one_scan"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.lsjr.zizi.view.AutoCardView>

@@ -1,0 +1,42 @@
+<resources>
+
+    <dimen name="LargestTextSize">30.0dip</dimen>
+    <dimen name="BigerTextSize">24.0dip</dimen>
+    <dimen name="BigTextSize">17.0dip</dimen>
+    <dimen name="NormalTextSize">16.0dip</dimen>
+    <dimen name="HintTextSize">14.0dip</dimen>
+    <dimen name="SmallerTextSize">13.0dip</dimen>
+    <dimen name="SmallestTextSize">12.0dip</dimen>
+    <dimen name="NormalPadding">12.0dip</dimen>
+    <dimen name="BasicPaddingSize">4.0dip</dimen>
+    <dimen name="emotion_height">180dp</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="pmsg_media_view_height">255dp</dimen>
+    <dimen name="list_padding">0dp</dimen>
+	<dimen name="list_item_padding">16dp</dimen>
+
+    <dimen name="toolbar_padding_top">0dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">32px</dimen>
+    <dimen name="activity_vertical_margin">32px</dimen>
+
+    <!--主界面底部图标大小-->
+    <dimen name="main_bottom_iv_horizontal_size">58px</dimen>
+    <dimen name="main_bottom_iv_vertical_size">54px</dimen>
+
+    <!--列表item间距-->
+    <dimen name="item_margin_left_and_right">25px</dimen>
+    <dimen name="item_margin_top_and_bottom">15px</dimen>
+
+    <!--选项间距-->
+    <dimen name="option_item_margin_top">42px</dimen>
+    <dimen name="option_item_margin_left">40px</dimen>
+    <dimen name="option_item_margin_right">40px</dimen>
+
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="gudieview_width">6dp</dimen>
+    <dimen name="gudieview_heigh">6dp</dimen>
+
+</resources>

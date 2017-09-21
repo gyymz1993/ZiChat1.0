@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_bg"
+    >
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="200dip"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+
+        <EditText
+            android:id="@+id/id_ed_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:minHeight="100dip"
+            android:hint="说点什么呢？"
+            android:gravity="top"
+            android:paddingTop="5dip"
+            android:paddingLeft="6dip"
+            android:textSize="14sp"
+            tools:ignore="RtlHardcoded"
+            android:maxHeight="150dip"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/id_gr_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <com.lsjr.zizi.view.CustomVideoView
+            android:layout_gravity="bottom"
+            android:layout_margin="10dip"
+            android:id="@+id/show_videoview"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+
+</com.zhy.autolayout.AutoLinearLayout>

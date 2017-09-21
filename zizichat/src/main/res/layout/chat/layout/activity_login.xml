@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.lsjr.zizi.view.ClearEditText
+        android:background="@drawable/set_list_up"
+        android:id="@+id/phone_numer_edit"
+        style="@style/IMLineEditText"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginTop="9dp"
+        android:hint="@string/please_input_phone_number"
+        android:inputType="phone" />
+
+    <com.lsjr.zizi.view.ClearEditText
+        android:background="@drawable/set_list_down"
+        android:id="@+id/password_edit"
+        style="@style/IMLineEditPass"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:hint="@string/please_input_password"
+        />
+
+    <!--  style="@style/IMButton.Orange"-->
+
+    <Button
+        android:id="@+id/login_btn"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="20dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="20dip"
+        android:layout_below="@+id/id_lay_login"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:enabled="false"
+        android:background="@drawable/login_code_selector"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <Button
+            android:id="@+id/register_account_btn"
+            style="@style/IMHyperText"
+            android:layout_alignParentLeft="true"
+            android:paddingBottom="9dp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            android:text="@string/register_account" />
+
+        <Button
+            android:id="@+id/forget_password_btn"
+            style="@style/IMHyperText"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="9dp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            android:text="@string/forget_password"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

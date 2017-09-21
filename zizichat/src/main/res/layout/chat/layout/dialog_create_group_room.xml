@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+     >
+
+    <EditText
+        android:padding="5dp"
+        android:id="@+id/room_name_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入房间名"
+        android:textColor="@color/gray1"
+        android:background="@null"
+        android:lines="2"
+        android:maxLines="2" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:layout_marginLeft="22dip"
+        android:background="@color/line" />
+
+    <EditText
+        android:padding="5dp"
+        android:id="@+id/room_desc_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="请输入描述"
+        android:textColor="@color/gray1"
+        android:background="@null"
+        android:lines="2" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:layout_marginLeft="22dip"
+        android:background="@color/line" />
+
+    <Button
+        android:visibility="gone"
+        style="@style/IMButton.Orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:hint="@string/sure"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/sure_btn"
+        android:text="确认"
+        android:textColor="@color/white"
+        android:textSize="20dip"
+        android:layout_marginTop="35dip"
+        android:layout_below="@+id/id_lay_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:enabled="false"
+        android:background="@drawable/login_code_selector"
+        />
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/id_root_ly"
+    android:gravity="center"
+    android:layout_gravity="center"
+    >
+
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/rlItemShow"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="50.0dip"
+        android:background="@android:color/transparent" >
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdvItemShowImg"
+            android:layout_width="55.0dip"
+            android:layout_height="55.0dip"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            fresco:actualImageScaleType="fitXY"
+            fresco:placeholderImage="@color/blue1"
+            fresco:placeholderImageScaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/ivDeleteImg"
+            android:layout_width="16dip"
+            android:layout_height="16dip"
+            android:layout_gravity="top|left"
+            android:background="@drawable/bg_item_del" />
+    </FrameLayout>
+
+
+    <!--添加图片-->
+    <ImageView
+        android:id="@+id/ivItemAdd"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dip"
+        android:scaleType="centerInside"
+        android:src="@drawable/gridview_addpic"
+        android:visibility="gone" />
+
+</LinearLayout>

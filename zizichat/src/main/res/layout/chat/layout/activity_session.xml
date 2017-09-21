@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/theme_bg"
+    >
+
+
+    <!--内容-->
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.andview.autofresh.BGARefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.andview.myrvview.LQRRecyclerView
+                android:id="@+id/rvMsg"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+        </com.andview.autofresh.BGARefreshLayout>
+
+        <View
+            style="@style/Line"
+            android:background="@color/line"
+            />
+
+        <!--<include layout="@layout/chat_input_itme"/>-->
+
+        <include layout="@layout/chat_bottom_item"/>
+
+
+        <View
+            style="@style/Line"
+            android:background="@color/line"
+            />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoFrameLayout
+        android:id="@+id/flEmotionView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="350px"
+        android:visibility="gone">
+        <!--表情-->
+        <com.lqr.emoji.EmotionLayout
+            android:id="@+id/elEmotion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+        <!--其他功能-->
+        <include
+            android:id="@+id/llMore"
+            layout="@layout/include_func_layout"
+            android:visibility="gone"/>
+
+        <include
+            android:id="@+id/ffaudio"
+            layout="@layout/layout_chatinput_recordvoice"
+            android:visibility="gone"
+            />
+    </com.zhy.autolayout.AutoFrameLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

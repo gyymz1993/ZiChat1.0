@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ys.uilibrary.ScrollviewNestedRecyclerview xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbars="none"
+    android:background="@color/theme_bg"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:background="@android:color/white"
+                android:id="@+id/grid_manager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dip"
+                >
+                <RelativeLayout
+                    style="@style/Line"
+                    android:layout_marginTop="15dip"
+                    />
+
+                <com.lsjr.zizi.view.OptionItemView
+                    android:id="@+id/oivGroupName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dip"
+                    android:background="@drawable/selector_common_item"
+                    app:left_text="@string/group_name"
+                    app:left_text_color="@color/black0"
+                    app:left_text_margin_left="@dimen/option_item_margin_left"
+                    android:clickable="true"
+                    app:left_text_size="16sp"
+                    app:right_text="@string/untitled"
+                    app:right_text_color="@color/gray2"
+                    app:right_text_margin_right="10dip"
+                    app:right_text_size="14sp"/>
+
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <View
+                        style="@style/Line"
+                        android:layout_marginLeft="@dimen/option_item_margin_left"
+                        android:layout_marginRight="@dimen/option_item_margin_right"
+                        />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.lsjr.zizi.view.OptionItemView
+                    android:id="@+id/oivGroupDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dip"
+                    android:background="@drawable/selector_common_item"
+                    app:left_text="群简介"
+                    android:clickable="true"
+                    app:left_text_color="@color/black0"
+                    app:left_text_margin_left="@dimen/option_item_margin_left"
+                    app:left_text_size="16sp"
+                    app:right_text="@string/untitled"
+                    app:right_text_color="@color/gray2"
+                    app:right_text_margin_right="10dip"
+                    app:right_text_size="14sp"/>
+
+
+                <com.lsjr.zizi.view.OptionItemView
+                    android:layout_marginTop="2dip"
+                    android:id="@+id/my_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dip"
+                    android:background="@drawable/selector_common_item"
+                    app:left_text="我的群昵称"
+                    app:left_text_color="@color/black0"
+                    app:left_text_margin_left="@dimen/option_item_margin_left"
+                    android:clickable="true"
+                    app:left_text_size="16sp"
+                    app:right_text="@string/untitled"
+                    app:right_text_color="@color/gray2"
+                    app:right_text_margin_right="10dip"
+                    app:right_text_size="14sp"/>
+
+                <RelativeLayout
+                    style="@style/Line"
+                    android:layout_marginTop="15dip"
+                    />
+
+                <Button
+                    android:visibility="gone"
+                    android:id="@+id/btnQuit"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dip"
+                    android:layout_margin="15dip"
+                    android:background="@drawable/shape_btn_delete"
+                    android:text="@string/delete_and_exit"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+</com.ys.uilibrary.ScrollviewNestedRecyclerview>

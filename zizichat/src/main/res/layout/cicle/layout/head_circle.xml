@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="245dp">
+<RelativeLayout
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/id_ig_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_head_bg"
+        android:scaleType="centerCrop"
+        />
+
+
+    <RelativeLayout
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="@dimen/album_dp_15"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/id_back"
+            android:layout_width="25dip"
+            android:layout_height="25dip"
+            android:src="@drawable/ic_firend_back"
+            />
+
+        <ImageView
+            android:id="@+id/id_talk"
+            android:layout_alignParentRight="true"
+            android:layout_width="25dp"
+            android:layout_height="25dip"
+            android:src="@drawable/ic_cicle_zhaoxiai"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="70dp">
+
+        <com.lsjr.zizi.view.CircleImageView
+            android:id="@+id/ig_icon_head"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/icon_head"
+            android:layout_marginRight="15dp"
+            />
+
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/ig_icon_head"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="自己"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+    <com.ymz.baselibrary.widget.NavigationBarView
+        android:visibility="gone"
+        android:id="@+id/id_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="51dip"
+        app:leftColor="#FF212121"
+        app:rightColor="#FF212121"
+        app:leftSize="17sp"
+        app:titles=""
+        app:leftIcon="@drawable/ic_back"
+        app:rgihtIcon="@mipmap/grid_camera"
+        />
+</FrameLayout>

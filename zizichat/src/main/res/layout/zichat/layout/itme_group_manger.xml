@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="45dip"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    >
+
+
+    <com.lsjr.zizi.view.CircleImageView
+        android:id="@+id/ivHeader"
+        style="@style/AvHeaderStyle"
+        android:layout_margin="5dip"
+        android:layout_gravity="center_vertical"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/default_header"/>
+
+    <TextView
+        android:layout_below="@+id/ivHeader"
+        android:id="@+id/id_user_name"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBaseline="@+id/ivHeader"
+        android:textSize="14sp"
+        android:textColor="#FF999999"
+        android:maxEms="3"
+        android:lines="1"
+        android:ellipsize="end"
+        android:text="0001"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</com.zhy.autolayout.AutoRelativeLayout>
