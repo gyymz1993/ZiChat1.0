@@ -1,0 +1,43 @@
+<com.sk.weichat.view.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/resize_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normal_bg"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/comment_bottom_view" >
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            xmlns:ptr="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/pull_refresh_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            ptr:ptrAnimationStyle="flip"
+            ptr:ptrDrawableEnd="@drawable/default_ptr_rotate"
+            ptr:ptrDrawableStart="@drawable/default_ptr_flip"
+            ptr:ptrHeaderTextColor="@color/black"
+            ptr:ptrMode="both"
+            ptr:ptrOverScroll="false"
+            ptr:ptrScrollingWhileRefreshingEnabled="true"
+            ptr:ptrShowIndicator="false" />
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            layout="@layout/footer_view_p_msg_replay_layout"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <com.sk.weichat.view.CommentBottomView
+        android:id="@+id/comment_bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</com.sk.weichat.view.ResizeLayout>

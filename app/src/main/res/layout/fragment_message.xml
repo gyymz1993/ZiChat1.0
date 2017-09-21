@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normal_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/search_bg"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp" >
+
+        <com.sk.weichat.view.ClearEditText
+            android:id="@+id/search_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:background="@drawable/search_input"
+            android:drawableLeft="@drawable/search"
+            android:drawableRight="@drawable/search_clear"
+            android:hint="@string/search"
+            android:textColor="@color/dark_grey"
+            android:textColorHint="@color/grey"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <com.sk.weichat.view.PullToRefreshSlideListView
+        android:id="@+id/pull_refresh_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ptrAnimationStyle="flip"
+        app:ptrDrawableEnd="@drawable/default_ptr_rotate"
+        app:ptrDrawableStart="@drawable/default_ptr_flip"
+        app:ptrHeaderTextColor="@color/black"
+        app:ptrMode="both"
+        app:ptrOverScroll="false"
+        app:ptrScrollingWhileRefreshingEnabled="true"
+        app:ptrShowIndicator="false"
+        app:slideMode="right"
+        app:slideRightAction="reveal" />
+
+</LinearLayout>

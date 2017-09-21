@@ -1,0 +1,42 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+   
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pull_refresh_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrDrawableEnd="@drawable/default_ptr_rotate"
+        ptr:ptrDrawableStart="@drawable/default_ptr_flip"
+        ptr:ptrHeaderTextColor="@color/black"
+        ptr:ptrMode="both"
+        ptr:ptrOverScroll="false"
+        ptr:ptrScrollingWhileRefreshingEnabled="true"
+        ptr:ptrShowIndicator="false" />
+
+    <TextView
+        android:id="@+id/text_dialog"
+        android:layout_width="80.0dip"
+        android:layout_height="80.0dip"
+        android:layout_gravity="center"
+        android:background="@color/black_trans_99"
+        android:gravity="center"
+        android:textColor="#ffffffff"
+        android:textSize="30.0dip"
+        android:visibility="invisible" />
+
+    <com.sk.weichat.sortlist.SideBar
+        android:id="@+id/sidebar"
+        android:layout_width="30.0dip"
+        android:layout_height="fill_parent"
+        android:layout_gravity="right|center" />
+ 
+
+   
+
+</FrameLayout>

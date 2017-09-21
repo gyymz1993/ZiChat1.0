@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normal_bg" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/avatar_img"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dip"
+            android:background="@drawable/account_avatar_bg"
+            android:contentDescription="@string/app_name"
+            android:paddingBottom="5.0dip"
+            android:paddingLeft="4.0dip"
+            android:paddingRight="6.0dip"
+            android:paddingTop="5.0dip"
+            android:src="@drawable/avatar_normal" />
+
+        <TextView
+            android:id="@+id/nick_name_tv"
+            style="@style/IMLineEditText"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:background="@null"
+            android:gravity="center"
+            android:minHeight="40dp" />
+
+        <LinearLayout
+            style="@style/IMTbleLine"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/account_icon" />
+
+            <com.sk.weichat.view.ClearEditText
+                android:id="@+id/password_edit"
+                style="@style/IMLineEditPass"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/please_input_password"
+                android:imeOptions="actionDone" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login_btn"
+            style="@style/IMButton.Orange"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_marginTop="9dp"
+            android:text="@string/login" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <Button
+                android:id="@+id/register_account_btn"
+                style="@style/IMHyperText"
+                android:layout_alignParentLeft="true"
+                android:paddingBottom="9dp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
+                android:text="@string/register_account" />
+
+            <Button
+                android:id="@+id/forget_password_btn"
+                style="@style/IMHyperText"
+                android:layout_alignParentRight="true"
+                android:paddingBottom="9dp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
+                android:text="@string/forget_password" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

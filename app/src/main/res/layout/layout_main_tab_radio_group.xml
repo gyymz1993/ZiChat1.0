@@ -1,0 +1,147 @@
+<com.sk.weichat.view.DivideRadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/tab_bg"
+    android:baselineAligned="false"
+    android:gravity="bottom"
+    android:orientation="horizontal"
+    android:paddingBottom="4dp"
+    android:paddingTop="4dp" >
+
+    <FrameLayout
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null" >
+
+        <RadioButton
+            android:id="@+id/main_tab_one"
+            style="@style/IMTabButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/tab_job_bg"
+            android:text="@string/message" />
+
+        <TextView
+            android:id="@+id/main_tab_one_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tab_unread_bg"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="10dp"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null" >
+
+        <RadioButton
+            android:id="@+id/main_tab_two"
+            style="@style/IMTabButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/tab_found_bg"
+            android:text="@string/find" />
+
+        <TextView
+            android:id="@+id/main_tab_two_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tab_unread_bg"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="10dp"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null" >
+
+        <RadioButton
+            android:id="@+id/main_tab_three"
+            style="@style/IMTabButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/tab_interview"
+            android:text="@string/nearby" />
+
+        <TextView
+            android:id="@+id/main_tab_three_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tab_unread_bg"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="10dp"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null" >
+
+        <RadioButton
+            android:id="@+id/main_tab_four"
+            style="@style/IMTabButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/tab_message"
+            android:text="@string/group_chat" />
+
+        <TextView
+            android:id="@+id/main_tab_four_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tab_unread_bg"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="10dp"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null" >
+
+        <RadioButton
+            android:id="@+id/main_tab_five"
+            style="@style/IMTabButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/tab_more"
+            android:text="@string/me" />
+
+        <TextView
+            android:id="@+id/main_tab_five_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/tab_unread_bg"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="10dp"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+</com.sk.weichat.view.DivideRadioGroup>

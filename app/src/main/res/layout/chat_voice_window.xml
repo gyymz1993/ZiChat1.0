@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/record_bg_large"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/voice_seconds"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@drawable/chat_record"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/microphone_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/audio_volume_level"
+        android:visibility="visible" >
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/rubish_voice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/record_cancel_normal_large"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/voice_tip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:text="@string/motalk_voice_chat_tip_3"
+        android:textColor="@color/white"
+        android:textSize="16sp" >
+    </TextView>
+
+</LinearLayout>

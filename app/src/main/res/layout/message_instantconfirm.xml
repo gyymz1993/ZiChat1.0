@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@android:color/white" >
+        <TextView 
+            android:id="@+id/tv_instant_popuwindow_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            android:textColor="#DD000000"
+            android:text="确定发送给:"/>
+       <ImageView
+            android:id="@+id/iv_instant_head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"
+            android:layout_below="@id/tv_instant_popuwindow_title"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/avatar_normal" />
+       <TextView 
+           android:id="@+id/tv_constacts_name"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="hahaha"
+           android:layout_toRightOf="@id/iv_instant_head"
+            android:layout_below="@id/tv_instant_popuwindow_title"
+            android:layout_marginTop="20dp"
+           android:layout_marginLeft="10dp"
+           />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_dialog_selector"
+            android:text="发送"
+            android:textColor="@color/btn_textcolor_selector"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_cancle"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/btn_send"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_dialog_selector"
+            android:text="取消"
+            android:textColor="@color/btn_textcolor_selector"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</RelativeLayout>

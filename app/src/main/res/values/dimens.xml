@@ -1,0 +1,17 @@
+<resources>
+
+    <dimen name="LargestTextSize">30.0dip</dimen>
+    <dimen name="BigerTextSize">24.0dip</dimen>
+    <dimen name="BigTextSize">17.0dip</dimen>
+    <dimen name="NormalTextSize">16.0dip</dimen>
+    <dimen name="HintTextSize">14.0dip</dimen>
+    <dimen name="SmallerTextSize">13.0dip</dimen>
+    <dimen name="SmallestTextSize">12.0dip</dimen>
+    <dimen name="NormalPadding">12.0dip</dimen>
+    <dimen name="BasicPaddingSize">4.0dip</dimen>
+    <dimen name="emotion_height">180dp</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="pmsg_media_view_height">255dp</dimen>
+<dimen name="list_padding">0dp</dimen>
+	<dimen name="list_item_padding">16dp</dimen>
+</resources>

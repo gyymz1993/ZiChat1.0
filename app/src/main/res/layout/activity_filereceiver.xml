@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="120dp"
+                  android:background="#434343"
+                  android:orientation="vertical"
+        android:paddingBottom="8dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ΔΔΔ温馨提示ΔΔΔ"
+            android:textColor="@android:color/white"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="22dp"
+            android:textSize="16sp"/>
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:text="①点击可以用指定方式打开文件哦"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:text="②长按可以进行转发文件等操作"/>
+
+    </LinearLayout>
+
+    <ListView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lv_file_receiver">
+
+</ListView>
+</LinearLayout>

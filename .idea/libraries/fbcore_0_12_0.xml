@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="fbcore-0.12.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/9b1aec01a4b68aabd602338d27a0e9a6eae317ba/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/9b1aec01a4b68aabd602338d27a0e9a6eae317ba/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

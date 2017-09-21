@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/time_tv"
+        style="@style/ChattingUISystem"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/chatsystem_bg"
+        android:gravity="center" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:padding="3dip" >
+
+        <ImageView
+            android:id="@+id/chat_head_iv"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_alignParentLeft="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/avatar_normal" />
+
+        <TextView
+            android:id="@+id/nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/chat_head_iv"
+            android:textSize="@dimen/SmallerTextSize" />
+
+        <RelativeLayout
+            android:id="@+id/chat_to_warp_view2"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nick_name"
+            android:layout_toRightOf="@+id/chat_head_iv" >
+
+            <RelativeLayout
+                android:id="@+id/chat_to_warp_view"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/chat_to_warp_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/chat_to_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"
+                    android:maxWidth="70dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_head_card" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/chat_to_head"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/person_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/person_card_title"
+                        android:textColor="#880000ff"
+                        android:textSize="@dimen/SmallerTextSize" />
+
+                    <TextView
+                         android:layout_gravity="center_horizontal"
+                        android:id="@+id/person_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="filename"
+                        android:textSize="@dimen/SmallerTextSize" />
+
+                    <TextView
+                         android:layout_gravity="center_horizontal"
+                        android:id="@+id/person_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="filename"
+                        android:textSize="@dimen/SmallerTextSize" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <ProgressBar
+                android:id="@+id/card_progress"
+                style="@android:style/Widget.ProgressBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@id/chat_to_warp_view" />
+
+            <ImageView
+                android:id="@+id/unread_img_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@id/card_progress"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/new_tips" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

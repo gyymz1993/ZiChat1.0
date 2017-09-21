@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.sk.weichat.MainActivity" >
+
+    <item
+        android:id="@+id/set_remark_name"
+        android:title="@string/set_remark_name"/>
+    <item
+        android:id="@+id/remove_blacklist"
+        android:title="@string/remove_blacklist"/>
+    <item
+        android:id="@+id/add_blacklist"
+        android:title="@string/add_blacklist"/>
+    <item
+        android:id="@+id/cancel_attention"
+        android:title="@string/cancel_attention"/>
+    <item
+        android:id="@+id/delete_all"
+        android:title="@string/delete_all"/>
+
+</menu>

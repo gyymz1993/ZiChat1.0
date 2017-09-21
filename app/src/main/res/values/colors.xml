@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="normal_bg">#fff0eff4</color>
+    <color name="main_tab_text_normal_grey">#ff83888e</color>
+    <color name="sub_tab_text_normal_black">#ff2d2f32</color>
+    <color name="orange">#fffa6015</color>
+    <color name="actionbar_selector_color">#4d000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="action_bar_tittle_color">#ffcfcfcf</color>
+    <color name="hint_text_color">#ff999999</color>
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="grey">#ffa7a7a7</color>
+    <color name="dark_grey">#ff7a7a7a</color>
+    <color name="dark_dark_grey">#ff505050</color>
+    <color name="black_trans_33">#33000000</color>
+    <color name="black_trans_99">#99000000</color>
+    <color name="chat_black_alpa">#88000000</color>
+    <color name="light_grey">#ffcccccc</color>
+    <color name="dark_orange">#ffd24d0c</color>
+    <color name="text_black">#ff2d2f32</color>
+    <color name="text_select">#fffa6015</color>
+    <color name="gray">#ff999999</color>
+    <color name="light_gray">#ff84828f</color>
+    <color name="circle_add_item_bg">#ffe2e1e6</color>
+    <color name="fade_black">#44000000</color>
+    <color name="green">#ff36d55c</color>
+    <color name="yellow">#ffffba00</color>
+    <color name="blue">#ff3db4ff</color>
+    <color name="purple">#ffc47cf2</color>
+    <color name="replay_text_color_normal">#ffa19992</color>
+    <color name="replay_text_color_select">#ff352828</color>
+    <color name="operation_more_text_bg_normal">#ff363b3d</color>
+    <color name="operation_more_text_bg_press">#ff282c2e</color>
+    <color name="link_nick_name_color">#ff576b95</color>
+    <color name="dialog_normal">#0079FF</color>
+
+</resources>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/time_tv"
+        style="@style/ChattingUISystem"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/chatsystem_bg"
+        android:gravity="center" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:padding="3dip" >
+
+        <ImageView
+            android:id="@+id/chat_head_iv"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/avatar_normal" />
+
+        <TextView
+            android:id="@+id/nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/chat_head_iv"
+            android:textSize="@dimen/SmallerTextSize" />
+
+        <RelativeLayout
+            android:id="@+id/chat_content_layout"
+            android:layout_width="275dip"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nick_name"
+            android:layout_toLeftOf="@+id/chat_head_iv" >
+
+            <LinearLayout
+                android:id="@+id/chat_from_warp_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/chat_from_warp_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/chat_from_location"
+                    android:layout_width="105dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/chat_map_bg"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/chat_from_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:background="@color/chat_black_alpa"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:padding="4dp"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="@android:style/Widget.ProgressBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="3dp"
+                android:layout_toLeftOf="@id/chat_from_warp_view" />
+
+            <ImageView
+                android:id="@+id/failed_img_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="3dp"
+                android:layout_toLeftOf="@id/chat_from_warp_view"
+                android:background="@drawable/im_send_failed_bg"
+                android:contentDescription="@string/app_name"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

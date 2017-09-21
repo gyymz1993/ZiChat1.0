@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:saveEnabled="false" >
+
+        <RadioButton
+            android:id="@+id/newest_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/red_radio_btn_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:saveEnabled="false"
+            android:text="@string/newest"
+            android:textColor="@color/menu_tab_btn_text"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/hot_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/red_radio_btn_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:saveEnabled="false"
+            android:text="@string/hotest"
+            android:textColor="@color/menu_tab_btn_text"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/nearest_rb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/red_radio_btn_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:saveEnabled="false"
+            android:text="@string/nearest"
+            android:textColor="@color/menu_tab_btn_text"
+            android:textSize="12sp" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/find_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+
+</LinearLayout>

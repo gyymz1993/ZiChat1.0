@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="255dp"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/play_frame"
+        android:layout_width="match_parent"
+        android:layout_height="245dp"
+        android:descendantFocusability="beforeDescendants" >
+
+        <ImageView
+            android:id="@+id/thumb_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:id="@+id/start_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:background="@drawable/detail_gray_button"
+            android:contentDescription="@string/app_name"
+            android:padding="5dp"
+            android:src="@drawable/feed_main_player_play" />
+
+        <ProgressBar
+            android:id="@+id/cache_progress_bar"
+            style="@android:style/Widget.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <com.sk.weichat.ui.circle.view.MediaControlView
+        android:id="@+id/media_control_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
+
+</FrameLayout>

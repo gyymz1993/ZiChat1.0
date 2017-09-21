@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/time_tv"
+        style="@style/ChattingUISystem"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/chatsystem_bg"
+        android:gravity="center" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:padding="3dip" >
+
+        <ImageView
+            android:id="@+id/chat_head_iv"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/avatar_normal" />
+
+        <TextView
+            android:id="@+id/nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/chat_head_iv"
+            android:textSize="@dimen/SmallerTextSize" />
+
+        <RelativeLayout
+            android:id="@+id/chat_content_layout"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nick_name"
+            android:layout_toLeftOf="@+id/chat_head_iv" >
+
+                
+                <RelativeLayout 
+                    android:id="@+id/chat_from_warp_view"
+                	android:layout_width="wrap_content"
+                	android:layout_height="70dp"
+                	android:layout_alignParentRight="true"
+                	android:layout_alignParentTop="true"
+                	android:background="@drawable/chat_from_warp_bg"
+                	android:clickable="true"
+                	android:focusable="true"
+                	android:gravity="center" 
+                    >
+                    
+               
+
+                <!-- 所有Item该布局的子布局不能超过210dp -->
+
+                <ImageView
+                    android:id="@+id/chat_from_file"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"
+                    android:maxWidth="70dp"
+                    android:scaleType="fitXY"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/file" />
+
+                <TextView
+            		android:id="@+id/file_name"
+            		android:layout_width="wrap_content"
+            		android:layout_height="wrap_content"
+            		android:layout_centerVertical="true"
+            		android:layout_toRightOf="@id/chat_from_file"
+            		android:text="filename"
+            		android:textSize="@dimen/SmallerTextSize" />
+                 </RelativeLayout>
+
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="@android:style/Widget.ProgressBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="3dp"
+                android:layout_toLeftOf="@id/chat_from_warp_view" />
+
+            <ImageView
+                android:id="@+id/failed_img_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="3dp"
+                android:layout_toLeftOf="@id/chat_from_warp_view"
+                android:background="@drawable/im_send_failed_bg"
+                android:contentDescription="@string/app_name"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

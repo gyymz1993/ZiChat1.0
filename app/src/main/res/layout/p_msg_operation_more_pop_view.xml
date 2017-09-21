@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/black_bg"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="1dp" >
+
+    <TextView
+        android:id="@+id/praise_tv"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:background="@drawable/operation_text_click_bg"
+        android:gravity="center"
+        android:text="@string/praise"
+        android:textColor="@color/white"
+        android:textSize="@dimen/NormalTextSize" />
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="25dp"
+        android:background="@color/dark_grey" />
+
+    <TextView
+        android:id="@+id/comment_tv"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:background="@drawable/operation_text_click_bg"
+        android:gravity="center"
+        android:text="@string/comment"
+        android:textColor="@color/white"
+        android:textSize="@dimen/NormalTextSize" />
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="25dp"
+        android:background="@color/dark_grey" />
+
+    <TextView
+        android:id="@+id/gift_tv"
+        android:layout_width="60dp"
+        android:layout_height="35dp"
+        android:background="@drawable/operation_text_click_bg"
+        android:gravity="center"
+        android:text="@string/send_gift"
+        android:textColor="@color/white"
+        android:textSize="@dimen/NormalTextSize" />
+
+</LinearLayout>

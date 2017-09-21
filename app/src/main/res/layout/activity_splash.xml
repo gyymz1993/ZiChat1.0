@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff000000" >
+
+    <FrameLayout
+        android:id="@+id/welcome_ly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/welcome_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/splash" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/select_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="70.0dip"
+        android:background="@null" >
+
+        <Button
+            android:id="@+id/select_login_btn"
+            style="@style/IMButton.Green"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="21dp"
+            android:gravity="center"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:shadowColor="#ffb8b8b8"
+            android:shadowDx="1.2"
+            android:shadowDy="1.2"
+            android:shadowRadius="1.0"
+            android:text="@string/login" />
+
+        <Button
+            android:id="@+id/select_register_btn"
+            style="@style/IMButton.Orange"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="21dp"
+            android:gravity="center"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:shadowColor="#ff016c08"
+            android:shadowDx="1.2"
+            android:shadowDy="1.2"
+            android:shadowRadius="1.0"
+            android:text="@string/register" />
+    </RelativeLayout>
+
+</FrameLayout>

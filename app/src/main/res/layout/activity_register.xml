@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normal_bg"
+    android:orientation="vertical" >
+
+    <com.sk.weichat.view.ClearEditText
+        android:id="@+id/phone_numer_edit"
+        style="@style/IMLineEditText"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/set_list_down"
+        android:hint="@string/please_input_phone_number"
+        android:inputType="phone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:orientation="horizontal"
+        android:paddingLeft="9dp"
+        android:paddingRight="9dp" >
+
+        <com.sk.weichat.view.ClearEditText
+            android:id="@+id/auth_code_edit"
+            style="@style/IMLineEditText"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/send_again_btn"
+            android:background="@drawable/set_list_down"
+            android:hint="@string/please_input_auth_code"
+            android:inputType="number"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/send_again_btn"
+            style="@style/IMButton.Green"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:minWidth="80dp"
+            android:text="@string/send"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/next_step_btn"
+        style="@style/IMButton.Orange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/next_step" />
+
+</LinearLayout>

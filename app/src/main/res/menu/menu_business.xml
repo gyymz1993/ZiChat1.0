@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.sk.weichat.MainActivity" >
+
+    <item
+        android:id="@+id/send_text"
+        android:title="@string/send_text"/>
+    <item
+        android:id="@+id/send_image"
+        android:title="@string/send_image"/>
+    <item
+        android:id="@+id/send_audio"
+        android:title="@string/send_audio"/>
+    <item
+        android:id="@+id/send_video"
+        android:title="@string/send_video"/>
+
+</menu>

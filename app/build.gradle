@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.sk.weichat"
+        minSdkVersion 15
+        targetSdkVersion 25
+        ndk {
+            //abiFilters "armeabi", "arm64-v8a", "x86", "mips","mips64","x86_64"
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+}
+
+repositories {
+    flatDir { dirs 'libs' }
+}
+
+dependencies {
+    compile project(':library')
+    compile 'org.ui:baselibrary:v1.1.1'
+
+    compile 'com.facebook.fresco:fresco:0.12.0'
+    compile 'com.yanzhenjie:album:1.0.7'
+
+    //noinspection GradleCompatible,GradleCompatible
+    compile 'com.android.support:support-v4:25.3.1'
+    //noinspection GradleCompatible,GradleCompatible
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile files('libs/android-async-http-1.4.5.jar')
+    compile files('libs/asmack.jar')
+    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/cyberplayer-sdk.jar')
+    compile files('libs/fastjson-1.1.41.jar')
+    compile files('libs/nineoldandroids.jar')
+    compile files('libs/org.xbill.dns_2.1.6.jar')
+    compile files('libs/ormlite-android-4.48.jar')
+    compile files('libs/ormlite-core-4.48.jar')
+    compile files('libs/pinyin4j-2.5.0.jar')
+    compile files('libs/universal-image-loader-1.9.0.jar')
+    compile files('libs/volley.jar')
+    compile files('libs/pushservice-4.5.5.77.jar')
+    compile files('libs/commons-codec-1.6.jar')
+    compile files('libs/commons-logging-1.1.1.jar')
+    compile files('libs/fluent-hc-4.2.5.jar')
+    compile files('libs/httpclient-4.2.5.jar')
+    compile files('libs/httpclient-cache-4.2.5.jar')
+    compile files('libs/httpcore-4.2.4.jar')
+    compile files('libs/httpmime-4.2.5.jar')
+
+
+    //compile 'org.net:netlibrary:v1.0.2'
+}

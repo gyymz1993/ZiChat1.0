@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:layout_height="fill_parent"
+    android:background="@drawable/chatting_bg_purecolor_thumb" >
+   
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/auth_state_tip"
+            android:layout_width="fill_parent"
+            android:layout_height="24dip"
+            android:layout_alignParentTop="true"
+            android:background="@color/black"
+            android:gravity="center"
+            android:textColor="@color/dark_grey"
+            android:visibility="gone" />
+
+        <com.sk.weichat.view.ChatContentView
+            android:id="@+id/chat_content_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/chat_bottom_view"
+            android:layout_below="@+id/auth_state_tip"
+            android:cacheColorHint="#00000000"
+            android:divider="#00000000"
+            android:fadingEdge="none" />
+
+        <com.sk.weichat.view.ChatBottomView
+            android:id="@+id/chat_bottom_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:cacheColorHint="#00000000"
+            android:divider="#00000000"
+            android:fadingEdge="none" />
+    </RelativeLayout>
+
+</LinearLayout>

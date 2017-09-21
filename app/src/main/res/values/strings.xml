@@ -1,0 +1,325 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">孜信</string>
+    <string name="data_exception">数据异常，请稍后重试</string>
+    <string name="net_exception">网络异常，请稍后重试</string>
+    <string name="please_wait">请稍等&#8230;</string>
+    <string name="load_failed_click_again">加载失败，点击重新加载</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="prompt_title">提示</string>
+    <string name="search">搜索</string>
+    <string name="temporarily_no_data">暂时没有数据</string>
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="saveing">保存中&#8230;</string>
+    <string name="save_success">保存成功</string>
+    <string name="save_failed">保存失败</string>
+    <string name="delete">删除</string>
+    <string name="add">新增</string>
+    <string name="next_step">下一步</string>
+
+    <!-- 调用系统拍照的字符串 -->
+    <string name="c_take_picture">拍照</string>
+    <string name="c_take_picture_failed">拍照失败</string>
+    <string name="c_photo_album">相册</string>
+    <string name="c_photo_album_failed">选择失败</string>
+    <string name="c_crop_failed">裁减失败</string>
+    <!-- 城市选择 -->
+    <string name="locationing">正在定位</string>
+    <string name="current_location">当前位置</string>
+    <string name="hot_city">热门城市</string>
+    <string name="select_city_by_province">按省份选择城市</string>
+    <string name="location_failed">定位失败</string>
+    <string name="location_city">所在城市</string>
+    <string name="select">选择</string>
+    <string name="country">国家</string>
+    <string name="province">省份</string>
+    <string name="city">城市</string>
+    <string name="county">县区</string>
+    <!-- 时间显示 -->
+    <string name="to_this_day">至今</string>
+    <string name="friendly_time_just_now">刚刚</string>
+    <string name="friendly_time_before_seconds">秒前</string>
+    <string name="friendly_time_before_minute">分钟前</string>
+    <string name="friendly_time_yesterday">昨天</string>
+    <string name="friendly_time_before_yesterday">前天</string>
+
+    <!-- //////////////// EditText hint text ////////////////////// -->
+    <string name="please_input_phone_number">请输入手机号码</string>
+    <string name="please_input_auth_code">请输入验证码</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="please_confirm_password">请确认密码</string>
+    <string name="please_input_name">请输入昵称</string>
+    <string name="please_input_new_password">请输入新密码</string>
+    <string name="please_confirm_new_password">请确认新密码</string>
+    <string name="please_input_keyword">请输入关键字</string>
+
+    <!-- SpalshActivity -->
+    <string name="login">登陆</string>
+    <string name="register">注册</string>
+    <!-- LoginActivity -->
+    <string name="user_telphone_login">使用手机号登录</string>
+    <string name="register_account">注册用户</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="login_failed">登陆失败</string>
+    <!-- LoginHistoryActivity -->
+    <string name="switch_account">切换账号</string>
+    <!-- DataDownloadActivity -->
+    <string name="data_update">数据更新</string>
+    <string name="data_not_update_exit">用户数据尚未更新完毕，退出将放弃登陆，您是否要退出？</string>
+
+    <!-- RegisterActivity -->
+    <string name="register_step_one">1、输入手机号</string>
+    <string name="phone_number_format_error">手机号码格式错误</string>
+    <string name="telphone_already_rigister">手机号已经被注册</string>
+    <string name="get_auth_code_failed">获取验证码失败，请重新发送</string>
+    <string name="auth_code_error">验证码错误</string>
+    <string name="auth_code_overdue">验证码失效</string>
+
+    <!-- RegisterPasswordActivity -->
+    <string name="register_step_two">2、填写密码</string>
+    <string name="password_empty_error">密码不允许为空，且长度大于6个字符</string>
+    <string name="confirm_password_empty_error">确认密码不允许为空，且长度大于6个字符</string>
+    <string name="password_confirm_password_not_match">密码和确认密码不一致</string>
+    <string name="cancel_register_prompt">是否退出该次注册？</string>
+    <!-- RegisterUserBasicInfoActivity (3、基本资料) -->
+    <string name="register_step_three">3、基本资料</string>
+    <string name="register_error">注册出错，请重试</string>
+    <string name="register_success">注册成功</string>
+    <!-- UserCheckedActivity -->
+    <string name="exit">退出</string>
+    <string name="login_again">重新登陆</string>
+    <string name="overdue_title">过期通知</string>
+    <string name="token_overdue_des">本地访问令牌已过期，是否立即重新登陆？</string>
+    <string name="deficiency_data_des">本地数据已过期，是否立即重新登陆？</string>
+    <string name="logout_title">下线通知</string>
+    <string name="logout_des">您的账号在另外一台设备上登录，是否立即重新登陆？</string>
+
+    <!-- MainActivity -->
+    <string name="message">消息</string>
+    <string name="find">发现</string>
+    <string name="nearby">附近</string>
+    <string name="group_chat">群聊</string>
+    <string name="me">我</string>
+
+    <!-- MessageFragment -->
+    <string name="welcome_user_software">欢迎使用面试系统</string>
+    <string name="msg_picture">[图片]</string>
+    <string name="msg_voice">[语音]</string>
+    <string name="msg_location">[位置]</string>
+    <string name="msg_animation">[动画]</string>
+    <string name="msg_video">[视频]</string>
+    <string name="msg_file">[文件]</string>
+    <string name="msg_online">消息(在线)</string>
+    <string name="msg_offline">消息(离线)</string>
+    <string name="msg_connect">消息(连接中)</string>
+    <string name="msg_be_add_attention">有人关注了你</string>
+    <string name="msg_be_say_hello">有人给你打招呼</string>
+    <string name="msg_be_passed">你通过了好友验证</string>
+    <string name="msg_has_new_friend">你有新朋友了</string>
+    <string name="msg_has_new_recommend_friend">你有新的推荐朋友</string>
+    <string name="chat_poto">照片</string>
+    <string name="chat_camera">拍照</string>
+    <string name="chat_video">录像</string>
+    <string name="chat_audio">语音通话</string>
+    <string name="chat_loc">位置</string>
+    <string name="chat_file">文件</string>
+    <string name="chat_card">名片</string>
+    <string name="send">发送</string>
+    <string name="motalk_voice_chat_tip_1">按住说话</string>
+    <string name="motalk_voice_chat_tip_2">松开发送</string>
+    <string name="motalk_voice_chat_tip_3">上滑取消发送</string>
+    <string name="motalk_voice_chat_tip_4">松开取消发送</string>
+    <string name="motalk_voice_chat_tip_5">重新录制</string>
+    <string name="motalk_voice_chat_tip_6">松开结束</string>
+
+    <!-- 发现模块 -->
+    <string name="newest">互相关注</string>
+    <string name="hotest">单向关注</string>
+    <string name="nearest">关注房间</string>
+    <string name="bisniss">我的朋友</string>
+    <!-- 加好友 -->
+    <string name="remark_name_format_error">备注名不合法，只允许中文、英文、字母和下划线，且长度为3至10个字符</string>
+    <string name="unilateral_attention">单向关注</string>
+    <string name="focus_on_each_other">互相关注</string>
+    <string name="focus_room">关注房间</string>
+    <string name="set_remark_name">设置备注名称</string>
+    <string name="remove_blacklist">移出黑名单</string>
+    <string name="remove_blacklist_succ">移出黑名单成功</string>
+    <string name="add_blacklist">加入黑名单</string>
+    <string name="add_blacklist_succ">加入黑名单成功</string>
+    <string name="add_blacklist_prompt">确定要加入黑名单吗？</string>
+    <string name="remove_blacklist_prompt">确定要移出黑名单吗</string>
+    <string name="his_in_the_blacklist">已将对方加入黑名单</string>
+    <string name="cancel_attention">取消关注</string>
+    <string name="delete_all">彻底删除</string>
+    <string name="cancel_attention_prompt">确定要取消关注吗？</string>
+    <string name="delete_all_prompt">彻底删除操作，如果对方也关注了你，那么也将取消对方对你的关注，确定要彻底删除吗？</string>
+    <string name="cancel_attention_succ">取消关注成功</string>
+    <string name="delete_all_succ">彻底删除成功</string>
+    <string name="new_friend">新的朋友</string>
+    <string name="add_attention">加关注</string>
+    <string name="wait_verification">等待验证</string>
+    <string name="add_attention_succ">加关注成功</string>
+    <string name="add_attention_failed">加关注失败，你已被对方加入黑名单</string>
+    <string name="passed">已通过</string>
+    <string name="agreed">已同意</string>
+    <string name="is_the_friend">已互为好友</string>
+    <string name="say_hello">打招呼</string>
+    <string name="say_hello_again">再打招呼</string>
+    <string name="send_msg">发消息</string>
+    <string name="say_hello_succ">打招呼成功</string>
+    <string name="add_friend_succ">加好友成功</string>
+    <string name="agree">同意</string>
+    <string name="feedback_succ">回话成功</string>
+    <string name="feedback">回话</string>
+    <string name="simple_data_error">数据错误</string>
+    <string name="send_failed">发送失败，请稍后重试</string>
+    <string name="say_hello_dialog_title">验证消息</string>
+    <string name="say_hello_dialog_hint">亲，给我个加你的理由吧！</string>
+    <string name="say_hello_default">嘿，你好！</string>
+    <!-- 附近模块 -->
+    <string name="keyword">关键字</string>
+    <string name="sex">性别</string>
+    <string name="min_age">最小年龄</string>
+    <string name="max_age">最大年龄</string>
+    <string name="show_time">出现时间</string>
+    <string name="all_date">所有日期</string>
+    <string name="all">全部</string>
+    <string name="reset">重置</string>
+    <string name="select_date">选择日期</string>
+
+    <!-- 商务圈 -->
+    <string name="send_myspace">发表到朋友圈</string>
+    <string name="send_text">发文字</string>
+    <string name="send_image">发图片</string>
+    <string name="send_audio">发语音</string>
+    <string name="send_video">发视频</string>
+    <string name="delete_prompt">确定要删除吗？</string>
+    <string name="copy">复制</string>
+    <string name="praise">赞</string>
+    <string name="cancel_praise">取消赞</string>
+    <string name="comment">评论</string>
+    <string name="send_gift">送礼物</string>
+    <string name="replay_text">回复<xliff:g id="nick_name">%1$s</xliff:g>:</string>
+    <string name="replay"> 回复 </string>
+    <string name="upload_failed">上传失败</string>
+    <string name="look_over">查看</string>
+    <string name="pictures">图片</string>
+    <string name="level_inner"><xliff:g id="level">%1$d</xliff:g>级</string>
+    <string name="give_gift">送礼物</string>
+    <string name="my_business_circle">我的职业圈</string>
+    <!-- 商务圈发布界面 -->
+    <string name="play_failed">播放失败</string>
+    <string name="audio_file_not_exist">录音文件不存在</string>
+    <string name="circle_release">发布</string>
+    <string name="circle_now_think">这一刻的想法&#8230;</string>
+    <string name="circle_add_voice">添加录音</string>
+    <string name="circle_select_voice">选择录音，最多1个</string>
+    <string name="circle_add_image">添加图片</string>
+    <string name="circle_select_image">选择图片，最多9个</string>
+    <string name="circle_select_video">选择视频，最多1个</string>
+    <string name="circle_add_video">添加视频</string>
+
+    <!-- 消息详情界面 -->
+    <string name="message_detail">说说详情</string>
+    <string name="comment_count">评论数(<xliff:g id="count">%1$d</xliff:g>)</string>
+
+    <!-- 群聊 -->
+    <string name="add_chat_ok_btn">确定(<xliff:g id="count">%1$s</xliff:g>)</string>
+    <string name="select_contacts">选择联系人</string>
+    <string name="please_input_room_name">请输入房间名</string>
+    <string name="please_input_room_desc">请输入房间描述</string>
+    <string name="service_start_failed">服务启动失败</string>
+    <string name="create_room">创建房间</string>
+    <string name="room_name_empty_error">房间名不能为空</string>
+    <string name="room_des_empty_error">房间描述不能为空</string>
+    <string name="create_room_failed">创建房间失败</string>
+
+    <!-- MeFragment -->
+    <string name="my_data">我的资料</string>
+    <string name="my_friend">我的朋友</string>
+    <string name="my_space">我的空间</string>
+    <string name="local_video">本地视频</string>
+    <string name="setting">设置</string>
+
+    <!-- RoomInfoActivity -->
+    <string name="room_info">房间信息</string>
+    <string name="room_name">房间名称</string>
+    <string name="notice">公告</string>
+    <string name="room_desc">房间说明</string>
+    <string name="creator">创建者</string>
+    <string name="people_count">成员上限</string>
+    <string name="my_nick_name">我的群昵称</string>
+    <string name="can_not_remove_self">你不能移除你自己</string>
+    <string name="can_not_banned_self">你不能禁言你自己</string>
+    <string name="banned_voice">禁言</string>
+    <string name="create_chat_time">创建时间</string>
+    <string name="shield_chat">屏蔽群消息</string>
+    <string name="update_success">更新成功</string>
+    <string name="change_room_name">修改房间名</string>
+    <string name="change_room_des">修改房间说明</string>
+    <string name="change_my_nickname">修改我的群昵称</string>
+    <string name="add_notice">添加公告</string>
+    <!-- SettingActivity -->
+    <string name="clear_cache">清除缓存</string>
+    <string name="use_help">使用帮助</string>
+    <string name="about_us">关于我们</string>
+    <string name="exit_tips">确定要退出此账号吗？</string>
+    <string name="exit_current_account">退出当前账号</string>
+    <string name="deleteing">删除中&#8230;</string>
+    <string name="clear_completed">清除完毕</string>
+    <!-- AboutActivity -->
+    <string name="about_us_company">深圳市视酷信息技术有限公司 版权所有</string>
+    <string name="about_us_copyright">Copyright @ 2014&#8211;2015 Shiku.All Rights Reserved</string>
+    <!-- LocalVideoActivity -->
+    <string name="size">大小</string>
+    <string name="time_len">时长</string>
+    <string name="create_time">创建时间</string>
+    <string name="des">描述</string>
+    <string name="hour">小时</string>
+    <string name="minute">分</string>
+    <string name="second">秒</string>
+    <string name="video_file_not_exist">视频文件不存在</string>
+    <string name="delete_failed">删除失败</string>
+    <string name="select_failed">选取失败</string>
+    <!-- BasicInfo -->
+    <string name="basic_info">基本资料</string>
+    <string name="name_align">昵&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;称</string>
+    <string name="sex_align">性&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;别</string>
+    <string name="birthday">出生日期</string>
+    <string name="residence_align">居&#160;&#160;住&#160;&#160;地</string>
+    <string name="select_sex">选择性别</string>
+    <string name="select_avatar">选择头像</string>
+    <string name="sex_man">男</string>
+    <string name="sex_woman">女</string>
+    <string name="name_empty_error">昵称不能为空</string>
+    <string name="live_address_empty_error">居住地不能为空</string>
+    <string name="nick_name_format_error">昵称不合法，只允许中文、英文、字母和下划线，且长度为3至10个字符</string>
+    <string name="cancel_edit_prompt">你还没有保存当前内容，确定要退出吗？</string>
+    <string name="upload_avataring">上传头像&#8230;</string>
+    <string name="upload_avatar_success">上传头像成功</string>
+    <string name="upload_avatar_failed">上传头像失败，请稍后重试</string>
+    <string name="look_friend_location"> 查看好友地理位置</string>
+
+    <!-- VideoRecordActivity -->
+    <string name="start_failed">启动失败</string>
+    <string name="record_failed">录制失败</string>
+    <string name="record_succ">录制成功</string>
+    <string name="failed_to_open_camera_1">打开相机失败</string>
+    <string name="failed_to_open_camera_2">相机可能正在被</string>
+    <string name="failed_to_open_camera_3">其他应用占用?</string>
+
+    
+    <string name="chooser_title">选择发送文件</string>
+     <string name="empty_directory">Empty Directory</string>
+    <string name="storage_removed">Storage was removed or unmounted.</string>
+    <string name="choose_file">Select a file</string>
+    <string name="error_selecting_file">Error selecting File</string>
+    <string name="internal_storage">Internal storage</string>
+    <string name="person_card_title">我的名片,点击查看哦</string>
+    <string name="create_new_chat">创建新聊天</string>
+    <string name="recent_chat">最近聊天</string>
+    <string name="select_group_chat_instant">选择一个群</string>
+</resources>

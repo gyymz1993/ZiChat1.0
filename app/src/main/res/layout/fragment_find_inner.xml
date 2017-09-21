@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <com.handmark.pulltorefresh.library.PullToRefreshGridView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pull_refresh_grid_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:horizontalSpacing="15dp"
+        android:listSelector="#00000000"
+        android:numColumns="2"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="15dp"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrDrawableEnd="@drawable/default_ptr_rotate"
+        ptr:ptrDrawableStart="@drawable/default_ptr_flip"
+        ptr:ptrHeaderTextColor="@color/black"
+        ptr:ptrMode="both"
+        ptr:ptrOverScroll="false"
+        ptr:ptrScrollingWhileRefreshingEnabled="true" >
+    </com.handmark.pulltorefresh.library.PullToRefreshGridView>
+
+</LinearLayout>
