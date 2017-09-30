@@ -1,5 +1,6 @@
 package com.lsjr.zizi.mvp.home.zichat.presenter;
 
+import android.app.ProgressDialog;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -7,25 +8,35 @@ import com.andview.myrvview.LQRRecyclerView;
 import com.lqr.adapter.LQRAdapterForRecyclerView;
 import com.lqr.adapter.LQRViewHolderForRecyclerView;
 import com.lsjr.bean.ObjectResult;
+import com.lsjr.bean.Result;
 import com.lsjr.callback.ChatObjectCallBack;
 import com.lsjr.utils.HttpUtils;
 import com.lsjr.zizi.AppConfig;
 import com.lsjr.zizi.R;
+import com.lsjr.zizi.chat.bean.BaseSortModel;
 import com.lsjr.zizi.chat.bean.MucRoom;
 import com.lsjr.zizi.chat.bean.MucRoomMember;
 import com.lsjr.zizi.chat.bean.ResultCode;
+import com.lsjr.zizi.chat.broad.MsgBroadcast;
+import com.lsjr.zizi.chat.dao.ChatMessageDao;
 import com.lsjr.zizi.chat.dao.FriendDao;
 import com.lsjr.zizi.chat.db.Friend;
 import com.lsjr.zizi.loader.AvatarHelper;
+import com.lsjr.zizi.mvp.circledemo.MyApplication;
 import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.mvp.home.zichat.GroupInfoActivity;
 import com.ymz.baselibrary.mvp.BasePresenter;
+import com.ymz.baselibrary.utils.L_;
 import com.ymz.baselibrary.utils.T_;
 import com.ymz.baselibrary.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.xml.transform.ErrorListener;
+
+import static com.ymz.baselibrary.utils.UIUtils.getString;
 
 /**
  * 创建人：$ gyymz1993
@@ -40,6 +51,8 @@ public interface GroupInfo {
         void upDataUI( MucRoom mucRoom);
 
          void getRoom(Friend mRoom);
+
+         void deleteRoom(boolean isDelete);
     }
 
 
@@ -110,5 +123,59 @@ public interface GroupInfo {
                 }
             });
         }
+
+        public void deleteRoom(final Friend sortFriend) {
+            boolean deleteRoom = false;
+            if (mLoginUserId.equals(sortFriend.getRoomCreateUserId())) {
+                deleteRoom = true;
+            }
+            String url = null;
+            if (deleteRoom) {
+                url = AppConfig.ROOM_DELETE;
+            } else {
+                url = AppConfig.ROOM_MEMBER_DELETE;
+            }
+            HashMap<String, String> params = new HashMap<String, String>();
+            params.put("access_token", ConfigApplication.instance().mAccessToken);
+            L_.e("roomId  "+sortFriend.getRoomId()+"------"+sortFriend.getRemarkName());
+            params.put("roomId", sortFriend.getRoomId());
+            if (!deleteRoom) {
+                params.put("userId", mLoginUserId);
+            }
+
+            HttpUtils.getInstance().postServiceData(url, params, new ChatObjectCallBack<Void>(Void.class) {
+
+                @Override
+                protected void onXError(String s) {
+
+                }
+
+                @Override
+                protected void onSuccess(ObjectResult<Void> objectResult) {
+                    boolean success = ResultCode.defaultParser(objectResult, true);
+                    if (success) {
+                        deleteFriend(sortFriend);
+                    }
+                }
+            });
+        }
+
+        private void deleteFriend(final Friend sortFriend) {
+            //String firstLetter = sortFriend.getFirstLetter();
+           // Friend friend = sortFriend.getBean();
+            // 删除这个房间
+            FriendDao.getInstance().deleteFriend(mLoginUserId, sortFriend.getUserId());
+            // 消息表中删除
+            ChatMessageDao.getInstance().deleteMessageTable(mLoginUserId, sortFriend.getUserId());
+            // 更新消息界面
+            MsgBroadcast.broadcastMsgNumReset(UIUtils.getContext());
+            MsgBroadcast.broadcastMsgUiUpdate(UIUtils.getContext());
+            mvpView.deleteRoom(true);
+           // activity.exitMucChat(friend.getUserId());
+
+        }
+
     }
+
+
 }

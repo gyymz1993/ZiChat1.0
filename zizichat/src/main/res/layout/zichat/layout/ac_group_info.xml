@@ -293,4 +293,19 @@
         app:right_image_margin_left="3dip"
         />
 
+
+    <TextView
+        android:layout_marginTop="@dimen/option_item_margin_top"
+        android:id="@+id/delet_room"
+        style="@style/OptionItem"
+        android:background="@drawable/select_exit_bf"
+        android:clickable="true"
+        android:textColor="@color/white"
+        android:layout_marginLeft="@dimen/album_dp_15"
+        android:layout_marginRight="@dimen/album_dp_15"
+        android:gravity="center"
+        android:text="退出登陆"
+        app:left_text_size="16sp"/>
+
+
 </com.zhy.autolayout.AutoLinearLayout>

@@ -91,7 +91,7 @@ public class AppConfig {
 	public static final String AVATAR_ORIGINAL_PREFIX=IP+"avatar/o";// 头像原图前缀地址
 	public static final String AVATAR_THUMB_PREFIX=IP+"avatar/t";// 头像缩略图前缀地址
 
-	public static final String MSG_GETS= CONFIG_IP + "b/circle/msg/gets";// 根据IDS批量获取公共消息的接口(我的商务圈使用)
+
 	// BusinessCircleActivity需要的
 	public static final String EXTRA_CIRCLE_TYPE = "circle_type";// 看的商务圈类型
 	public static final int CIRCLE_TYPE_MY_BUSINESS = 0;// 看的商务圈类型,是我的商务圈
@@ -107,6 +107,9 @@ public class AppConfig {
 	public static final String ROOM_GET = CONFIG_IP + "room/get";// 获取群组;// 获取群组
 
 	public static final String ROOM_MEMBER_DELETE = CONFIG_IP + "room/member/delete";// 删除成员
+
+	public static final String ROOM_DELETE = CONFIG_IP + "room/delete";// 删除群组;// 删除群组
+
 	public static final String ROOM_MEMBER_UPDATE= CONFIG_IP + "room/member/update";// 设置群员;// 设置群员
 
 	public static final String ROOM_JOIN = CONFIG_IP + "/room/join";// 加入房间;// 加入房间
@@ -135,6 +138,13 @@ public class AppConfig {
 	public static final String ROOM_UPDATE = CONFIG_IP + "room/update";// 设置群组;// 设置群组
 
 
+	public static final String MSG_PRAISE_ADD = CONFIG_IP + "b/circle/msg/praise/add";// 赞;// 赞
+	public static final String MSG_PRAISE_DELETE= CONFIG_IP + "b/circle/msg/praise/delete";// 取消赞;// 取消赞
+
 	//public static final String ROOM_MEMBER_UPDATE= CONFIG_IP + "room/member/update";// 设置群员;// 设置群员
+
+	public static final String MSG_GETS= CONFIG_IP + "b/circle/msg/gets";// 根据IDS批量获取公共消息的接口(我的商务圈使用)
+	//新的朋友圈
+	public static final String GET_ALL_CIRCLE=CONFIG_IP+"/b/circle/msg/getCommunityMsg";
 
 }

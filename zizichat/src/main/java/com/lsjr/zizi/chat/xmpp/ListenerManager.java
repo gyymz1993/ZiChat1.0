@@ -2,6 +2,7 @@ package com.lsjr.zizi.chat.xmpp;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 
 import com.lsjr.zizi.chat.broad.MsgBroadcast;
 import com.lsjr.zizi.chat.dao.ChatMessageDao;
@@ -11,25 +12,21 @@ import com.lsjr.zizi.chat.db.Friend;
 import com.lsjr.zizi.chat.db.NewFriendMessage;
 import com.lsjr.zizi.chat.xmpp.listener.AuthStateListener;
 import com.lsjr.zizi.chat.xmpp.listener.ChatMessageListener;
+import com.lsjr.zizi.chat.xmpp.listener.ChatReadStateListener;
 import com.lsjr.zizi.chat.xmpp.listener.MucListener;
 import com.lsjr.zizi.chat.xmpp.listener.NewFriendListener;
+import com.lsjr.zizi.mvp.home.session.ChatActivity;
 import com.ymz.baselibrary.BaseApplication;
 import com.ymz.baselibrary.utils.L_;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
-  * @项目名称: SkWeiChat-Baidu
- * @包名: com.sk.weichat.xmpp
- * @作者:王阳
- * @创建时间: 2015年10月10日 上午11:42:56
- * @描述: TODO
- * @SVN版本号: $Rev$
- * @修改人: $Author$
- * @修改时间: $Date$
- * @修改的内容: TODO
+ *
  */
 public class ListenerManager {
 	/* 回调监听 */
@@ -37,6 +34,8 @@ public class ListenerManager {
 	private List<AuthStateListener> mAuthStateListeners = new ArrayList<AuthStateListener>();
 	private List<MucListener> mMucListeners = new ArrayList<MucListener>();
 	private List<NewFriendListener> mNewFriendListeners = new ArrayList<NewFriendListener>();
+	private ChatReadStateListener chatReadStateListener;
+
 
 	private static ListenerManager instance;
 
@@ -48,6 +47,10 @@ public class ListenerManager {
 			instance = new ListenerManager();
 		}
 		return instance;
+	}
+
+	public void setChatReadStateListener(ChatReadStateListener chatReadStateListener) {
+		this.chatReadStateListener = chatReadStateListener;
 	}
 
 	public void reset() {
@@ -87,6 +90,8 @@ public class ListenerManager {
 		mNewFriendListeners.remove(listener);
 	}
 
+
+
 	private Handler mHandler = new Handler(Looper.getMainLooper());
 
 	/********************** 监听回调 **************************/
@@ -110,23 +115,37 @@ public class ListenerManager {
  * @param isGroupMsg
  */
 	public void notifyNewMesssage(final String loginUserId, final String fromUserId, final ChatMessage message, final boolean isGroupMsg) {
-		mHandler.post(new Runnable() {
-			public void run() {
-				if (message != null) {
-					L_.e("roamer","新消息到来  loginUserId"+loginUserId+"--->"+fromUserId);
-					boolean hasRead = false;
-					for (int i = mChatMessageListeners.size() - 1; i >= 0; i--) {
-						hasRead = mChatMessageListeners.get(i).onNewMessage(fromUserId, message, isGroupMsg);
+		mHandler.post(() -> {
+            if (message != null) {
+				L_.e("roamer","新消息到来  loginUserId"+loginUserId);
+				L_.e("roamer","新消息到来  fromUserId"+fromUserId);
+                boolean hasRead = false;
+                for (int i = mChatMessageListeners.size() - 1; i >= 0; i--) {
+                    hasRead = mChatMessageListeners.get(i).onNewMessage(fromUserId, message, isGroupMsg);
+                }
+                L_.e("是否有阅读"+hasRead);
+				if (!hasRead) {
+					FriendDao.getInstance().markUserMessageUnRead(loginUserId, fromUserId);
+					MsgBroadcast.broadcastMsgNumUpdate(BaseApplication.getApplication(), true, 1);
+
+					if (chatReadStateListener!=null){
+						chatReadStateListener.onReadind(fromUserId);
 					}
-					if (!hasRead) {
-						FriendDao.getInstance().markUserMessageUnRead(loginUserId, fromUserId);
-						MsgBroadcast.broadcastMsgNumUpdate(BaseApplication.getApplication(), true, 1);
-					}
-					MsgBroadcast.broadcastMsgUiUpdate(BaseApplication.getApplication());
+					L_.e("增加未读消息----------->通知更新");
 				}
-			}
-		});
+
+				MsgBroadcast.broadcastMsgUiUpdate(BaseApplication.getApplication());
+
+            }
+        });
 	}
+
+//	@Subscribe(threadMode = ThreadMode.MAIN)
+//	public void nameUpdate(String update) {
+//		if (!TextUtils.isEmpty(update)){
+//			L_.e("nameUpdate---------->"+update);
+//		}
+//	}
 
 	public void notifyMessageSendStateChange(String loginUserId, String toUserId, final int msgId, final int messageState) {
 		if (mChatMessageListeners.size() <= 0) {
@@ -154,6 +173,7 @@ public class ListenerManager {
 						hasRead = true;
 					}
 				}
+
 				if (!hasRead && isPreRead) {
 					FriendDao.getInstance().markUserMessageUnRead(loginUserId, Friend.ID_NEW_FRIEND_MESSAGE);
 					MsgBroadcast.broadcastMsgNumUpdate(BaseApplication.getApplication(), true, 1);

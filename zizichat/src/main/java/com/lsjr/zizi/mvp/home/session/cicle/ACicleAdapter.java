@@ -8,8 +8,12 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lsjr.zizi.R;
+import com.lsjr.zizi.chat.bean.Praise;
+import com.lsjr.zizi.mvp.circledemo.MyApplication;
+import com.lsjr.zizi.mvp.circledemo.utils.DatasUtil;
 import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.chat.bean.Comment;
 import com.lsjr.zizi.chat.bean.PublicMessage;
@@ -60,10 +64,6 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
     TextView timeTv;
     TextView deleteBtn;
     ImageView snsBtn;
-    /**
-     * 点赞列表
-     */
-    PraiseListView praiseListView;
 
     LinearLayout digCommentBody;
     View digLine;
@@ -72,10 +72,6 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
 
     View vLine;
 
-    /**
-     * 评论列表
-     */
-    CommentView commentList;
     // ===========================
     public SnsPopupWindow snsPopupWindow;
 
@@ -84,6 +80,8 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
     private RVBaseAdapter mRvBaseAdapter;
 
     private List<Comment> comments;
+    /* 显示多少人赞过 */
+    List<Praise> praises;
 
     public ACicleAdapter(PublicMessage publicMessage) {
         super(publicMessage);
@@ -137,10 +135,16 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
         timeTv = (TextView) holder.getView(R.id.timeTv);
         deleteBtn = (TextView) holder.getView(R.id.deleteBtn);
         snsBtn = (ImageView) holder.getView(R.id.snsBtn);
-        praiseListView = (PraiseListView) holder.getView(R.id.praiseListView);
+        /*
+        点赞列表
+        */
+        PraiseListView praiseListView = (PraiseListView) holder.getView(R.id.praiseListView);
         digCommentBody = (LinearLayout) holder.getView(R.id.digCommentBody);
-        commentList = (CommentView) holder.getView(R.id.commentList);
-        vLine= (View) holder.getView(R.id.vLine);;
+        /*
+      评论列表
+        */
+        CommentView commentList = (CommentView) holder.getView(R.id.commentList);
+        vLine= (View) holder.getView(R.id.vLine);
 
         if (mRvBaseAdapter!=null&&mRvBaseAdapter.getItemCount()>0){
             if (mCirclePosition==mRvBaseAdapter.getItemCount()-1){
@@ -154,6 +158,7 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
         urlTipTv.setVisibility(View.GONE);
 
         /*点赞*/
+        digCommentBody.setVisibility(View.GONE);
         praiseListView.setVisibility(View.GONE);
 
         final PublicMessage message = publicMessage;
@@ -185,6 +190,15 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
 
 
         /*点击点赞或者评论*/
+        praises = message.getPraises();
+        if(praises!=null&&praises.size()>0){//处理点赞列表
+            praiseListView.setDatas(praises);
+            praiseListView.setVisibility(View.VISIBLE);
+            digCommentBody.setVisibility(View.VISIBLE);
+        }else{
+            praiseListView.setVisibility(View.GONE);
+        }
+
         //评论区* 设置回复 */
         comments = message.getComments();
         if (comments != null && comments.size() > 0) {
@@ -193,12 +207,19 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
             commentList.setVisibility(View.VISIBLE);
         } else {
             commentList.setVisibility(View.GONE);
-            digCommentBody.setVisibility(View.GONE);
         }
 
+
         snsPopupWindow = new SnsPopupWindow(UIUtils.getContext());
+        //判断是否已点赞
+        if(publicMessage.getIsPraise()==1){
+            snsPopupWindow.getmActionItems().get(0).mTitle = "取消";
+        }else{
+            snsPopupWindow.getmActionItems().get(0).mTitle = "赞";
+        }
+
         snsPopupWindow.update();
-        snsPopupWindow.setmItemClickListener(new PopupItemClickListener());
+        snsPopupWindow.setmItemClickListener(new PopupItemClickListener(mCirclePosition));
 
         setItmeOnclick(holder,mCirclePosition);
 
@@ -260,7 +281,10 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
 
     private class PopupItemClickListener implements SnsPopupWindow.OnItemClickListener {
         private long mLasttime = 0;
-        PopupItemClickListener() {
+        private int circlePosition;
+
+        public PopupItemClickListener(int circlePosition) {
+            this.circlePosition = circlePosition;
         }
 
         @Override
@@ -270,6 +294,15 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
                     if (System.currentTimeMillis() - mLasttime < 700)//防止快速点击操作
                         return;
                     mLasttime = System.currentTimeMillis();
+                    if(circlePresenter != null){
+                        int circlePosition = CircleConstact.getCircleConstact().getPosition();
+                        CircleConstact.getCircleConstact().setCurrentPublicMessage(publicMessage);
+                        if (publicMessage.getIsPraise()==1) {
+                            circlePresenter.praiseOrCancle(false);
+                        } else {//取消点赞
+                            circlePresenter.praiseOrCancle( true);
+                        }
+                    }
                     break;
                 case 1://发布评论
                     CommentConfig config = new CommentConfig();

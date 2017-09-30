@@ -13,13 +13,13 @@ import com.lsjr.callback.ChatObjectCallBack;
 import com.lsjr.utils.HttpUtils;
 import com.lsjr.zizi.AppConfig;
 import com.lsjr.zizi.R;
-import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.chat.bean.Comment;
+import com.lsjr.zizi.chat.bean.Praise;
 import com.lsjr.zizi.chat.bean.PublicMessage;
 import com.lsjr.zizi.chat.bean.ResultCode;
 import com.lsjr.zizi.chat.dao.CircleMessageDao;
 import com.lsjr.zizi.mvp.circledemo.bean.CommentConfig;
-import com.lsjr.zizi.mvp.circledemo.bean.CommentItem;
+import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.mvp.home.session.FriendCircleActivity;
 import com.lsjr.zizi.mvp.home.session.cicle.CircleConstact;
 import com.ymz.baselibrary.mvp.BasePresenter;
@@ -34,15 +34,10 @@ import java.util.Map;
 public interface CircleContract {
 
     interface CircleView{
-        void update2AddComment(int circlePosition, CommentItem addItem);
-        void update2DeleteComment(int circlePosition, String commentId);
         void updateEditTextBodyVisible(int visibility, CommentConfig commentConfig);
-
         void notifityChange();
-
-
         void onfaile();
-        void notifityChange(List<PublicMessage> mMessages);
+        void notifityChange(int type,List<PublicMessage> mMessages);
     }
 
     class CirclePresenter extends BasePresenter<CircleView>  {
@@ -59,7 +54,70 @@ public interface CircleContract {
         }
 
         /**
-         *
+         * 赞或者取消赞
+         * @param isPraise
+         */
+        public void praiseOrCancle(final boolean isPraise) {
+           // final PublicMessage message = currentPublicMessage;
+            final PublicMessage message = CircleConstact.getCircleConstact().getCurrentPublicMessage();
+            if (message == null) {
+                return;
+            }
+            L_.e(message.getMessageId());
+            HashMap<String, String> params = new HashMap<String, String>();
+            params.put("access_token", ConfigApplication.instance().mAccessToken);
+            params.put("messageId", message.getMessageId());
+            String requestUrl = null;
+            if (isPraise) {
+                requestUrl = AppConfig.MSG_PRAISE_ADD;
+            } else {
+                requestUrl = AppConfig.MSG_PRAISE_DELETE;
+            }
+
+            HttpUtils.getInstance().postServiceData(requestUrl, params, new ChatObjectCallBack<Void>(Void.class) {
+                @Override
+                protected void onXError(String s) {
+                }
+                @Override
+                protected void onSuccess(ObjectResult<Void> result) {
+                    boolean success = ResultCode.defaultParser(result, true);
+                    if (success) {
+                        message.setIsPraise(isPraise ? 1 : 0);
+                        List<Praise> praises = message.getPraises();
+                        if (praises == null) {
+                            praises = new ArrayList<>();
+                            message.setPraises(praises);
+                        }
+                        int praiseCount = message.getPraise();
+                        if (isPraise) {// 代表我点赞
+                            // 消息实体的改变
+                            Praise praise = new Praise();
+                            praise.setUserId(mLoginUserId);
+                            praise.setNickName(mLoginNickName);
+                            praises.add(0, praise);
+                            praiseCount++;
+                            message.setPraise(praiseCount);
+                        } else {// 取消我的赞
+                            // 消息实体的改变
+                            for (int i = 0; i < praises.size(); i++) {
+                                if (mLoginUserId.equals(praises.get(i).getUserId())) {
+                                    praises.remove(i);
+                                    praiseCount--;
+                                    message.setPraise(praiseCount);
+                                    break;
+                                }
+                            }
+                        }
+                        mvpView.notifityChange();
+                    }
+                }
+            });
+
+        }
+
+
+
+        /**
          * @param commentConfig
          */
         public void showEditTextBody(CommentConfig commentConfig){
@@ -97,7 +155,6 @@ public interface CircleContract {
 
 
         public void addCommentUser(String context,PublicMessage selectCurrentMessage){
-
             Comment comment;
             if (selectCurrentMessage==null){
                 T_.showToastReal("请填写完整数据");
@@ -178,8 +235,7 @@ public interface CircleContract {
         }
 
 
-        private int mPageIndex ;
-        public void requestMyBusiness() {
+        public void requestMyBusinessOld() {
             mPageIndex = 0;
             List<String> msgIds = CircleMessageDao.getInstance().getCircleMessageIds(mLoginUserId, mPageIndex, AppConfig.PAGE_SIZE);
             HashMap<String, String> params = new HashMap<String, String>();
@@ -202,18 +258,44 @@ public interface CircleContract {
                     L_.e(result.getData().toString());
                    // recyclerView.setRefreshing(false);
                     //mMessages = ;
-                    mvpView.notifityChange(result.getData());
+                    //mvpView.notifityChange(result.getData());
                    // firstNotifyAdapter();
                 }
             });
 
         }
 
-//        void loadData(int loadType);
-//        void deleteCircle(final String circleId);
-//        void addFavort(final int circlePosition);
-//        void deleteFavort(final int circlePosition, final String favortId);
-//        void deleteComment(final int circlePosition, final String commentId);
 
+        public final int ON_REFRESH = 1;
+        public final int ON_LOAD = 2;
+        private  int  mPageIndex = 0;
+        public void requestMyBusiness(int type) {
+           if (type==ON_REFRESH){
+               mPageIndex=0;
+            }else {
+               mPageIndex++;
+            }
+            int pageSize=AppConfig.PAGE_SIZE;
+            HashMap<String, String> params = new HashMap<>();
+            params.put("access_token", ConfigApplication.instance().mAccessToken);
+            params.put("userId", ConfigApplication.instance().getLoginUserId());
+            params.put("pageIndex",mPageIndex+"");
+            params.put("pageSize",pageSize+"");
+            HttpUtils.getInstance().postServiceData(AppConfig.GET_ALL_CIRCLE, params, new ChatArrayCallBack<PublicMessage>(PublicMessage.class) {
+                @Override
+                protected void onXError(String exception) {
+                    if (mvpView!=null){
+                        mvpView.onfaile();
+                    }
+                }
+
+                @Override
+                protected void onSuccess(ArrayResult<PublicMessage> result) {
+                    L_.e(result.getData().toString());
+                    mvpView.notifityChange(type,result.getData());
+                }
+            });
+
+        }
     }
 }

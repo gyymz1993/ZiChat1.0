@@ -165,7 +165,7 @@ public class CircleAdapter extends BaseRecycleViewAdapter {
                             Toast.makeText(UIUtils.getContext(), userName + " &id = " + userId, Toast.LENGTH_SHORT).show();
                         }
                     });
-                    holder.praiseListView.setDatas(favortDatas);
+                    //holder.praiseListView.setDatas(favortDatas);
                     holder.praiseListView.setVisibility(View.VISIBLE);
                 }else{
                     holder.praiseListView.setVisibility(View.GONE);

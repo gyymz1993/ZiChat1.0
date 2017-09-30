@@ -2,7 +2,16 @@
 <com.zhy.autolayout.AutoLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="20px">
 
@@ -38,3 +47,12 @@
         android:src="@mipmap/list_selected"/>
 
 </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            android:id="@+id/vLine"
+            style="@style/Line"
+            android:layout_marginLeft="@dimen/item_margin_left_and_right"
+            android:layout_marginRight="@dimen/item_margin_left_and_right"
+             android:visibility="visible"
+            />
+    </com.zhy.autolayout.AutoLinearLayout>

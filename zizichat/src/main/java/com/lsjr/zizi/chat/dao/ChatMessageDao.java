@@ -279,7 +279,13 @@ public class ChatMessageDao {
 						}
 					}
 					// 更新朋友表最后一次消息事件
-					FriendDao.getInstance().updateLastChatMessage(ownerId, friendId, messages.get(0));
+					if (messages.size()!=0){
+						FriendDao.getInstance().updateLastChatMessage(ownerId, friendId, messages.get(0));
+					}else {
+						ChatMessage chatMessage=new ChatMessage();
+						chatMessage.setContent("暂无消息");
+						FriendDao.getInstance().updateLastChatMessage(ownerId, friendId, chatMessage);
+					}
 					return true;
 				} catch (SQLException e) {
 					e.printStackTrace();

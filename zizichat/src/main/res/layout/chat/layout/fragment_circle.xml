@@ -3,7 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
    >
+
+    <com.ymz.baselibrary.widget.NavigationBarView
+        android:layout_marginTop="15dp"
+        android:id="@+id/id_bar_view1"
+        android:layout_width="match_parent"
+        android:layout_height="51dip"
+        app:leftColor="#FF212121"
+        app:rightColor="#FF212121"
+        app:leftSize="17sp"
+        />
+
 
     <RelativeLayout
         android:id="@+id/bodyLayout"

@@ -23,7 +23,7 @@
             android:contentDescription="@string/app_name"
             android:src="@drawable/avatar_normal" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.lsjr.zizi.view.CircleImageView
             android:id="@+id/avatar_img"
             android:layout_width="45dip"
             android:layout_height="45dip"

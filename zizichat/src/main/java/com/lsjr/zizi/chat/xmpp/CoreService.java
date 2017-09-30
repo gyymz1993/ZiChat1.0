@@ -15,6 +15,7 @@ import com.lsjr.zizi.chat.db.NewFriendMessage;
 import com.lsjr.zizi.chat.xmpp.listener.AuthStateListener;
 import com.lsjr.zizi.chat.xmpp.listener.ChatMessageListener;
 import com.ymz.baselibrary.utils.L_;
+import com.ymz.baselibrary.utils.T_;
 
 import org.jivesoftware.smack.SmackAndroid;
 import org.jivesoftware.smack.XMPPConnection;
@@ -356,6 +357,7 @@ public class CoreService extends Service {
 
 	public void exitMucChat(String toUserId) {
 		if (isMucEnable()) {
+			T_.showToastReal("--------->"+toUserId);
 			mXMucChatManager.exitMucChat(toUserId);
 		}
 	}

@@ -127,7 +127,7 @@ public class XMucChatManager {
 		try {
 			String roomId = UUID.randomUUID().toString().replaceAll("-", "");
 			String roomJid = roomId + getMucChatServiceName(mConnection);
-			Log.d("roamer", "开始创建房间:" + roomJid);
+			L_.e("roamer", "开始创建房间:" + roomJid);
 			// 创建聊天室
 			MultiUserChat muc = new MultiUserChat(mConnection, roomJid);
 			muc.create(myNickName);
@@ -380,6 +380,8 @@ public class XMucChatManager {
             }
             Log.d("wang","joinExistRoom:lasttime::"+lastTime);
             List<Friend> friends = FriendDao.getInstance().getAllRooms(mLoginUserId);
+
+			L_.e("---------》","joinExistRoom:  所有房间::"+friends.size());
             if (friends == null) {
                 return;
             }
@@ -407,8 +409,11 @@ public class XMucChatManager {
 	 * @return
 	 */
 	private void saveGroupMessage(String messageBody, boolean isRead, String from, String packetId, int changeTimeSend) {
+
+		L_.e("群消息------------>"+mMucChatMap.size());
 		String roomJid = XmppStringUtil.getRoomJID(from);
 		String myNickName = mMucChatMap.get(roomJid).getNickname();
+		L_.e("---------->"+roomJid+"-------------->"+myNickName);
 		String fromUserNick = XmppStringUtil.getRoomUserNick(from);
 		if (TextUtils.isEmpty(fromUserNick)) {// 来自于系统的消息
 			//
@@ -424,8 +429,8 @@ public class XMucChatManager {
 			}
 			message.setPacketId(packetId);
 			if (changeTimeSend > 0) {// 始终以延迟消息的时间戳为准
-				Log.e("roamer", "TimeSend:" + message.getTimeSend());
-				Log.e("roamer", "TimeStamp:" + changeTimeSend);
+				L_.e("roamer", "TimeSend:" + message.getTimeSend());
+				L_.e("roamer", "TimeStamp:" + changeTimeSend);
 				message.setTimeSend(changeTimeSend);
 			}
 			if (ChatMessageDao.getInstance().saveNewSingleChatMessage(mLoginUserId, XmppStringUtil.getRoomJIDPrefix(from), message)) {

@@ -108,9 +108,9 @@ public class FriendDao {
 				// 往消息表里插入一条记录
 				ChatMessageDao.getInstance().saveNewSingleChatMessage(ownerId, Friend.ID_SYSTEM_MESSAGE, chatMessage);
 				// 往朋友表里面插入一条未读记录
-				markUserMessageUnRead(ownerId, Friend.ID_SYSTEM_MESSAGE);
+				//markUserMessageUnRead(ownerId, Friend.ID_SYSTEM_MESSAGE);
 				// 更新消息记录
-				updateLastChatMessage(ownerId, Friend.ID_SYSTEM_MESSAGE, chatMessage);
+				//updateLastChatMessage(ownerId, Friend.ID_SYSTEM_MESSAGE, chatMessage);
 			}
 
 //			// 新朋友消息10001号

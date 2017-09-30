@@ -155,6 +155,7 @@
 
 
     <com.ymz.baselibrary.widget.ItemView
+        android:id="@+id/id_sex_set"
         style="@style/OptionItem"
         android:background="@drawable/selector_common_item"
         android:layout_width="match_parent"
@@ -178,6 +179,7 @@
 
 
     <com.ymz.baselibrary.widget.ItemView
+        android:id="@+id/id_setting"
         style="@style/OptionItem"
         android:clickable="true"
         android:background="@drawable/selector_common_item"

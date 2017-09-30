@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <com.lsjr.zizi.view.CircleImageView
                 android:id="@+id/ivNewFriend"
                 android:layout_width="37dip"
                 android:layout_height="37dip"
@@ -71,7 +71,6 @@
         android:layout_marginRight="10dip" />
 
     <com.zhy.autolayout.AutoLinearLayout
-        android:visibility="gone"
         android:id="@+id/llNearFriend"
         android:layout_width="fill_parent"
         android:layout_height="55dip"
@@ -95,10 +94,10 @@
                 android:layout_marginTop="10px"
                 android:src="@drawable/ic_new_friend" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <com.lsjr.zizi.view.CircleImageView
                 android:id="@+id/ig_nearfriend"
-                android:layout_width="45dip"
-                android:layout_height="45dip"
+                android:layout_width="37dip"
+                android:layout_height="37dip"
                 android:layout_gravity="center_vertical"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -163,7 +162,7 @@
                 android:src="@drawable/ic_group_cheat" />
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <com.lsjr.zizi.view.CircleImageView
                 android:layout_width="37dip"
                 android:layout_height="37dip"
                 android:layout_gravity="center_vertical"
@@ -229,7 +228,7 @@
                 android:src="@drawable/ic_group_cheat" />
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <com.lsjr.zizi.view.CircleImageView
                 android:layout_width="45dip"
                 android:layout_height="45dip"
                 android:layout_gravity="center_vertical"

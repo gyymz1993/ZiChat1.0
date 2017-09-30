@@ -14,6 +14,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -52,6 +53,10 @@ import com.ymz.baselibrary.utils.T_;
 import com.ymz.baselibrary.utils.UIUtils;
 import com.ymz.baselibrary.view.PermissionListener;
 import com.ys.uilibrary.tab.BottomTabView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,7 +119,16 @@ public class HomeActivity extends MvpActivity implements AuthStateListener ,NetW
                 mUserCheckHander.sendEmptyMessageDelayed(MSG_USER_CHECK, mRetryCheckDelay);
             }
         }
+
         super.onCreate(savedInstanceState);
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void nameUpdate(String update) {
+        if (!TextUtils.isEmpty(update)){
+            MsgBroadcast.broadcastMsgUiUpdate(UIUtils.getContext());
+        }
     }
 
 
@@ -124,6 +138,7 @@ public class HomeActivity extends MvpActivity implements AuthStateListener ,NetW
 
     @Override
     protected void afterCreate(Bundle savedInstanceState) {
+        EventBus.getDefault().register(this);
         //百度推送
         // PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY,"8h0GOjOlgP8dXRzp9nG1dGBT");
         //mActivityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
@@ -603,6 +618,7 @@ public class HomeActivity extends MvpActivity implements AuthStateListener ,NetW
         saveOfflineTime();
         BaseApplication.instance().unregisterNetWorkObserver(this);
         ListenerManager.getInstance().removeAuthStateChangeListener(this);
+        EventBus.getDefault().unregister(this);
         if (mXmppBind) {
             unbindService(mXmppServiceConnection);
         }

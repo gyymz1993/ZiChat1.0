@@ -77,7 +77,7 @@ public class ImageLoader {
     public void show(String url,ImageView imageView){
         //imageView.setTag(url);
         Glide.with(UIUtils.getContext()).load(url).asBitmap().skipMemoryCache(false).
-                diskCacheStrategy(DiskCacheStrategy.ALL).dontAnimate().into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
+                diskCacheStrategy(DiskCacheStrategy.ALL).thumbnail(0.1f).dontAnimate().into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 int imageWidth = resource.getWidth();
@@ -101,15 +101,11 @@ public class ImageLoader {
                 para.height = height;
                 para.width = width;
                 imageView.setImageBitmap(resource);
-                if(resource != null && !resource.isRecycled()){
-                    resource.recycle();
-                    resource = null;
-                }
-                System.gc();
-               // Glide.with(UIUtils.getContext()).load(url).skipMemoryCache(false).
-//                        diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(new ColorDrawable(0xffdcdcdc))
-//                        .dontAnimate().override(width,height).
-//                centerCrop().into(imageView);
+//                if(resource != null && !resource.isRecycled()){
+//                    resource.recycle();
+//                    resource = null;
+//                }
+//                System.gc();
             }
         });
     }

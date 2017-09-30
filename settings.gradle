@@ -1,4 +1,3 @@
-include ':library', ':zizichat', ':cameralibrary'
-include ':app'
+include ':zizichat', ':citypickerlibrary' ,':app'  , ':library'
 
-//, ':xmpplibrary'
+//, ':xmpplibrary' , ':cameralibrary', ':xmpplibrary' ':app'  ':library',

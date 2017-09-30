@@ -55,18 +55,23 @@ import com.lsjr.zizi.chat.db.Friend;
 import com.lsjr.zizi.chat.utils.FileUtils;
 import com.lsjr.zizi.chat.xmpp.CoreService;
 import com.lsjr.zizi.chat.xmpp.ListenerManager;
+import com.lsjr.zizi.chat.xmpp.listener.ChatMessageListener;
+import com.lsjr.zizi.chat.xmpp.listener.ChatReadStateListener;
 import com.lsjr.zizi.chat.xmpp.listener.MucListener;
+import com.lsjr.zizi.mvp.circledemo.utils.CommonUtils;
 import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.mvp.home.Constants;
 import com.lsjr.zizi.mvp.home.photo.ImageGridActivity;
 import com.lsjr.zizi.mvp.home.photo.MyLocationActivity;
 import com.lsjr.zizi.mvp.home.photo.TakePhotoActivity;
 import com.lsjr.zizi.mvp.home.photo.view.ISessionAtView;
-import com.lsjr.zizi.mvp.home.session.adapter.ChatContentAdapter;
 import com.lsjr.zizi.mvp.home.session.presenter.ChatAtPresenter;
 import com.lsjr.zizi.mvp.home.session.presenter.MessageUtils;
+import com.lsjr.zizi.mvp.home.zichat.AddressListActivity;
 import com.lsjr.zizi.mvp.home.zichat.GroupInfoActivity;
+import com.nostra13.universalimageloader.utils.L;
 import com.ymz.baselibrary.AppCache;
+import com.ymz.baselibrary.BaseApplication;
 import com.ymz.baselibrary.image.Compressor;
 import com.ymz.baselibrary.utils.L_;
 import com.ymz.baselibrary.utils.T_;
@@ -96,7 +101,9 @@ import static com.lsjr.zizi.mvp.home.photo.ImageGridActivity.REQUEST_PERMISSION_
 public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessionAtView,
         IEmotionSelectedListener,
         BGARefreshLayout.BGARefreshLayoutDelegate
-         ,MucListener {
+         ,MucListener,ChatReadStateListener , ChatMessageListener {
+
+    private static ChatReadStateListener chatReadState;
     private static final int REQUEST_CODE_SELECT_FILE = 4;
     public static final int REQUEST_IMAGE_PICKER = 1000;
     public final static int REQUEST_TAKE_PHOTO = 1001;
@@ -125,10 +132,6 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
     @BindView(R.id.btnSend)
     Button mBtnSend;
 
-//    @BindView(R.id.rlTakePhoto)
-//    RelativeLayout mRlTakePhoto;
-//  @BindView(R.id.rlAlbum)
-//  RelativeLayout mRlAlbum;
     @BindView(R.id.ivAlbum)
     ImageView ivAlbum;
     @BindView(R.id.rlTakePhoto)
@@ -169,7 +172,7 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
     private String[] noticeFriendList;
     private boolean isGroupChat;// 是否是群聊
     private String mUseId;// 当前聊天对象的UserId
-    private String mNickName;// 当前聊天对象的昵称（房间就是房间名称）
+    private String mRoomName;// 当前聊天对象的昵称（房间就是房间名称）
     private boolean isError = false;
     private String mLoginNickName;
 
@@ -207,17 +210,9 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
 
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void nameUpdate(String update) {
-        if (!TextUtils.isEmpty(update)){
-            L_.e("nameUpdate---------->"+update);
-             setTitleText(update);
-        }
-    }
-
-
-    protected void initDataChat() {
-        //L_.e("聊天初始化页面----->"+mFriend.toString());
+    @Override
+    protected void initTitle() {
+        super.initTitle();
         setTopLeftButton(R.drawable.ic_back);
         setTopRightButton(R.drawable.actionbar_particular_icon, new View.OnClickListener() {
             @Override
@@ -237,17 +232,25 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
         });
 
 
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void nameUpdate(String update) {
+        if (!TextUtils.isEmpty(update)){
+            L_.e("nameUpdate---------->"+update);
+             setTitleText(update);
+        }
+    }
+
+
+    protected void initDataChat() {
+
         mvpPresenter.init();
-        mvpPresenter.getChatContentAdapter().setUserOnClickListener(new ChatContentAdapter.UserOnClickListener() {
-            @Override
-            public void onClick(String userId) {
-                Intent intent = new Intent(UIUtils.getContext(), BasicInfoActivity.class);
-                intent.putExtra(AppConfig.EXTRA_USER_ID, userId);
-                startActivity(intent);
-            }
+        mvpPresenter.getChatContentAdapter().setUserOnClickListener(userId -> {
+            Intent intent = new Intent(UIUtils.getContext(), BasicInfoActivity.class);
+            intent.putExtra(AppConfig.EXTRA_USER_ID, userId);
+            startActivity(intent);
         });
-       // mvpPresenter.setAdapter();
-       // mvpPresenter.loadDatas(true);
 
     }
 
@@ -255,70 +258,51 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mLoginUserId = ConfigApplication.instance().mLoginUser.getUserId();
+        Bundle bundle = null;
         if (savedInstanceState != null) {
+            bundle = savedInstanceState;
             mFriend = (Friend) savedInstanceState.getSerializable(Constants.EXTRA_FRIEND);
-            L_.e("--------savedInstanceState>"+mFriend.toString());
-            /*-----------------------*/
-            mUseId = savedInstanceState.getString(Constants.EXTRA_USER_ID);
-            mNickName = savedInstanceState.getString(Constants.EXTRA_NICK_NAME);
-            isGroupChat = savedInstanceState.getBoolean(Constants.EXTRA_IS_GROUP_CHAT, false);
-            noticeFriendList=savedInstanceState.getStringArray(Constants.GROUP_JOIN_NOTICE);//获得加入群新朋友的列表
-
         } else if (getIntent() != null) {
-            mFriend = (Friend) getIntent().getSerializableExtra(Constants.EXTRA_FRIEND);
-           // L_.e("--------getIntent>"+mFriend.toString());
-            /*-----------------------*/
-            mUseId =  getIntent().getStringExtra(Constants.EXTRA_USER_ID);
-            mNickName =  getIntent().getStringExtra(Constants.EXTRA_NICK_NAME);
-            isGroupChat =  getIntent().getBooleanExtra(Constants.EXTRA_IS_GROUP_CHAT, false);
-            //noticeFriendList= getIntent().getStringArray(Constants.GROUP_JOIN_NOTICE);//获得加入群新朋友的列表
+            bundle = getIntent().getExtras();
         }
+        if (bundle != null) {
+            mUseId = bundle.getString(Constants.EXTRA_USER_ID);
+            mRoomName = bundle.getString(Constants.EXTRA_NICK_NAME);
+            isGroupChat = bundle.getBoolean(Constants.EXTRA_IS_GROUP_CHAT, false);
+            noticeFriendList=bundle.getStringArray(Constants.GROUP_JOIN_NOTICE);//获得加入群新朋友的列表
+            //单聊
+            mFriend = (Friend) getIntent().getSerializableExtra(Constants.EXTRA_FRIEND);
+        }
+
         if (isGroupChat){
-            if (TextUtils.isEmpty(mUseId) || TextUtils.isEmpty(mNickName)) {
+            if (TextUtils.isEmpty(mUseId) || TextUtils.isEmpty(mRoomName)) {
                 isError = true;
                 return;
             }
             mLoginUserId = ConfigApplication.instance().mLoginUser.getUserId();
             mLoginNickName = ConfigApplication.instance().mLoginUser.getNickName();
             ListenerManager.getInstance().addMucListener(this);
-            //L_.e(mFriend+"  --------"+mFriend.toString());
-        }
-
-        if (mFriend==null){
             mFriend = FriendDao.getInstance().getFriend(mLoginUserId, mUseId);
         }
+
+        ListenerManager.getInstance().addChatMessageListener(this);
         messageUtils=new MessageUtils(chatMessageList);
         messageUtils.setmFriend(mFriend);
         messageUtils.setGroupChat(isGroupChat);
-        if (mFriend.getUserId()!=null){
+        if (mFriend!=null&&!TextUtils.isEmpty(mFriend.getUserId())){
+            //表示已读
+            ListenerManager.getInstance().setChatReadStateListener(this);
             FriendDao.getInstance().markUserMessageRead(mLoginUserId, mFriend.getUserId());
+        }else {
+            return;
         }
-//        if (mUseId!=null){
-//            FriendDao.getInstance().markUserMessageRead(mLoginUserId, mUseId);
-//        }
-
-        // 表示已读
-      //  FriendDao.getInstance().markUserMessageRead(mLoginUserId, mUseId);
         bindService(CoreService.getIntent(), mConnection, BIND_AUTO_CREATE);
         IntentFilter filter = new IntentFilter(Constants.CHAT_MESSAGE_DELETE_ACTION);
         registerReceiver(broadcastReceiver, filter);
+
         super.onCreate(savedInstanceState);
-        if (mFriend.getRemarkName()!=null){
-            setTitleText(mFriend.getRemarkName());
-        }
-        if (isGroupChat){
-
-        }else {
-
-        }
-        if (mFriend!=null){
-            if (mFriend.getRemarkName()!=null){
-                setTitleText(mFriend.getRemarkName());
-            }else {
-                setTitleText(mFriend.getNickName());
-            }
-        }
-
+        //setTitleText(mFriend.getRemarkName());
+        setTitleText(mFriend.getRemarkName()==null?mFriend.getNickName():mFriend.getRemarkName());
 
     }
 
@@ -387,7 +371,10 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
         });
 
         mRvMsg.setOnTouchListener((v, event) -> {
+            //T_.showToastReal("隐藏键盘");
+          //  CommonUtils.hideSoftInput( mEtContent.getContext(),  mEtContent);
             closeBottomAndKeyboard();
+            mEmotionKeyboard.hideSoftInput();
             return false;
         });
 
@@ -533,12 +520,14 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
         ivLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChatActivity.this, MyLocationActivity.class);
+                //Intent intent = new Intent(ChatActivity.this, MyLocationActivity.class);
+                Intent intent = new Intent(ChatActivity.this, AddressListActivity.class);
                 startActivityForResult(intent, REQUEST_MY_LOCATION);
             }
         });
         mRlLocation.setOnClickListener(v -> {
-            Intent intent = new Intent(ChatActivity.this, MyLocationActivity.class);
+            //Intent intent = new Intent(ChatActivity.this, MyLocationActivity.class);
+            Intent intent = new Intent(ChatActivity.this, AddressListActivity.class);
             startActivityForResult(intent, REQUEST_MY_LOCATION);
         });
         mRlCard.setOnClickListener(v -> {
@@ -768,7 +757,10 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
         if (isGroupChat){
             ListenerManager.getInstance().removeMucListener(this);
         }
-        //ListenerManager.getInstance().removeChatMessageListener(this);
+        //表示已读
+        ListenerManager.getInstance().setChatReadStateListener(null);
+        //ListenerManager.getInstance().addChatMessageListener(this);
+        ListenerManager.getInstance().removeChatMessageListener(this);
         AudioRecordManager.getInstance(this).stopRecord();
         AudioRecordManager.getInstance(this).destroyRecord();
         unbindService(mConnection);
@@ -1031,6 +1023,7 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
             //mIvEmo.setImageResource(R.mipmap.ic_cheat_emo);
             mIvEmo.setImageResource(R.drawable.chat_bto_biaoqing);
         }
+
     }
 
     @Override
@@ -1094,11 +1087,45 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
     }
 
 
+    /**
+     * 新消息到来
+     */
+    @Override
+    public boolean onNewMessage(String fromUserId, ChatMessage message, boolean isGroupMsg) {
+        L_.e("收到消息" + message.getContent());
+        L_.e("messageUtils.getmFriend().getUserId( "+messageUtils.getmFriend().getUserId());
+        L_.e("messageUtils.getmFriend().fromUserId( "+fromUserId);
+        // 是该人的聊天消息
+        if (messageUtils.getmFriend().getUserId().compareToIgnoreCase(fromUserId) == 0) {
+            mvpPresenter.getChatContentAdapter().addLastItem(message);
+            mvpPresenter.rvMoveToBottom();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onMessageSendStateChange(int messageState, int msg_id) {
+        // L_.e("收到消息");
+        for (int i = 0; i < messageUtils.getmChatMessages().size(); i++) {
+            ChatMessage msg = messageUtils.getmChatMessages().get(i);
+            if (msg_id == msg.get_id()) {
+                //L_.e("收到消息后刷新");
+                //msg.setMessageState(ChatMessageListener.MESSAGE_SEND_SUCCESS);
+                L_.e("当前状态"+messageState);
+                msg.setMessageState(messageState);
+                mvpPresenter.newMessageNotifyChange();
+                //setAdapter();
+                break;
+            }
+        }
+    }
+
 
     @Override
     public void onDeleteMucRoom(String toUserId) {
         if (toUserId != null && toUserId.equals(mUseId)) {
-            T_.showToastReal( "房间 " + mNickName + " 已被删除");
+            T_.showToastReal( "房间 " + mRoomName + " 已被删除");
             finish();
         }
     }
@@ -1106,7 +1133,7 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
     @Override
     public void onMyBeDelete(String toUserId) {
         if (toUserId != null && toUserId.equals(mUseId)) {
-            T_.showToastReal(  "你被踢出了房间：" + mNickName);
+            T_.showToastReal(  "你被踢出了房间：" + mRoomName);
             finish();
         }
     }
@@ -1127,5 +1154,23 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
         if (toUserId != null && toUserId.equals(mUseId)) {
             mFriend.setRoomTalkTime(time);
         }
+    }
+
+    @Override
+    public void onReadind(String userId) {
+
+        L_.e(mFriend.toString());
+        if (userId.equals(mFriend.getUserId())){
+            //mFriend.setUnReadNum(0);
+            L_.e("设置未读消息为0");
+            //MsgBroadcast.broadcastMsgNumUpdate(UIUtils.getContext(), false, mFriend.getUnReadNum());
+            FriendDao.getInstance().markUserMessageRead(mLoginUserId, mFriend.getUserId());
+            //FriendDao.getInstance().markUserMessageRead(ConfigApplication.instance().getLoginUserId(), userId);
+            MsgBroadcast.broadcastMsgNumUpdate(UIUtils.getContext(), false, mFriend.getUnReadNum());
+            MsgBroadcast.broadcastMsgNumReset(BaseApplication.getApplication());
+           // MsgBroadcast.broadcastMsgNumUpdate(UIUtils.getContext(), false, mFriend.getUnReadNum());
+            MsgBroadcast.broadcastMsgUiUpdate(BaseApplication.getApplication());
+        }
+
     }
 }

@@ -37,10 +37,10 @@ public abstract class DataDownloadActivity {
 	private static final int STATUS_FAILED = 1;// 已经返回，失败了
 	private static final int STATUS_SUCCESS = 2;// 已经返回，成功了
 	public static int circle_msg_download_status = STATUS_NO_RESULT;// 商务圈ids下载
-	public static int address_user_download_status = STATUS_NO_RESULT;// 通讯录下载
-	public static int user_info_download_status = STATUS_NO_RESULT;// 个人基本资料下载
-	public static int user_photo_download_status = STATUS_SUCCESS;// 我的相册下载
-	public static int room_download_status = STATUS_SUCCESS;// 我的房间下载
+	private static int address_user_download_status = STATUS_NO_RESULT;// 通讯录下载
+	private static int user_info_download_status = STATUS_NO_RESULT;// 个人基本资料下载
+	private static int user_photo_download_status = STATUS_SUCCESS;// 我的相册下载
+	private static int room_download_status = STATUS_NO_RESULT;// 我的房间下载
 	private String mLoginUserId;
 	private Handler mHandler;
 
@@ -48,7 +48,6 @@ public abstract class DataDownloadActivity {
 	public void onStartDown() {
 		UserSp.getInstance().setUpdate(false);// 进入下载资料界面，就将该值赋值false
 		mLoginUserId = ConfigApplication.instance().mLoginUser.getUserId();
-		//checkUserDb(mLoginUserId);
 		mHandler = new Handler();
 		startDownload();
 	}
@@ -130,7 +129,7 @@ public abstract class DataDownloadActivity {
 		 address_user_download_status = STATUS_NO_RESULT;// 通讯录下载
 		 user_info_download_status = STATUS_NO_RESULT;// 个人基本资料下载
 		 user_photo_download_status = STATUS_SUCCESS;// 我的相册下载
-		 room_download_status = STATUS_SUCCESS;// 我的房间下载
+		 room_download_status = STATUS_NO_RESULT;// 我的房间下载
 	}
 
 	/**

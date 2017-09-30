@@ -10,14 +10,13 @@ import android.text.style.DynamicDrawableSpan;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.TextView;
-
 
 import com.lsjr.zizi.R;
-import com.lsjr.zizi.mvp.circledemo.MyApplication;
+import com.lsjr.zizi.chat.bean.Praise;
 import com.lsjr.zizi.mvp.circledemo.bean.FavortItem;
 import com.lsjr.zizi.mvp.circledemo.spannable.CircleMovementMethod;
 import com.lsjr.zizi.mvp.circledemo.spannable.SpannableClickable;
+import com.ymz.baselibrary.utils.L_;
 import com.ymz.baselibrary.utils.UIUtils;
 
 import java.util.List;
@@ -30,7 +29,7 @@ public class PraiseListView extends android.support.v7.widget.AppCompatTextView{
 
     private int itemColor;
     private int itemSelectorColor;
-    private List<FavortItem> datas;
+    private List<Praise> datas;
     private OnItemClickListener onItemClickListener;
 
     public OnItemClickListener getOnItemClickListener() {
@@ -67,11 +66,12 @@ public class PraiseListView extends android.support.v7.widget.AppCompatTextView{
         }
     }
 
-    public List<FavortItem> getDatas() {
+    public List<Praise> getDatas() {
         return datas;
     }
-    public void setDatas(List<FavortItem> datas) {
+    public void setDatas(List<Praise> datas) {
         this.datas = datas;
+        L_.e("--------------setDatas"+datas.size());
         notifyDataSetChanged();
     }
 
@@ -81,18 +81,18 @@ public class PraiseListView extends android.support.v7.widget.AppCompatTextView{
         if(datas != null && datas.size() > 0){
             //添加点赞图标
             builder.append(setImageSpan());
-            FavortItem item = null;
+            Praise item = null;
             for (int i=0; i<datas.size(); i++){
                 item = datas.get(i);
                 if(item != null){
-                    builder.append(setClickableSpan(item.getUser().getName(), i));
+                    L_.e("=-=========点赞用户"+item.getNickName());
+                    builder.append(setClickableSpan(item.getNickName(), i));
                     if(i != datas.size()-1){
                         builder.append(", ");
                     }
                 }
             }
         }
-
         setText(builder);
         setMovementMethod(new CircleMovementMethod(itemSelectorColor));
     }

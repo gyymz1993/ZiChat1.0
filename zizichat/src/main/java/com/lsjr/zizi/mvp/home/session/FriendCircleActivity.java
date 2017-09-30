@@ -3,13 +3,14 @@ package com.lsjr.zizi.mvp.home.session;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,20 +21,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.barlibrary.ImmersionBar;
 import com.bumptech.glide.Glide;
 import com.cjt2325.cameralibrary.JCameraView;
 import com.lsjr.zizi.R;
-import com.lsjr.zizi.base.MvpActivity;
-import com.lsjr.zizi.mvp.home.ConfigApplication;
-import com.lsjr.zizi.mvp.home.Constants;
+import com.lsjr.zizi.base.SwipeBackActivity;
 import com.lsjr.zizi.chat.bean.PublicMessage;
 import com.lsjr.zizi.chat.dao.CircleMessageDao;
 import com.lsjr.zizi.chat.dao.MyPhotoDao;
 import com.lsjr.zizi.chat.db.MyPhoto;
 import com.lsjr.zizi.mvp.circledemo.bean.CommentConfig;
-import com.lsjr.zizi.mvp.circledemo.bean.CommentItem;
 import com.lsjr.zizi.mvp.circledemo.utils.CommonUtils;
 import com.lsjr.zizi.mvp.circledemo.widgets.DivItemDecoration;
+import com.lsjr.zizi.mvp.home.ConfigApplication;
+import com.lsjr.zizi.mvp.home.Constants;
 import com.lsjr.zizi.mvp.home.photo.TakePhotoActivity;
 import com.lsjr.zizi.mvp.home.session.cicle.ACicleAdapter;
 import com.lsjr.zizi.mvp.home.session.cicle.CircleConstact;
@@ -43,10 +44,13 @@ import com.lsjr.zizi.mvp.home.session.cicle.URLCellAdapter;
 import com.lsjr.zizi.mvp.home.session.cicle.VideoCellAdapter1;
 import com.lsjr.zizi.mvp.home.session.presenter.CircleContract;
 import com.lsjr.zizi.view.CommentView;
+import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
+import com.nostra13.universalimageloader.utils.L;
 import com.ymz.baselibrary.utils.L_;
 import com.ymz.baselibrary.utils.T_;
 import com.ymz.baselibrary.utils.UIUtils;
+import com.ymz.baselibrary.widget.NavigationBarView;
 import com.ys.uilibrary.base.RVBaseAdapter;
 import com.ys.uilibrary.base.RVBaseCell;
 import com.ys.uilibrary.base.RVBaseViewHolder;
@@ -64,7 +68,7 @@ import static com.lsjr.zizi.mvp.circledemo.widgets.TitleBar.getStatusBarHeight;
  */
 
 @SuppressLint("Registered")
-public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePresenter> implements CircleContract.CircleView{
+public class FriendCircleActivity extends SwipeBackActivity<CircleContract.CirclePresenter> implements CircleContract.CircleView{
     @BindView(R.id.recyclerView)
     SuperRecyclerView recyclerView;
     @BindView(R.id.circleEt)
@@ -75,6 +79,9 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
     LinearLayout edittextbody;
     @BindView(R.id.bodyLayout)
     RelativeLayout bodyLayout;
+
+    @BindView(R.id.id_bar_view1)
+    NavigationBarView navigationBarView;
 
     private SwipeRefreshLayout.OnRefreshListener refreshListener;
     private String mLoginUserId;// 当前登陆用户的UserId
@@ -93,15 +100,31 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
 
     @Override
     protected void initTitle() {
-        super.initTitle();
+        //super.initTitle();
+        navigationBarView.setTitleText("朋友圈");
         getToolBarView().setVisibility(View.GONE);
-        //getToolBarView().setBackgroundColor(UIUtils.getColor(android.R.color.transparent));
-       // initImmersionBar();
+        navigationBarView.setVisibility(View.GONE);
+        ImmersionBar.with(FriendCircleActivity.this)
+                .statusBarDarkFont(false, 1.0f)
+                .init();
+        navigationBarView.setleftImageResource(UIUtils.getDrawable(R.drawable.ic_back));
+        navigationBarView.getLeftimageView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
     protected boolean isImmersionBarEnabled() {
         return true;
+    }
+
+    private void setBarEnabled(boolean isEnabled){
+        if (isEnabled){
+            initImmersionBar();
+        }
     }
 
     @Override
@@ -128,7 +151,7 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
             @Override
             public void run() {
                 recyclerView.setRefreshing(true);//执行下拉刷新的动画
-                mvpPresenter.requestMyBusiness();
+                mvpPresenter.requestMyBusiness(mvpPresenter.ON_REFRESH);
             }
         });
 
@@ -143,20 +166,6 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
 
     @Override
     protected void initView() {
-        setTitleText("朋友圈");
-        setTopLeftButton(R.drawable.ic_back);
-        getToolBarView().setRightImageResource(UIUtils.getDrawable(R.drawable.actionbar_add_icon));
-        setTopRightButton(R.drawable.actionbar_add_icon, v -> {
-            Intent intent = new Intent(FriendCircleActivity.this, TakePhotoActivity.class);
-            startActivityForResult(intent, REQUEST_TAKE_PHOTO);
-        });
-        getToolBarView().getRightImageView().setOnLongClickListener(v -> {
-            Intent intent = new Intent();
-            intent.setClass(FriendCircleActivity.this, SendFriendCircleActivity.class);
-            intent.putExtra("type", 0);
-            startActivityForResult(intent, REQUEST_CODE_SEND_MSG);// 去发说说
-            return true;
-        });
 
         setViewTreeObserver();
     }
@@ -177,10 +186,62 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
     }
 
 
+
+    public void showTitle(int y){
+        int imageHeight=70;
+        if (y <= 0) {   //设置标题的背景颜色  0 透明度  （144,151,166）颜色:透明色
+            getToolBarView().setTopBarBackgroundColor(Color.argb((int) 0, 255,255,255));
+            getToolBarView().setVisibility(View.GONE);
+        } else if (y > 0 && y <= imageHeight) { //滑动距离小于banner图的高度时，设置背景和字体颜色颜色透明度渐变
+            float scale = (float) y / imageHeight;
+            float alpha = (255 * scale);
+            getToolBarView().setTopBarBackgroundColor(Color.argb((int) alpha, 255,255,255));
+        } else {    //滑动到banner下面设置普通颜色
+            getToolBarView().setTopBarBackgroundColor(Color.argb((int) 255, 255,255,255));
+        }
+    }
+
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void initData() {
-        layoutManager = new LinearLayoutManager(this);
+       // layoutManager = new LinearLayoutManager(this);
+
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false) {
+
+            @Override
+            public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
+                View viewByPosition = layoutManager.findViewByPosition(0);
+                int scrolled = super.scrollVerticallyBy(dy, recycler, state);
+                //View viewForPosition = recycler.getViewForPosition(0);
+                int itme_scrolled;
+                int titleHeight;
+                if (viewByPosition!=null){
+                    //L_.e("viewForPosition.getMeasuredHeight()"+viewByPosition.getMeasuredHeight());
+                    int firstItemPostion=layoutManager.findFirstVisibleItemPosition();
+                    int itemHeight=viewByPosition.getHeight();
+                    int firstItmeBontton=layoutManager.getDecoratedBottom(viewByPosition);
+                    itme_scrolled = UIUtils.px2dip((firstItemPostion + 1) * itemHeight - firstItmeBontton);
+                    titleHeight = UIUtils.px2dip(viewByPosition.getMeasuredHeight());
+                    if (titleHeight-itme_scrolled<15){
+                        ImmersionBar.with(FriendCircleActivity.this)
+                                .statusBarDarkFont(true, 0.0f)
+                                .init();
+                        navigationBarView.setVisibility(View.VISIBLE);
+                        navigationBarView.setTitleText("朋友圈");
+                        //在BaseActivity里初始化
+                    }else if(titleHeight-itme_scrolled>200){
+                        navigationBarView.setVisibility(View.GONE);
+                        ImmersionBar.with(FriendCircleActivity.this)
+                                .statusBarDarkFont(false, 1.0f)
+                                .init();
+                    }
+                }
+
+                return scrolled;
+            }
+        };
+
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new DivItemDecoration(2, true));
         recyclerView.getMoreProgressView().getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -196,24 +257,9 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
             }
         });
 
-//        recyclerView.setupMoreListener(new OnMoreListener() {
-//            @Override
-//            public void onMoreAsked(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
-//
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                       // presenter.loadData(TYPE_UPLOADREFRESH);
-//                        //mvpPresenter.requestMyBusiness();
-//                    }
-//                }, 2000);
-//
-//            }
-//        }, 1);
-
 
         refreshListener = () -> new Handler().postDelayed(() -> {
-            mvpPresenter.requestMyBusiness();
+            mvpPresenter.requestMyBusiness(mvpPresenter.ON_REFRESH);
         }, 500);
         recyclerView.setRefreshListener(refreshListener);
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -287,6 +333,22 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
                 startActivityForResult(intent, REQUEST_CODE_SEND_MSG);// 去发说说
             }
         });
+
+        recyclerView.setupMoreListener(new OnMoreListener() {
+            @Override
+            public void onMoreAsked(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //mvpPresenter.loadData(TYPE_UPLOADREFRESH);
+                        mvpPresenter.requestMyBusiness(mvpPresenter.ON_LOAD);
+                    }
+                }, 2000);
+
+            }
+        }, 1);
+
         cells.add(headCellAdapter);
         for (int i = 0; i < mMessages.size(); i++) {
             PublicMessage publicMessage = mMessages.get(i);
@@ -310,15 +372,7 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
         rvBaseAdapter.setData(cells);
     }
 
-    @Override
-    public void update2AddComment(int circlePosition, CommentItem addItem) {
 
-    }
-
-    @Override
-    public void update2DeleteComment(int circlePosition, String commentId) {
-
-    }
 
     private CommentConfig commentConfig;
     @Override
@@ -353,8 +407,18 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
     }
 
     @Override
-    public void notifityChange(List<PublicMessage> messages) {
-        mMessages=messages;
+    public void notifityChange(int type,List<PublicMessage> messages) {
+        if (messages.size()==0&&type==mvpPresenter.ON_LOAD){
+            T_.showToastReal("没有更多数据了");
+            recyclerView.removeMoreListener();
+            recyclerView.hideMoreProgress();
+            return;
+        }
+        if (type==mvpPresenter.ON_REFRESH){
+            mMessages=messages;
+        }else {
+            mMessages.addAll(messages);
+        }
         notifityChange();
     }
 
@@ -456,15 +520,7 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
 
     /********** 公共消息的数据请求部分 *********/
 
-    /**
-     * 请求公共消息
-     * 是下拉刷新，还是上拉加载
-     */
-    private void requestData() {
-        if (isMyBusiness()) {
-            mvpPresenter.requestMyBusiness();
-        }
-    }
+
     /**
      * 是否是商务圈类型
      * @return
@@ -481,7 +537,7 @@ public class FriendCircleActivity extends MvpActivity<CircleContract.CirclePrese
             if (resultCode == Activity.RESULT_OK) {// 发说说成功
                 String messageId = data.getStringExtra(Constants.EXTRA_MSG_ID);
                 CircleMessageDao.getInstance().addMessage(mLoginUserId, messageId);
-                mvpPresenter.requestMyBusiness();
+                mvpPresenter.requestMyBusiness(mvpPresenter.ON_REFRESH);
             }
         }
 

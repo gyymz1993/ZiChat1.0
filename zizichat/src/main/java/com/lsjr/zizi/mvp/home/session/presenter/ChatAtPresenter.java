@@ -42,7 +42,7 @@ import io.rong.message.ImageMessage;
 import io.rong.message.LocationMessage;
 
 
-public class ChatAtPresenter extends BasePresenter<ISessionAtView> implements ChatMessageListener {
+public class ChatAtPresenter extends BasePresenter<ISessionAtView>  {
     private String mSessionId;
     private Conversation.ConversationType mConversationType = Conversation.ConversationType.PRIVATE;
     private ChatContentAdapter chatContentAdapter;
@@ -55,7 +55,7 @@ public class ChatAtPresenter extends BasePresenter<ISessionAtView> implements Ch
     public ChatAtPresenter(ISessionAtView mvpView, MessageUtils msgtils) {
         super(mvpView);
         EventBus.getDefault().register(this);
-        ListenerManager.getInstance().addChatMessageListener(this);
+
         messageUtils = msgtils;
         mFriend=messageUtils.getmFriend();
         mUserId = messageUtils.getmFriend().getUserId();
@@ -213,7 +213,7 @@ public class ChatAtPresenter extends BasePresenter<ISessionAtView> implements Ch
     }
 
 
-    private void newMessageNotifyChange(){
+    public void newMessageNotifyChange(){
         if (getView() != null && getView().getRvMsg() != null){
             rvMoveToBottom();
             chatContentAdapter.notifyDataSetChangedWrapper();
@@ -267,7 +267,7 @@ public class ChatAtPresenter extends BasePresenter<ISessionAtView> implements Ch
 
 
 
-    private void rvMoveToBottom() {
+    public void rvMoveToBottom() {
         if (getView() != null && getView().getRvMsg() != null){
             //scollToPosition(messageUtils.getmChatMessages().size() - 1);
             //getView().getRvMsg().smoothMoveToPosition(messageUtils.getmChatMessages().size() - 1);
@@ -350,36 +350,6 @@ public class ChatAtPresenter extends BasePresenter<ISessionAtView> implements Ch
     }
 
 
-    /**
-     * 新消息到来
-     */
-    @Override
-    public boolean onNewMessage(String fromUserId, ChatMessage message, boolean isGroupMsg) {
-        L_.e("收到消息" + message.getContent());
-        // 是该人的聊天消息
-        if (messageUtils.getmFriend().getUserId().compareToIgnoreCase(fromUserId) == 0) {
-            chatContentAdapter.addLastItem(message);
-            rvMoveToBottom();
-            return true;
-        }
-        return false;
-    }
 
-    @Override
-    public void onMessageSendStateChange(int messageState, int msg_id) {
-       // L_.e("收到消息");
-        for (int i = 0; i < messageUtils.getmChatMessages().size(); i++) {
-            ChatMessage msg = messageUtils.getmChatMessages().get(i);
-            if (msg_id == msg.get_id()) {
-                //L_.e("收到消息后刷新");
-                //msg.setMessageState(ChatMessageListener.MESSAGE_SEND_SUCCESS);
-                L_.e("当前状态"+messageState);
-                msg.setMessageState(messageState);
-                newMessageNotifyChange();
-                //setAdapter();
-                break;
-            }
-        }
-    }
 
 }

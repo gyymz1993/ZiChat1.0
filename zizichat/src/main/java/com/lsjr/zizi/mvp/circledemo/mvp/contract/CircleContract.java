@@ -8,7 +8,8 @@ import com.lsjr.zizi.mvp.circledemo.bean.FavortItem;
 import java.util.List;
 
 /**
- * Created by suneee on 2016/7/15.
+ * 创建人：$ gyymz1993
+ * 创建时间：2016/7/15 18:05
  */
 public interface CircleContract {
 

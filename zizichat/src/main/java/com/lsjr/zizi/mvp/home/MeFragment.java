@@ -2,6 +2,8 @@ package com.lsjr.zizi.mvp.home;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,8 +16,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.text.InputFilter;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,11 +38,13 @@ import com.lsjr.zizi.chat.bean.UploadAvatar;
 import com.lsjr.zizi.chat.broad.MsgBroadcast;
 import com.lsjr.zizi.chat.dao.UserDao;
 import com.lsjr.zizi.chat.db.User;
-import com.lsjr.zizi.loader.AvatarHelper;
 import com.lsjr.zizi.chat.helper.LoginHelper;
 import com.lsjr.zizi.chat.utils.StringUtils;
-import com.lsjr.zizi.mvp.home.session.BasicInfoActivity;
+import com.lsjr.zizi.loader.AvatarHelper;
+import com.lsjr.zizi.mvp.home.zichat.AddressListActivity;
+import com.lsjr.zizi.mvp.home.zichat.DepartureSelectorActivity;
 import com.lsjr.zizi.mvp.home.zichat.UpdateSourceActivity;
+import com.lsjr.zizi.mvp.home.zichat.dialog.DialogUtils;
 import com.lsjr.zizi.mvp.utils.PhotoUtils;
 import com.lsjr.zizi.util.CameraUtil;
 import com.lsjr.zizi.view.OptionItemView;
@@ -83,7 +90,14 @@ public class MeFragment extends MvpFragment {
     ItemView oivAliasName;
     @BindView(R.id.ivAvatar)
     CircleImageView mAvatarImg;
+
+    @BindView(R.id.id_setting)
+    ItemView itSetting;
+    @BindView(R.id.id_sex_set)
+    ItemView idSexSet;
+
     User mLoginUser;
+
 
     @Override
     protected BasePresenter createPresenter() {
@@ -105,6 +119,7 @@ public class MeFragment extends MvpFragment {
         AvatarHelper.getInstance().displayAvatar(ConfigApplication.instance().mLoginUser, mAvatarImg, true);
         //mTvName.setText(ConfigApplication.instance().mLoginUser.getNickName());
         oivAliasName.setRightText(ConfigApplication.instance().mLoginUser.getNickName());
+        idSexSet.setRightText(ConfigApplication.instance().mLoginUser.getSex()==0?"男":"女");
         mTvAccount.setText(ConfigApplication.instance().mLoginUser.getTelephone());
         mAvatarImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,8 +180,76 @@ public class MeFragment extends MvpFragment {
 //                startActivityForResult(intent, 100);
             }
         });
+
+
+        itSetting.setItemOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity(DepartureSelectorActivity.class);
+                //openActivity(AddressListActivity.class);
+            }
+        });
+
+        idSexSet.setItemOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // openActivity(GeoCoderActivity.class);
+                //showListDialog();
+                showSexDialog();
+            }
+        });
     }
 
+    public void showSexDialog(){
+        Dialog dialog = new Dialog(getActivity(), R.style.dialog);
+        dialog.setContentView(R.layout.dialog_sex_selector);
+        Window sex_window = dialog.getWindow();
+        sex_window.setGravity(Gravity.CENTER | Gravity.CENTER);
+        Button btn_cancel = (Button) dialog.findViewById(R.id.btn_cancel);
+        Button bt_boy = (Button) dialog.findViewById(R.id.bt_boy);
+        Button bt_gril = (Button) dialog.findViewById(R.id.bt_gril);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        bt_boy.setOnClickListener(v -> {
+            dialog.dismiss();
+            //getDataSex("1");
+            if (mLoginUser.getSex()==0)return;
+            mLoginUser.setSex(0);
+            updateData(ConfigApplication.instance().mLoginUser.getNickName());
+           // idSexSet.setRightText("男");
+        });
+        bt_gril.setOnClickListener(v -> {
+            dialog.dismiss();
+           // getDataSex("2");
+            if (mLoginUser.getSex()==1)return;
+            mLoginUser.setSex(1);
+            updateData(ConfigApplication.instance().mLoginUser.getNickName());
+            //idSexSet.setRightText("女");
+        });
+        dialog.show();
+    }
+
+
+    /**
+     * 显示列表的弹出窗
+     */
+    private void showListDialog() {
+        DialogUtils dialogUtils = DialogUtils.newInstance(new DialogUtils.OnCallDialog() {
+            @Override
+            public Dialog getDialog(Context context) {
+                return null;
+            }
+        }, true);
+        dialogUtils.show(getFragmentManager(),"tag");
+//        DialogHelper.showListDialog(getFragmentManager(), titleList, languanges,
+//                (DialogHelper.IDialogResultListener<Integer>)
+//                        result -> showToast(languanges[result]),
+//                true);
+    }
 
     private void showRemarkDialog() {
         final EditText editText = new EditText(getActivity());
@@ -198,7 +281,7 @@ public class MeFragment extends MvpFragment {
     private void updateData(String input) {
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("access_token", ConfigApplication.instance().mAccessToken);
-        if (!mLoginUser.getNickName().equals(input)) {
+        if (!mLoginUser.getNickName().equals(input)&&!TextUtils.isEmpty(input)) {
             params.put("nickname", input);
         }
         params.put("sex", String.valueOf(mLoginUser.getSex()));
@@ -224,7 +307,7 @@ public class MeFragment extends MvpFragment {
                     UserDao.getInstance().updateNickName(mLoginUser.getUserId(), input);// 更新数据库
                    // mTvName.setText(input);
                     oivAliasName.setRightText(ConfigApplication.instance().mLoginUser.getNickName());
-
+                    idSexSet.setRightText(ConfigApplication.instance().mLoginUser.getSex()==0?"男":"女");
                 } else {
 
                 }

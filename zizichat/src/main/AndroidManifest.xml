@@ -64,10 +64,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--地图-->
-        <meta-data
-            android:name="TencentMapSDK"
-            android:value="TYQBZ-MRBKU-K7FVL-4JBW5-DOG5O-SZB4A"/>
+
 
         <meta-data
             android:name="design_width"
@@ -113,22 +110,26 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".mvp.home.session.ChatActivity"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             />
         <activity android:name=".mvp.upload.UploadActivity"/>
-        <activity android:name=".mvp.home.session.GroupActivity"/>
+        <activity android:name=".mvp.home.session.GroupActivity"
+            android:launchMode="singleTask"
+            />
         <activity android:name=".mvp.home.session.NearbyActivity"/>
         <activity android:name=".mvp.home.photo.SingleImagePreviewActivity"
             android:screenOrientation="portrait"
             />
         <activity android:name=".mvp.home.session.BasicInfoActivity"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             />
         <activity android:name=".mvp.circledemo.activity.MainActivity"/>
         <activity android:name=".mvp.home.session.LoginStatusActivity" />
         <activity android:name=".mvp.home.photo.CircleActivity"/>
 
-        <activity android:name=".mvp.home.session.FriendCircleActivity" />
+        <activity android:name=".mvp.home.session.FriendCircleActivity"
+            android:theme="@style/TranslucentFullScreenTheme"
+            />
         <activity android:name=".mvp.home.session.CreateGroupActivity"/>
         <activity android:name=".mvp.home.session.GroupManagerActivity"/>
         <activity android:name=".mvp.home.photo.FileReceiverActivity"/>
@@ -147,6 +148,16 @@
             />
         <activity android:name=".mvp.home.zichat.GroupInfoActivity"/>
         <activity android:name=".mvp.home.zichat.UpdateSourceActivity"/>
+
+        <activity android:name=".mvp.home.zichat.DepartureSelectorActivity"
+            android:theme="@style/TranslucentFullScreenTheme"
+            />
+        <activity android:name=".mvp.home.zichat.GeoCoderActivity"
+            android:theme="@style/TranslucentFullScreenTheme"
+            />
+        <activity android:name=".mvp.home.zichat.AddressListActivity"
+            android:theme="@style/TranslucentFullScreenTheme"
+            />
 
 
         <service android:name=".mvp.service.AppService"/>
@@ -218,6 +229,26 @@
                 <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
             </intent-filter>
         </service>
+
+
+        <!--百度-->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" >
+                </action>
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Ysh1hNLGyYH7cEAWzvhinpogLF6qUaq6" />  <!--http://lbsyun.baidu.com/apiconsole/key-->
+
+        <!--地图-->
+        <meta-data
+            android:name="TencentMapSDK"
+            android:value="TYQBZ-MRBKU-K7FVL-4JBW5-DOG5O-SZB4A"/>
 
     </application>
 

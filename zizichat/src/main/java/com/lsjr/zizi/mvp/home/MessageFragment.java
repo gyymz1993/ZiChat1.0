@@ -12,7 +12,9 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -24,7 +26,9 @@ import com.lsjr.zizi.R;
 import com.lsjr.zizi.base.MvpFragment;
 import com.lsjr.zizi.chat.bean.MucRoom;
 import com.lsjr.zizi.chat.bean.ResultCode;
+import com.lsjr.zizi.chat.dao.ChatMessageDao;
 import com.lsjr.zizi.loader.AvatarHelper;
+import com.lsjr.zizi.mvp.circledemo.MyApplication;
 import com.lsjr.zizi.mvp.home.session.ChatActivity;
 import com.lsjr.zizi.chat.bean.BaseSortModel;
 import com.lsjr.zizi.chat.broad.MsgBroadcast;
@@ -40,12 +44,14 @@ import com.lsjr.zizi.mvp.home.session.adapter.NineGridImageViewAdapter;
 import com.lsjr.zizi.util.PinyinUtils;
 import com.lsjr.zizi.view.ClearEditText;
 import com.lsjr.zizi.view.NineGridImageView;
+import com.nostra13.universalimageloader.utils.L;
 import com.ymz.baselibrary.mvp.BasePresenter;
 import com.ymz.baselibrary.utils.L_;
 import com.ymz.baselibrary.utils.T_;
 import com.ymz.baselibrary.utils.UIUtils;
 import com.ys.uilibrary.base.BaseRecyclerAdapter;
 import com.ys.uilibrary.base.BaseRecyclerHolder;
+import com.ys.uilibrary.swip.SwipeMenuLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -156,6 +162,7 @@ public class MessageFragment extends MvpFragment {
     }
 
 
+
     @Override
     public void onResume() {
         super.onResume();
@@ -214,6 +221,7 @@ public class MessageFragment extends MvpFragment {
                 loadData();
                 return;
             }
+            assert friends != null;
             if (friends.size()==1){
                 // 通知界面更新
                 HomeActivity homeActivity= (HomeActivity) getActivity();
@@ -229,7 +237,7 @@ public class MessageFragment extends MvpFragment {
                 mOriginalFriendList.clear();
                 mFriendList.clear();
                 String filter = mClearEditText.getText().toString().trim().toUpperCase();
-                if (friends != null && friends.size() > 0) {
+                if (friends.size() > 0) {
                     for (int i = 0; i < friends.size(); i++) {
                         BaseSortModel<Friend> mode = new BaseSortModel<>();
                         mode.setBean(friends.get(i));
@@ -284,9 +292,39 @@ public class MessageFragment extends MvpFragment {
         @Override
         protected void convert(BaseRecyclerHolder holder, BaseSortModel<Friend> item, int position) {
 
-            holder.itemView.setOnClickListener(v -> {
+            SwipeMenuLayout swipeMenuLayout = holder.getView(R.id.id_root_swp);
+            RelativeLayout itemView = holder.getView(R.id.id_ry_content);
+            itemView.setOnClickListener(v -> {
                 if (onItemSelectListener!=null){
                     onItemSelectListener.onItemSelect(item);
+                }
+            });
+
+            if (item.getBean().getUserId().equals("10000")){
+                swipeMenuLayout.setLeftSwipe(false);
+            }else {
+                swipeMenuLayout.setLeftSwipe(true);
+            }
+            Button btnDelete = holder.getView(R.id.btnDelete);
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //(CstSwipeDelMenu holder.itemView).quickClose();
+                    swipeMenuLayout.quickClose();
+                    String mLoginUserId = ConfigApplication.instance().mLoginUser.getUserId();
+                    if (item.getBean().getUnReadNum() > 0) {
+                        MsgBroadcast.broadcastMsgNumUpdate(getActivity(), false, item.getBean().getUnReadNum());
+                    }
+                    BaseSortModel<Friend> mode = mFriendList.get(position);
+                    mFriendList.remove(mode);
+                    mOriginalFriendList.remove(mode);
+                    //mAdapter.notifyDataSetChanged();
+                    mAdapter.notifyItemRemoved(position);//推荐用这个
+                    // 如果是普通的人，从好友表中删除最后一条消息的记录，这样就不会查出来了
+                    FriendDao.getInstance().resetFriendMessage(mLoginUserId, item.getBean().getUserId());
+                    // 消息表中删除
+                    ChatMessageDao.getInstance().deleteMessageTable(mLoginUserId, item.getBean().getUserId());
+
                 }
             });
             CircleImageView avatar_img = holder.getView(R.id.avatar_img);
@@ -375,6 +413,10 @@ public class MessageFragment extends MvpFragment {
     public  interface  OnItemSelectListener<T>{
         void onItemSelect(T t);
     }
+
+
+
+
 
     MucRoom mucRoom;
     private void loadMembers(String roomId) {

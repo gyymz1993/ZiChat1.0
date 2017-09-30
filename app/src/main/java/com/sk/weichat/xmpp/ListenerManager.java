@@ -19,7 +19,7 @@ import com.sk.weichat.xmpp.listener.ChatMessageListener;
 import com.sk.weichat.xmpp.listener.MucListener;
 import com.sk.weichat.xmpp.listener.NewFriendListener;
 /**
- * 
+ *
   * @项目名称: SkWeiChat-Baidu
  * @包名: com.sk.weichat.xmpp
  * @作者:王阳

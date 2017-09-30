@@ -56,6 +56,7 @@ import com.lsjr.zizi.mvp.home.photo.SingleImagePreviewActivity;
 import com.lsjr.zizi.mvp.home.session.BasicInfoActivity;
 import com.lsjr.zizi.mvp.home.session.presenter.ChatAtPresenter;
 import com.lsjr.zizi.mvp.home.session.presenter.MessageUtils;
+import com.lsjr.zizi.mvp.home.zichat.GeoCoderActivity;
 import com.lsjr.zizi.util.FileOpenUtils;
 import com.lsjr.zizi.util.TimeUtils;
 import com.lsjr.zizi.view.BubbleImageView;
@@ -468,7 +469,7 @@ public class ChatContentAdapter extends LQRAdapterForRecyclerView<ChatMessage> {
                     @Override
                     public void onClick(View v) {
                         upMessageStausToRead(helper,message);
-                        Intent intent = new Intent(mContext, CircleActivity.class);
+                        Intent intent = new Intent(mContext, GeoCoderActivity.class);
                         intent.putExtra(Constants.EXTRA_LATITUDE,message.getLocation_x());
                         intent.putExtra(Constants.EXTRA_LONGITUDE,message.getLocation_y());
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -153,7 +153,7 @@ public class NearbyActivity extends MvpActivity {
 //            }
         }
 
-        HashMap<String, String> params = new HashMap<String, String>();
+        HashMap<String, String> params = new HashMap<>();
         params.put("pageIndex", String.valueOf(mPageIndex));
         params.put("pageSize", String.valueOf(AppConfig.PAGE_SIZE));
         params.put("latitude", String.valueOf(mLatitude));
@@ -230,14 +230,11 @@ public class NearbyActivity extends MvpActivity {
                 des_tv.setText("该好友未公开位置信息");
             }
             nick_name_tv.setText(user.getNickName());
-            holder.getView(R.id.info_layout).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(NearbyActivity.this, BasicInfoActivity.class);
-                    intent.putExtra(AppConfig.EXTRA_USER_ID, user.getUserId());
-                    startActivity(intent);
-                    //openActivity(BasicInfoActivity.class);
-                }
+            holder.getView(R.id.info_layout).setOnClickListener(v -> {
+                Intent intent = new Intent(NearbyActivity.this, BasicInfoActivity.class);
+                intent.putExtra(AppConfig.EXTRA_USER_ID, user.getUserId());
+                startActivity(intent);
+                //openActivity(BasicInfoActivity.class);
             });
         }
     }

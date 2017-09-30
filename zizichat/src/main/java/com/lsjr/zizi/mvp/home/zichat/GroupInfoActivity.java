@@ -1,8 +1,11 @@
 package com.lsjr.zizi.mvp.home.zichat;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,8 +19,10 @@ import com.lsjr.zizi.R;
 import com.lsjr.zizi.base.MvpActivity;
 import com.lsjr.zizi.chat.bean.MucRoom;
 import com.lsjr.zizi.chat.db.Friend;
+import com.lsjr.zizi.chat.xmpp.CoreService;
 import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.mvp.home.Constants;
+import com.lsjr.zizi.mvp.home.session.GroupActivity;
 import com.lsjr.zizi.mvp.home.zichat.presenter.GroupInfo;
 import com.lsjr.zizi.view.OptionItemView;
 import com.ymz.baselibrary.utils.L_;
@@ -64,9 +69,16 @@ public class GroupInfoActivity extends MvpActivity<GroupInfo.Presenter> implemen
     @BindView(R.id.item_table_bar)
     RelativeLayout itemTableAdd;
 
+    @BindView(R.id.delet_room)
+    TextView deletRoom;
+
+
     private String mRoomJid;
     private MucRoom mucRoom;
     private Friend mRoom;
+
+    private boolean mBind;
+    private CoreService mXmppService;
 
     @Override
     protected int getLayoutId() {
@@ -79,6 +91,19 @@ public class GroupInfoActivity extends MvpActivity<GroupInfo.Presenter> implemen
         setTitleText("成员管理");
 
     }
+
+    private ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mXmppService = null;
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mXmppService = ((CoreService.CoreServiceBinder) service).getService();
+        }
+    };
+
 
     @Override
     protected void initData() {
@@ -93,6 +118,7 @@ public class GroupInfoActivity extends MvpActivity<GroupInfo.Presenter> implemen
         if (TextUtils.isEmpty(mRoomJid)) {
             return;
         }
+        mBind = bindService(CoreService.getIntent(), mServiceConnection, BIND_AUTO_CREATE);
         super.onCreate(savedInstanceState);
     }
 
@@ -111,6 +137,13 @@ public class GroupInfoActivity extends MvpActivity<GroupInfo.Presenter> implemen
             @Override
             public void onClick(View v) {
                 gotoAddContact();
+            }
+        });
+
+        deletRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mvpPresenter.deleteRoom(mRoom);
             }
         });
 
@@ -192,6 +225,31 @@ public class GroupInfoActivity extends MvpActivity<GroupInfo.Presenter> implemen
         }
 
     }
+
+    @Override
+    public void deleteRoom(boolean isDelete) {
+        if (isDelete){
+            exitMucChat(mRoom.getUserId());
+            openActivity(GroupActivity.class);
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mBind) {
+            unbindService(mServiceConnection);
+        }
+        super.onDestroy();
+    }
+
+    public void exitMucChat(String toUserId) {
+        if (mXmppService != null) {
+            T_.showToastReal("退出群聊");
+            mXmppService.exitMucChat(toUserId);
+        }
+    }
+
 
     public String getmRoomJid() {
         return mRoomJid;

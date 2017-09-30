@@ -84,6 +84,18 @@ public class TakePhotoActivity extends MvpActivity {
         initListener();
     }
 
+
+    @Override
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
+
+    @Override
+    protected void initTitle() {
+        super.initTitle();
+        setTitleText("拍摄");
+    }
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_take_photo;

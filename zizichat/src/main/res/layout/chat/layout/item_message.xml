@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.ys.uilibrary.swip.SwipeMenuLayout
+    android:id="@+id/id_root_swp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:minHeight="60dip"
+    android:paddingLeft="15dp"
+    android:clickable="true"
+    android:paddingBottom="1dp"
+    app:ios="false"
+    app:leftSwipe="true"
+    app:swipeEnable="true"
+    >
+
+<RelativeLayout
+    android:id="@+id/id_ry_content"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
@@ -121,3 +138,12 @@
     </com.zhy.autolayout.AutoRelativeLayout>
 
 </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@color/red6"
+        android:text="删除"
+        android:textColor="@android:color/white"/>
+</com.ys.uilibrary.swip.SwipeMenuLayout>

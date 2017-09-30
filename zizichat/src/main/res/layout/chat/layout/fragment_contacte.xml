@@ -15,9 +15,7 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="5dp"
-        android:visibility="gone"
         >
-
 
         <com.lsjr.zizi.view.ClearEditText
             android:id="@+id/search_edit"
