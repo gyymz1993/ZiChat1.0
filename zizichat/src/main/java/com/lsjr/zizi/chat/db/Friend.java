@@ -7,13 +7,14 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.chat.dao.FriendDao;
+import com.ys.cn.CN;
 
 import java.io.Serializable;
 
 import cn.ittiger.indexlist.entity.BaseEntity;
 
 @DatabaseTable
-public class Friend  implements Serializable ,BaseEntity {
+public class Friend  implements Serializable ,BaseEntity,CN {
 	private static final long serialVersionUID = -6859528031175998594L;
 	public static final String ID_SYSTEM_MESSAGE = "10000";// 系统消息ID
 	public static final String ID_NEW_FRIEND_MESSAGE = "10001";// 新朋友消息 ID
@@ -317,5 +318,10 @@ public class Friend  implements Serializable ,BaseEntity {
 	@Override
 	public String getIndexField() {
 		return remarkName==null?nickName:remarkName;
+	}
+
+	@Override
+	public String chinese() {
+		return getShowName();
 	}
 }

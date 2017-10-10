@@ -2,6 +2,7 @@ package com.lsjr.zizi.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.MotionEventCompat;
 import android.text.Editable;
@@ -160,6 +161,21 @@ public class ClearEditText extends EditText implements OnFocusChangeListener, Te
 		translateAnimation.setInterpolator(new CycleInterpolator(counts));
 		translateAnimation.setDuration(1000);
 		return translateAnimation;
+	}
+
+	@Override
+	protected void onDraw(Canvas canvas) {
+		Drawable[] drawables = getCompoundDrawables();
+		Drawable drawableLeft = drawables[0];
+		if (drawableLeft != null) {
+            float textWidth = getPaint().measureText(getText().toString());
+            int drawablePadding = getCompoundDrawablePadding();
+            int drawableWidth = 0;
+            drawableWidth = drawableLeft.getIntrinsicWidth();
+            float bodyWidth = textWidth + drawableWidth + drawablePadding;
+            canvas.translate((getWidth() - bodyWidth) / 2, 0);
+        }
+		super.onDraw(canvas);
 	}
 
 }

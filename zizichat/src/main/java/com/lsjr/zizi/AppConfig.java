@@ -40,6 +40,9 @@ public class AppConfig {
 	//private static final String CONFIG_UPLOAD = "http://192.168.187.10:8081/";
 	private static final String CONFIG_UPLOAD = "http://dev.zizi.com.cn/";
 
+
+	public static final int XMPP_PORT=5222 ;
+
 	/*李桥测试*/
 	public static final String CONFIG_URL = CONFIG_IP+"config";
 	public static String USER_LOGIN=CONFIG_IP + "user/login";// 登陆
@@ -63,9 +66,6 @@ public class AppConfig {
 	//http://192.168.100.10:8081/
 
 	public static final String UPLOAD_URL= CONFIG_UPLOAD + "upload/UploadServlet";// 上传图片接口;// 上传图片接口
-
-
-	public static final int XMPP_PORT=5222 ;
 
 
 

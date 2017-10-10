@@ -113,6 +113,7 @@ public interface AddressList {
              * 搜索位置点周边POI
              */
             PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption(); //POI附近检索参数设置类
+            String mType = "写字楼|地名地址信息|餐饮服务|购物服务|生活服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|道路附属设施|公共设施";
             nearbySearchOption.keyword("写字楼");//搜索关键字，比如：银行、网吧、餐厅等
             nearbySearchOption.location(center);//搜索的位置点
             nearbySearchOption.radius(300);//搜索覆盖半径

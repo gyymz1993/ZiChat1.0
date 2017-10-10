@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import com.lsjr.zizi.AppConfig;
 import com.lsjr.zizi.R;
 import com.lsjr.zizi.base.MvpFragment;
+import com.lsjr.zizi.chat.bean.BaseSortModel;
 import com.lsjr.zizi.chat.dao.FriendDao;
 import com.lsjr.zizi.chat.db.Friend;
 import com.lsjr.zizi.loader.AvatarHelper;
@@ -24,12 +27,18 @@ import com.lsjr.zizi.mvp.home.session.NearbyActivity;
 import com.lsjr.zizi.mvp.home.session.NewFriendActivity;
 import com.lsjr.zizi.mvp.home.session.PhoneContactActivity;
 import com.lsjr.zizi.mvp.home.session.SeachFriendActivity;
+import com.lsjr.zizi.view.ClearEditText;
 import com.ymz.baselibrary.mvp.BasePresenter;
 import com.ymz.baselibrary.utils.L_;
 import com.ymz.baselibrary.utils.UIUtils;
+import com.ys.cn.CNPinyin;
+import com.ys.cn.CNPinyinFactory;
+import com.ys.cn.CNPinyinIndex;
+import com.ys.cn.CNPinyinIndexFactory;
 import com.zhy.autolayout.AutoLinearLayout;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -53,7 +62,9 @@ public class ContactsFragment extends MvpFragment {
     IndexStickyView idContacts;
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mRefreshLayout;
-
+    @BindView(R.id.search_edit)
+    ClearEditText mClearEditText;
+    List<CNPinyin<Friend>> contactList;
     @Override
     protected BasePresenter createPresenter() {
         return null;
@@ -83,6 +94,34 @@ public class ContactsFragment extends MvpFragment {
     protected void afterCreate(Bundle savedInstanceState) {
         loadData();
         //loadData();
+        mClearEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String filter = mClearEditText.getText().toString().trim().toUpperCase();
+                friends.clear();
+                if (contactList.size() > 0) {
+                    ArrayList<CNPinyinIndex<Friend>> cnPinyinIndices = CNPinyinIndexFactory.indexList(contactList, filter);
+                    for (int i=0;i<cnPinyinIndices.size();i++){
+                        Friend data = cnPinyinIndices.get(i).cnPinyin.data;
+                        friends.add(data);
+                        L_.e("f------"+friends.get(i));
+                    }
+                }
+                mAdapter.reset(friends);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length()==0){
+                    loadData();
+                }
+            }
+        });
+
 
     }
 
@@ -267,6 +306,8 @@ public class ContactsFragment extends MvpFragment {
         new Thread(() -> {
             long startTime = System.currentTimeMillis();
             friends = FriendDao.getInstance().getAllFriends(mLoginUserId);
+            contactList = CNPinyinFactory.createCNPinyinList(friends);
+            Collections.sort(contactList);
             if (friends==null||friends.size()==0)return;
             L_.e("朋友条数-------->"+friends.size());
             long delayTime = 200 - (startTime - System.currentTimeMillis());// 保证至少200ms的刷新过程

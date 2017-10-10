@@ -41,7 +41,6 @@ import com.lsjr.zizi.chat.db.User;
 import com.lsjr.zizi.chat.helper.LoginHelper;
 import com.lsjr.zizi.chat.utils.StringUtils;
 import com.lsjr.zizi.loader.AvatarHelper;
-import com.lsjr.zizi.mvp.home.zichat.AddressListActivity;
 import com.lsjr.zizi.mvp.home.zichat.DepartureSelectorActivity;
 import com.lsjr.zizi.mvp.home.zichat.UpdateSourceActivity;
 import com.lsjr.zizi.mvp.home.zichat.dialog.DialogUtils;
@@ -204,7 +203,8 @@ public class MeFragment extends MvpFragment {
         Dialog dialog = new Dialog(getActivity(), R.style.dialog);
         dialog.setContentView(R.layout.dialog_sex_selector);
         Window sex_window = dialog.getWindow();
-        sex_window.setGravity(Gravity.CENTER | Gravity.CENTER);
+        assert sex_window != null;
+        sex_window.setGravity(Gravity.CENTER);
         Button btn_cancel = (Button) dialog.findViewById(R.id.btn_cancel);
         Button bt_boy = (Button) dialog.findViewById(R.id.bt_boy);
         Button bt_gril = (Button) dialog.findViewById(R.id.bt_gril);
@@ -358,8 +358,6 @@ public class MeFragment extends MvpFragment {
 
     private Uri imageUri;
     private Uri cropImageUri;
-    // 选择头像的数据
-    private File mCurrentFile;
     File fileUri=new File(AppCache.getInstance().getPublicFilePath(1));
     private File fileCropUri = new File(Environment.getExternalStorageDirectory().getPath() + "/crop_photo.jpg");
 
@@ -415,9 +413,9 @@ public class MeFragment extends MvpFragment {
 //                    mAvatarImg.setImageBitmap(bitmap);
 //                }
                 if (cropImageUri != null) {
-                    mCurrentFile = new File(cropImageUri.getPath());
-                    if (mCurrentFile != null && mCurrentFile.exists()) {
-                        L_.e("上传图片路径------>"+mCurrentFile.getAbsolutePath());
+                    File mCurrentFile = new File(cropImageUri.getPath());
+                    if (mCurrentFile.exists()) {
+                        L_.e("上传图片路径------>"+ mCurrentFile.getAbsolutePath());
                         uploadAvatar(mCurrentFile);
                     }
                 } else {

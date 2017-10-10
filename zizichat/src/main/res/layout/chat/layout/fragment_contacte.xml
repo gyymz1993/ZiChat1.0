@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/white"
         android:orientation="horizontal"
         android:paddingBottom="5dp"
@@ -23,12 +23,12 @@
             android:layout_height="fill_parent"
             android:layout_centerVertical="true"
             android:background="#FFF5F5F5"
-            android:drawableLeft="@drawable/search"
             android:drawableRight="@drawable/search_clear"
             android:hint="@string/search"
             android:textColor="@color/dark_grey"
             android:textColorHint="@color/grey"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:drawableLeft="@drawable/search" />
 
 
         <LinearLayout

@@ -6,6 +6,7 @@
     android:textColor="@color/button_bg"
     >
     <TextView
+        android:text="1111111111"
         android:id="@+id/tv_index"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

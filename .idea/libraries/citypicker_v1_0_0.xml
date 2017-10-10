@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="citypicker-v1.0.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/741e0c2ee6c48e686097b61bf2843818b187aaf4/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/741e0c2ee6c48e686097b61bf2843818b187aaf4/output/jars/libs/AMap_Location_V3.2.0_20161205.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/741e0c2ee6c48e686097b61bf2843818b187aaf4/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

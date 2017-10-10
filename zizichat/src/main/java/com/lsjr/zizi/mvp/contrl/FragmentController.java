@@ -3,6 +3,7 @@ package com.lsjr.zizi.mvp.contrl;
 import android.support.v4.app.Fragment;
 
 
+import com.lsjr.zizi.mvp.home.AddressListFragment;
 import com.lsjr.zizi.mvp.home.ContactsFragment;
 import com.lsjr.zizi.mvp.home.MeFragment;
 import com.lsjr.zizi.mvp.home.MessageFragment;
@@ -24,7 +25,7 @@ public class FragmentController {
     private WordFragment wordFragment;
     private MeFragment meFragment;
     private ContactsFragment contactsFragment;
-
+    private AddressListFragment addressListFragment;
     public static FragmentController getInstance() {
         if (controller == null) {
             controller = new FragmentController();
@@ -56,8 +57,12 @@ public class FragmentController {
         if (contactsFragment == null) {
             contactsFragment = new ContactsFragment();
         }
+        if (addressListFragment==null){
+            addressListFragment=new AddressListFragment();
+        }
         fragments.add(mAddressListFragment);
         fragments.add(contactsFragment);
+        //fragments.add(addressListFragment);
         fragments.add(wordFragment);
         fragments.add(meFragment);
     }
@@ -72,25 +77,31 @@ public class FragmentController {
 
             fragments.remove(i);
             if (fragments.get(i) instanceof MessageFragment) {
-                if (mAddressListFragment == null) {
+                if (mAddressListFragment != null) {
                     mAddressListFragment = null;
                 }
             }
             if (fragments.get(i) instanceof WordFragment) {
-                if (wordFragment == null) {
+                if (wordFragment != null) {
                     wordFragment = null;
                 }
             }
 
             if (fragments.get(i) instanceof MeFragment) {
-                if (meFragment == null) {
+                if (meFragment != null) {
                     meFragment = null;
                 }
             }
 
             if (fragments.get(i) instanceof ContactsFragment) {
-                if (contactsFragment == null) {
+                if (contactsFragment != null) {
                     contactsFragment = null;
+                }
+            }
+
+            if (fragments.get(i) instanceof AddressListFragment) {
+                if (addressListFragment != null) {
+                    addressListFragment = null;
                 }
             }
             controller=null;

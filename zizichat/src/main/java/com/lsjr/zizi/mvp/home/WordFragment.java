@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.lsjr.zizi.R;
 import com.lsjr.zizi.base.MvpFragment;
 import com.lsjr.zizi.mvp.home.session.FriendCircleActivity;
+import com.lsjr.zizi.mvp.home.session.NearbyActivity;
 import com.lsjr.zizi.mvp.home.session.ScanActivity;
 import com.lsjr.zizi.view.OptionItemView;
 import com.ymz.baselibrary.mvp.BasePresenter;
@@ -27,6 +28,9 @@ public class WordFragment extends MvpFragment {
     ItemView idCircleFirind;
     @BindView(R.id.oivScan)
     ItemView oivScan;
+
+    @BindView(R.id.id_nearfriend)
+    ItemView nearfriend;
 
     @Override
     protected BasePresenter createPresenter() {
@@ -59,6 +63,9 @@ public class WordFragment extends MvpFragment {
         });
 
         oivScan.setItemOnclickListener(v -> openActivity(ScanActivity.class));
+
+
+        nearfriend.setItemOnclickListener(v -> openActivity(NearbyActivity.class));
 
     }
 

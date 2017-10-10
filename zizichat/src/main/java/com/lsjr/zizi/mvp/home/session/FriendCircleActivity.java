@@ -100,13 +100,11 @@ public class FriendCircleActivity extends SwipeBackActivity<CircleContract.Circl
 
     @Override
     protected void initTitle() {
-        //super.initTitle();
+        super.initTitle();
         navigationBarView.setTitleText("朋友圈");
         getToolBarView().setVisibility(View.GONE);
         navigationBarView.setVisibility(View.GONE);
-        ImmersionBar.with(FriendCircleActivity.this)
-                .statusBarDarkFont(false, 1.0f)
-                .init();
+        ImmersionBar.with(FriendCircleActivity.this).statusBarDarkFont(false, 1.0f).init();
         navigationBarView.setleftImageResource(UIUtils.getDrawable(R.drawable.ic_back));
         navigationBarView.getLeftimageView().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,11 +112,12 @@ public class FriendCircleActivity extends SwipeBackActivity<CircleContract.Circl
                 finish();
             }
         });
+        //super.initTitle();
     }
 
     @Override
     protected boolean isImmersionBarEnabled() {
-        return true;
+        return false;
     }
 
     private void setBarEnabled(boolean isEnabled){
@@ -342,7 +341,10 @@ public class FriendCircleActivity extends SwipeBackActivity<CircleContract.Circl
                     @Override
                     public void run() {
                         //mvpPresenter.loadData(TYPE_UPLOADREFRESH);
-                        mvpPresenter.requestMyBusiness(mvpPresenter.ON_LOAD);
+                        if (mvpPresenter!=null){
+                            mvpPresenter.requestMyBusiness(mvpPresenter.ON_LOAD);
+                        }
+
                     }
                 }, 2000);
 

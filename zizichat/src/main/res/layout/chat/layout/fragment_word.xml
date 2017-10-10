@@ -31,9 +31,33 @@
 
 
     <com.ymz.baselibrary.widget.ItemView
+        android:id="@+id/id_nearfriend"
+        android:layout_marginTop="@dimen/album_dp_10"
+        style="@style/OptionItem"
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        app:left_src="@drawable/ic_new_friend"
+        app:right_src="@mipmap/icon_more"
+        app:to_left_img_text="附近的人"
+        />
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <View
+            style="@style/Line"
+            android:layout_marginLeft="@dimen/option_item_margin_left"
+            android:layout_marginRight="@dimen/option_item_margin_right"
+            android:background="#FFEBEBEB"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.ymz.baselibrary.widget.ItemView
         android:id="@+id/oivScan"
         style="@style/OptionItem"
-        android:layout_marginTop="10dip"
         android:layout_width="match_parent"
         android:layout_height="55dip"
         app:left_src="@drawable/icon_scan"

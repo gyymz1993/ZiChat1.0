@@ -85,57 +85,12 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //noinspection GradleCompatible
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.google.zxing:core:3.2.1'
-    compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
-    compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
-    compile 'com.zhy:autolayout:1.4.5'
-    compile 'com.qiniu:qiniu-android-sdk:7.3.3'
-    compile 'com.jakewharton:butterknife:8.5.1'
-    //compile 'com.alibaba:fastjson:1.2.29'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-    compile 'com.lovedise:permissiongen:0.0.6'
-    compile 'com.facebook.fresco:fresco:0.12.0'
-    compile 'com.yanzhenjie:album:1.0.7'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.bm.photoview:library:1.4.1'
-    compile 'com.android.support:multidex:1.0.1'
-    compile 'com.malinskiy:superrecyclerview:1.1.4'
-    compile 'com.mikhaellopez:circularprogressbar:1.1.1'
-    compile 'com.squareup.okhttp3:okhttp:3.8.0'
-    compile('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
-        exclude group: 'glide-parent'
-    }
-    compile 'com.lqr.emoji:library:1.0.2'
-    compile 'me.drakeet.materialdialog:library:1.3.1'
-    compile 'com.kyleduo.switchbutton:library:1.4.4'
-    compile files('libs/joda-time-2.5.jar')
-    compile files('libs/BaiduLBS_Android.jar')
-    compile files('libs/TencentLocationSDK_v4.9.7.12_r247861_161205_1104.jar')
-    compile files('libs/TencentMapSDK_Raster_v_1.2.7_51ae0e7.jar')
-    compile files('libs/pinyin4j-2.5.0.jar')
-    compile files('libs/ormlite-android-4.48.jar')
-    compile files('libs/pushservice-4.5.5.77.jar')
-    compile files('libs/asmack.jar')
-    compile files('libs/org.xbill.dns_2.1.6.jar')
-    //compile project(':uilibrary')
-    //compile project(':netlibrary')
-    //compile project(':baselibrary')
-    //compile project(':refreshlibrary')
-    // compile project(':contactlibrary')
-    //compile project(':syslibrary')
-    // compile project(':audiolibrary')
-    // compile project(':adapterlibrary')
-    // compile project(':imagepickerlibrary')
-    //compile 'com.ymz.adapterlibrary:v1.0.0'
-    // compile 'com.ymz.imagepicker:v1.0.0'
-    //compile 'com.ymz.statusbar:v1.0.0'
-    // compile 'com.ymz.contact:v1.0.0'
-    //compile 'org.audio:audiolibrary:v1.0.0'
-    //compile project(':cameralibrary')
+
+    compile 'com.lcq:citypicker:v1.0.0'
+    compile 'com.ys:yping:v1.0.0'
+    compile 'com.ys:zizichat:v1.0.5'
+
     compile 'com.net:rtnetlibrary:v1.0.3'
     compile 'com.ui:xrefresh:v1.0.3'
     compile 'com.ui:utilsview:v1.1.4'
@@ -147,7 +102,5 @@ dependencies {
     compile 'com.ymz.imagepicker:imagepickerlibrary:v1.0.0'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'cjt.library.wheel:camera:1.1.2'
-    //compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    //compile project(':compresslibrary')
-    compile project(':citypickerlibrary')
+    //compile project(path: ':pinglibrary')
 }

@@ -1,6 +1,5 @@
 package com.lsjr.zizi.mvp.home.zichat.presenter;
 
-import android.app.ProgressDialog;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -8,12 +7,10 @@ import com.andview.myrvview.LQRRecyclerView;
 import com.lqr.adapter.LQRAdapterForRecyclerView;
 import com.lqr.adapter.LQRViewHolderForRecyclerView;
 import com.lsjr.bean.ObjectResult;
-import com.lsjr.bean.Result;
 import com.lsjr.callback.ChatObjectCallBack;
 import com.lsjr.utils.HttpUtils;
 import com.lsjr.zizi.AppConfig;
 import com.lsjr.zizi.R;
-import com.lsjr.zizi.chat.bean.BaseSortModel;
 import com.lsjr.zizi.chat.bean.MucRoom;
 import com.lsjr.zizi.chat.bean.MucRoomMember;
 import com.lsjr.zizi.chat.bean.ResultCode;
@@ -22,7 +19,6 @@ import com.lsjr.zizi.chat.dao.ChatMessageDao;
 import com.lsjr.zizi.chat.dao.FriendDao;
 import com.lsjr.zizi.chat.db.Friend;
 import com.lsjr.zizi.loader.AvatarHelper;
-import com.lsjr.zizi.mvp.circledemo.MyApplication;
 import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.mvp.home.zichat.GroupInfoActivity;
 import com.ymz.baselibrary.mvp.BasePresenter;
@@ -33,10 +29,6 @@ import com.ymz.baselibrary.utils.UIUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.xml.transform.ErrorListener;
-
-import static com.ymz.baselibrary.utils.UIUtils.getString;
 
 /**
  * 创建人：$ gyymz1993

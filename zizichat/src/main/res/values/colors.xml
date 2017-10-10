@@ -116,4 +116,8 @@
     <color name="button_bg">#0080FF</color>
 
 
+    <drawable name="charIndexColor">#33000000</drawable>
+    <color name="charIndexColor">#33000000</color>
+
+
 </resources>

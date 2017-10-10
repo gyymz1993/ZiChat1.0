@@ -71,6 +71,7 @@
         android:layout_marginRight="10dip" />
 
     <com.zhy.autolayout.AutoLinearLayout
+        android:visibility="gone"
         android:id="@+id/llNearFriend"
         android:layout_width="fill_parent"
         android:layout_height="55dip"

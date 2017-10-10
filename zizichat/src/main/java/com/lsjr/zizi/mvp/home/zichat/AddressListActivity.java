@@ -494,11 +494,20 @@ public class AddressListActivity extends SwipeBackActivity<AddressList.Presenter
 
     @Override
     protected void onDestroy() {
-        mPoiSearch.destroy();
+
         locationService.unregisterListener(mListener); //注销掉监听
         locationService.stop(); //停止定位服务
-        map.onDestroy();
-        mSearch.destroy();
+
+        if (mPoiSearch!=null){
+            mPoiSearch.destroy();
+        }
+        if (map!=null){
+            map.onDestroy();
+        }
+        if (mSearch!=null){
+            mSearch.destroy();
+        }
+
         super.onDestroy();
     }
 

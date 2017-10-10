@@ -367,6 +367,19 @@ public class HomeActivity extends MvpActivity implements AuthStateListener ,NetW
     };
 
 
+//    private BroadcastReceiver mUpdateReceiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            if (intent.getAction().equals(CardcastUiUpdateUtil.ACTION_UPDATE_UI)) {
+//                AddressListFragment contactsFragment= (AddressListFragment) FragmentController.getInstance().getFragment(1);
+//                if (contactsFragment != null) {
+//                   // contactsFragment.loadData();
+//                }
+//            }
+//        }
+//    };
+
+
     /* UserCheck */
     private static final int MSG_USER_CHECK = 0x1;
     private static final int RETRY_CHECK_DELAY_MAX = 30000;// 为成功的情况下，最长30s检测一次

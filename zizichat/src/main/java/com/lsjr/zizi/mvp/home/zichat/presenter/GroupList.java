@@ -93,6 +93,7 @@ public interface GroupList {
 
         private int mPageIndex=0;
         public void requestData() {
+            mvpView.showLoading();
             HashMap<String, String> params = new HashMap<>();
             params.put("userId", ConfigApplication.instance().mLoginUser.getUserId());
             params.put("pageIndex", String.valueOf(mPageIndex));

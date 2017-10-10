@@ -13,6 +13,7 @@ import com.lsjr.zizi.chat.bean.ConfigBean;
 import com.lsjr.zizi.chat.db.User;
 import com.lsjr.zizi.chat.helper.SQLiteHelper;
 import com.nostra13.universalimageloader.utils.L;
+import com.ymz.baselibrary.utils.L_;
 
 /**
  * 创建人：$ gyymz1993
@@ -92,6 +93,7 @@ public class ConfigApplication {
        // initConfig();
         // 初始化数据库
         SQLiteHelper.copyDatabaseFile(application);
+        initConfig();
     }
 
 
@@ -117,6 +119,7 @@ public class ConfigApplication {
 
             @Override
             protected void onSuccess(ObjectResult<ConfigBean> result) {
+                L_.e("config-----"+result);
                 ConfigBean configBean = null;
                 if (result == null || result.getResultCode() != Result.CODE_SUCCESS || result.getData() == null) {
                     configBean = new ConfigBean();// 读取网络配置失败，使用默认配置

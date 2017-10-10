@@ -22,6 +22,7 @@ import com.lsjr.zizi.mvp.circledemo.bean.CommentConfig;
 import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.mvp.home.session.FriendCircleActivity;
 import com.lsjr.zizi.mvp.home.session.cicle.CircleConstact;
+import com.nostra13.universalimageloader.utils.L;
 import com.ymz.baselibrary.mvp.BasePresenter;
 import com.ymz.baselibrary.utils.L_;
 import com.ymz.baselibrary.utils.T_;
@@ -284,6 +285,7 @@ public interface CircleContract {
             HttpUtils.getInstance().postServiceData(AppConfig.GET_ALL_CIRCLE, params, new ChatArrayCallBack<PublicMessage>(PublicMessage.class) {
                 @Override
                 protected void onXError(String exception) {
+                    L.e("------"+exception);
                     if (mvpView!=null){
                         mvpView.onfaile();
                     }

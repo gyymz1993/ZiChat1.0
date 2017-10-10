@@ -135,12 +135,12 @@ public class GroupActivity extends MvpActivity<GroupList.GroupListPresenter> imp
 
     @Override
     public void showError(int str) {
-
+        dismissProgressDialog();
     }
 
     @Override
     public void showLoading() {
-
+        showProgressDialogWithText("下载数据");
     }
 
     @Override
@@ -161,6 +161,7 @@ public class GroupActivity extends MvpActivity<GroupList.GroupListPresenter> imp
 
     @Override
     public void loadDataSucceed(List<MucRoom> mMuc) {
+        dismissProgressDialog();
         mMucRooms=mMuc;
         mAdapter.notifyDataSetChanged(mMucRooms);
     }

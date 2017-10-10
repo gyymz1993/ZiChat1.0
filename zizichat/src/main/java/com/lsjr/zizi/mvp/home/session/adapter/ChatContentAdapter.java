@@ -623,6 +623,7 @@ public class ChatContentAdapter extends LQRAdapterForRecyclerView<ChatMessage> {
                    // L_.e("显示图片大小-------------<<"+new File(message.getFilePath()).length()/1024+"K");
                     //ImageLoader.getInstance().showImage(message.getFilePath(),bivPic,R.mipmap.default_img,UIUtils.dip2px(80),UIUtils.dip2px(150));
                 }else {
+                    L_.e("显示图片类容"+message.getContent());
                     ImageLoader.getInstance().show(message.getContent(),bivPic);
                     //ImageLoader.getInstance().showImage(message.getContent(),bivPic,R.mipmap.default_img,UIUtils.dip2px(80),UIUtils.dip2px(150));
                 }
