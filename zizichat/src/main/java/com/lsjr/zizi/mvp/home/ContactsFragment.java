@@ -306,6 +306,9 @@ public class ContactsFragment extends MvpFragment {
         new Thread(() -> {
             long startTime = System.currentTimeMillis();
             friends = FriendDao.getInstance().getAllFriends(mLoginUserId);
+            if(friends==null||friends.size()==0){
+                return;
+            }
             contactList = CNPinyinFactory.createCNPinyinList(friends);
             Collections.sort(contactList);
             if (friends==null||friends.size()==0)return;

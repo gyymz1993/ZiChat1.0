@@ -153,7 +153,7 @@ public class LoginActivity extends MvpActivity implements View.OnClickListener{
                 L_.e("login   -------->"+result.getData().toString());
                 boolean success = LoginHelper.setLoginUser(BaseApplication.getApplication(), phoneNumber, digestPwd, result);// 设置登陆用户信息
                 if (success) {// 登陆成功
-                    showProgressSuccess("登陆成功");
+                    //showProgressSuccess("登陆成功");
                     ConfigApplication.instance().setmAccessToken(result.getData().getAccess_token());
                     //LoginHelper.broadcastLogin(UIUtils.getContext());
                     Bundle bundle=new Bundle();
