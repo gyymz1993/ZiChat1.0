@@ -39,10 +39,8 @@ repositories {
 dependencies {
     compile project(':library')
     compile 'org.ui:baselibrary:v1.1.1'
-
     compile 'com.facebook.fresco:fresco:0.12.0'
     compile 'com.yanzhenjie:album:1.0.7'
-
     //noinspection GradleCompatible,GradleCompatible
     compile 'com.android.support:support-v4:25.3.1'
     //noinspection GradleCompatible,GradleCompatible
@@ -67,7 +65,6 @@ dependencies {
     compile files('libs/httpclient-cache-4.2.5.jar')
     compile files('libs/httpcore-4.2.4.jar')
     compile files('libs/httpmime-4.2.5.jar')
-
-
     //compile 'org.net:netlibrary:v1.0.2'
+    compile project(':pinglibrary')
 }

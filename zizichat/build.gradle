@@ -86,11 +86,9 @@ dependencies {
     })
     //noinspection GradleCompatible
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-
     compile 'com.lcq:citypicker:v1.0.0'
     compile 'com.ys:yping:v1.0.0'
     compile 'com.ys:zizichat:v1.0.5'
-
     compile 'com.net:rtnetlibrary:v1.0.3'
     compile 'com.ui:xrefresh:v1.0.3'
     compile 'com.ui:utilsview:v1.1.4'
@@ -103,4 +101,5 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'cjt.library.wheel:camera:1.1.2'
     //compile project(path: ':pinglibrary')
+    compile project(':utilslibrary')
 }

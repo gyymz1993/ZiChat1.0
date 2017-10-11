@@ -3,48 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\TencentSearch1.1.3.jar"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\org.xbill.dns_2.1.6.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="195c1468964b5b9491a2d279469e8e52438e85c0">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\TencentSearch1.1.3_700b2927e3ec1e7fc1f2bb541479ba9fabf5a7ad\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\AsProject\ZiChat1.0\app\libs\ormlite-core-4.48.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\ormlite-core-4.48_76a8ae8ee096e69f0347e5e25bdf8728814953e8.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\citypickerlibrary\build\intermediates\bundles\default\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="35c8d8dfc587bb64dfbac9ea11b4542f23f1f953">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\4\classes_3f3ef8c5d2d36fd869973330e4a8b73279276379\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\universal-image-loader-1.9.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f667a2f4f27542fe11a6781f5f7ac572d27afcec">
-        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\universal-image-loader-1.9.0_8bc7d144dd5435cefe65cad19560dba5e568c016\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\asmack.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a712dd7110edeae17f26919275737ef4e97db5c4">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\asmack_74a513193972bd4c6c2e5b1f894d8d477d367e28\classes.dex" />
+        sha1="695cf090401e4d69b188e7ba50df7fd140d99d28">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\org.xbill.dns_2.1.6_a2c45751b06bf86813b76909cba6cf15346b2913\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -56,13 +20,13 @@
         <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\httpclient-cache-4.2.5_6998da8054c72c61ff279ca5d5b22e06f36fa11e\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\AsProject\ZiChat1.0\app\libs\httpclient-cache-4.2.5.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="313cfeb950089985994736aa08885711c56b7e1e">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\httpclient-cache-4.2.5_a76bdb23a39eb71ef52649009c5b1b7f51eb4437.jar" />
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_ed70dcb784ca54c3af405f503bfb016469e3cddf\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -84,39 +48,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\TencentLocationSDK_v4.9.7.12_r247861_161205_1104.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="94f448b2cf8726ea2a1f2226c899855c070a8ba5">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\TencentLocationSDK_v4.9.7.12_r247861_161205_1104_a1e38782679ee7d97f3b2dc1d817647090aab45d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\citypickerlibrary\build\intermediates\bundles\default\libs\AMap_Location_V3.2.0_20161205.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="fde658490a65a52b7bf678db9443d0256817d609">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\8\AMap_Location_V3.2.0_20161205_f1a4b62016066cad493d892720c7cc3c56d920c0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\org.xbill.dns_2.1.6.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c181799179cbd3aad85439268ec65ddb0b0c96f8">
         <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\org.xbill.dns_2.1.6_a8ec63892cd7e2335eaee8d85d1d132998e6b43d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\fluent-hc-4.2.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7eda2ae9f77415cf92651191e2229eae2caf0b61">
-        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\fluent-hc-4.2.5_54390f9f5495fe69fe08976553877b354681ab63\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -129,66 +66,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="D:\AsProject\ZiChat1.0\app\libs\BaiduLBS_Android.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="283d58e4bfb8a3a53d7bd781375c5235b3e44359">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\BaiduLBS_Android_a5cde2791402b757a3f0ae06db9d6799ef71eba9.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\pinyin4j-2.5.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ae353005f973da1cd8545b54354504c2503f6865">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\pinyin4j-2.5.0_47719d114769c061ec7a4adabcd790d4dc9708d7\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
         jar="D:\AsProject\ZiChat1.0\app\libs\android-async-http-1.4.5.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.5_6216aba10f91964d78d16eca7d1d6652be66667d.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\libs\nineoldandroids.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2013a8ecb330caa20405436640f34b9d426eeef1">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\nineoldandroids_dddad964264f5b9275849a61474663bd41ac881f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\joda-time-2.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c73038a3688525aad5cf33409df483178290cd64">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\joda-time-2.5_9ab25127744d245722eb4d87d677c94359444b27\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\httpcore-4.2.4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3b7f38df6de5dd8b500e602ae8c2dd5ee446f883">
-        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\httpcore-4.2.4_23f6d88575e1bc29fb8a62520a98dbb6c826f10a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\ormlite-core-4.48.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\ormlite-core-4.48_ae98c07dbb2296b55e676a5aa7085176fdf9586e\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -200,15 +83,6 @@
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\ormlite-android-4.48_3a7b4584dd127a5bae5195f175e1011ed873e5b7.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a4f158b4fca264f94b46bf7eca2263dae576db3a">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_a965c833c107497979b020f904774ce9bf85de9b\classes.dex" />
-    </item>
-    <item
         is-multidex="false"
         jar="C:\Users\admin\.android\build-cache\0942c665efd5637ab55c66bd4f7d4c5f378be2e0\output\jars\classes.jar"
         jumboMode="false"
@@ -216,33 +90,6 @@
         revision="25.0.2"
         sha1="726a2e8ca09053de8d6e3a172f6a27de9fd647e8">
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\classes_81514a9f637ce602bcf4cdc0a45ba4aa6d064614.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\libs\cyberplayer-sdk.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="412f0f2ebc711540ef966d931418e8320783146c">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\cyberplayer-sdk_aa2fc92b00991fc7469ee51da90eba197c74ba3e\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\AsProject\ZiChat1.0\app\libs\fluent-hc-4.2.5.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7eda2ae9f77415cf92651191e2229eae2caf0b61">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\fluent-hc-4.2.5_20b791b4f748a0280be8bf7cd810930168e0f7a6.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\Rong_IMLib.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="020fb7ece0df1f4df0f359114bea119dd0aa71d5">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\Rong_IMLib_04827ed51e8c6ec1feecbfc5218df3582fa937e1\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -281,15 +128,6 @@
         <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\ormlite-core-4.48_7a62650561fbf09485b5437ffbdedaa2e3385759\classes.dex" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\libs\httpmime-4.2.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6efc2f9df23c2ac4d3b701a11cab9f9fa6a641d4">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpmime-4.2.5_35964d9cbdc8eafe2cfadafc2615d17b8d875f23\classes.dex" />
-    </item>
-    <item
         is-multidex="false"
         jar="D:\AsProject\ZiChat1.0\app\libs\httpcore-4.2.4.jar"
         jumboMode="false"
@@ -299,58 +137,13 @@
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\httpcore-4.2.4_e4c422036a037a27217f34db1bbeefea77a1878c.jar" />
     </item>
     <item
-        is-multidex="false"
-        jar="D:\AsProject\ZiChat1.0\app\libs\pinyin4j-2.5.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ae353005f973da1cd8545b54354504c2503f6865">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\pinyin4j-2.5.0_3e255df136f1097b48cfab2f91750d77bbfb7ecc.jar" />
-    </item>
-    <item
         is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\BaiduLBS_Android.jar"
+        jar="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="a5cdfa8887b52fc79d86c9c81acdb6e9e2a53417">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\BaiduLBS_Android_12bce85a22a283520ae42fdf45760ccbc9efd39a\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\AsProject\ZiChat1.0\app\libs\asmack.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a712dd7110edeae17f26919275737ef4e97db5c4">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\asmack_58171213ccd88cae371baec73e98f4a73c352f04.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\org.xbill.dns_2.1.6.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c181799179cbd3aad85439268ec65ddb0b0c96f8">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\org.xbill.dns_2.1.6_a4a1986c47bc0d7a32990e9c11665a6aee7c47f8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\libs\httpclient-4.2.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3bfeb9062b12d5b340445336790dbc14c59c2d79">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpclient-4.2.5_b9c51dd9028060647b0d486d9835f7f75ef18092\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e8671086aa05b4100ba07022038925ebd45fc1e1\classes.dex" />
+        sha1="d36cc7af697c296f0a6de6e98b3e4109cb39e305">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b8ba99d94354ff9ea6ba44b3ec437b71e662bb2d\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -369,15 +162,6 @@
         revision="25.0.2"
         sha1="283d58e4bfb8a3a53d7bd781375c5235b3e44359">
         <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\BaiduLBS_Android_ba08ce0fb2c866f6c7750fb5cc6df126b8cf9d67\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\libs\volley.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f1a4c4ec9af6a75c246f48becbc661dbe8ae704b">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\volley_31b3284e7eff55f31b6c8afb70185dd150c8b096\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -408,15 +192,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\TencentMapSDK_Raster_v_1.2.7_51ae0e7.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="cd015da6004ed72abf1936d7a33b6bccc00ef866">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\TencentMapSDK_Raster_v_1.2.7_51ae0e7_c9cd36c1e47a710336b340bc8270308d830732ea\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\fastjson-1.1.41.jar"
         jumboMode="true"
         optimize="true"
@@ -435,21 +210,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\libs\httpclient-cache-4.2.5.jar"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\joda-time-2.5.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="313cfeb950089985994736aa08885711c56b7e1e">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpclient-cache-4.2.5_a76bdb23a39eb71ef52649009c5b1b7f51eb4437\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\volley.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f1a4c4ec9af6a75c246f48becbc661dbe8ae704b">
-        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\volley_c3dd2d0ab1bd3f659228627468168c8808a8fa1f\classes.dex" />
+        sha1="295996b3f15ce466079afb876a386619503bc3c3">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\joda-time-2.5_b9c86c850d5973d2138df6dcc00ec98ae2e1c5cb\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -462,30 +228,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\ormlite-android-4.48.jar"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\pushservice-4.5.5.77.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="afa06f539a4026c10b247386312aa67404b80a16">
-        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\ormlite-android-4.48_ceb05838381f3cfb4da206e88289e03e46aff4df\classes.dex" />
+        sha1="d4c32dc9c7ca201eee304aac269f975557098000">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\pushservice-4.5.5.77_eb438f8493a80c6f0e3d3e0c7d29767d8b786ff7\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\admin\.android\build-cache\1c0a9fedc12b7b01bd51c6d1723de986f423d7ff\output\jars\classes.jar"
+        jar="C:\Users\admin\.android\build-cache\741e0c2ee6c48e686097b61bf2843818b187aaf4\output\jars\libs\AMap_Location_V3.2.0_20161205.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="dc52b5a13bd06830aac1611c32418daa295b7b67">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7bb0a7f29dfddc4691f872eb5165a02b78738e54\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\AsProject\ZiChat1.0\app\libs\nineoldandroids.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2013a8ecb330caa20405436640f34b9d426eeef1">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\nineoldandroids_dddad964264f5b9275849a61474663bd41ac881f.jar" />
+        sha1="fde658490a65a52b7bf678db9443d0256817d609">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\AMap_Location_V3.2.0_20161205_d33d2b4b45042bcb215ddcec91ced0bd8e8edd7b\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -498,48 +255,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\admin\.android\build-cache\1b7a4e98772745db1fccfb5f56a2a981426f6c27\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ec9ec7eb6df92ae8ffe622562e0e4fbb97386a4d">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\classes_ea3ac78f0d20c2cbb68ccc733926b5dbcc02835c.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="297a0e3ce143ff494a10949c1131238efbf4141d">
-        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8399559970803e104e3a5e6e23dd7de2e0254f5a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\pinyin4j-2.5.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ae353005f973da1cd8545b54354504c2503f6865">
-        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\pinyin4j-2.5.0_2a9d93fc71ad47c1bf55b3614df96245dd5683b4\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
         jar="D:\AsProject\ZiChat1.0\app\libs\cyberplayer-sdk.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="412f0f2ebc711540ef966d931418e8320783146c">
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\cyberplayer-sdk_aa2fc92b00991fc7469ee51da90eba197c74ba3e.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\libs\android-async-http-1.4.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\android-async-http-1.4.5_6216aba10f91964d78d16eca7d1d6652be66667d\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -549,6 +270,15 @@
         revision="25.0.2"
         sha1="256089651e34273f719c1b4cd5683b9a309b5ba8">
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\classes_307f7225752824ea448a16f03ce0c2c9569740ee.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\TencentLocationSDK_v4.9.7.12_r247861_161205_1104.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5e3fd23d37a140068739c4283f061869aaf93b6b">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\TencentLocationSDK_v4.9.7.12_r247861_161205_1104_572e630d8bdd1ee3ab952a1347e92ea3432329c4\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -578,51 +308,6 @@
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\classes_032b9b63ec773df7b73fa87ef88bf164d64523b2.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\libs\ormlite-android-4.48.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="afa06f539a4026c10b247386312aa67404b80a16">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\ormlite-android-4.48_3a7b4584dd127a5bae5195f175e1011ed873e5b7\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\AsProject\ZiChat1.0\app\libs\org.xbill.dns_2.1.6.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c181799179cbd3aad85439268ec65ddb0b0c96f8">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\org.xbill.dns_2.1.6_06842e6f4e08e96737cca45c9f3a792a06573553.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\pushservice-4.5.5.77.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="84fe0a98d03ddd5fc159e00fe5466af75ae007f1">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\pushservice-4.5.5.77_ae2f683bd8083ea577d1ec1a002a74baffd28248\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.0\app\libs\universal-image-loader-1.9.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f667a2f4f27542fe11a6781f5f7ac572d27afcec">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\universal-image-loader-1.9.0_5da63eb6f76686c7fa1b197fd3ca469a3900c9a4\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\AsProject\ZiChat1.0\app\libs\volley.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f1a4c4ec9af6a75c246f48becbc661dbe8ae704b">
-        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\volley_31b3284e7eff55f31b6c8afb70185dd150c8b096.jar" />
-    </item>
-    <item
         is-multidex="false"
         jar="D:\AsProject\ZiChat1.0\app\libs\httpmime-4.2.5.jar"
         jumboMode="false"
@@ -633,21 +318,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\nineoldandroids.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2013a8ecb330caa20405436640f34b9d426eeef1">
-        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\nineoldandroids_2972726357ddc44973296ca81edefb7b6b2fc938\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="D:\AsProject\ZiChat1.0\app\libs\httpcore-4.2.4.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="3b7f38df6de5dd8b500e602ae8c2dd5ee446f883">
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpcore-4.2.4_e4c422036a037a27217f34db1bbeefea77a1878c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\asmack.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="997d3faf0fd83d4b5bed748d05cdd18001a8c1f4">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\asmack_0b1c81df5b54e48d4f40ac5eecf23db82202aea9\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -669,12 +354,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\android-async-http-1.4.5.jar"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
-        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\android-async-http-1.4.5_65d677e2b74f80d2000ca629d97ece22d9f7ec4a\classes.dex" />
+        sha1="f607c958ab621f2f427602b7de9f1c355b5052e5">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\classes_52168b210e642e26fc9e5529f928a3b291f84540\classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -686,13 +371,364 @@
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\classes_7e9726b223e5082a1dba61bbbef3fbba11c2494d.jar" />
     </item>
     <item
+        is-multidex="false"
+        jar="D:\AsProject\ZiChat1.0\app\libs\ormlite-core-4.48.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\ormlite-core-4.48_76a8ae8ee096e69f0347e5e25bdf8728814953e8.jar" />
+    </item>
+    <item
         is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\libs\ormlite-android-4.48.jar"
+        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\universal-image-loader-1.9.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f667a2f4f27542fe11a6781f5f7ac572d27afcec">
+        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\universal-image-loader-1.9.0_8bc7d144dd5435cefe65cad19560dba5e568c016\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\AsProject\ZiChat1.0\app\libs\httpclient-cache-4.2.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="313cfeb950089985994736aa08885711c56b7e1e">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\httpclient-cache-4.2.5_a76bdb23a39eb71ef52649009c5b1b7f51eb4437.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\e7420d5466bcd369368c02fcf28e9429d1785726\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="076d3ebd8dfaed022ab6564004b713f7782afc2a">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\classes_784928c1ba100a3e093072fe3b67b1d9306c06e0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\741e0c2ee6c48e686097b61bf2843818b187aaf4\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea3bf83d1b284eb1effa71a7d4e48ac416c1bf71">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2fc787698dbdf1b5031c22c53acf3c52d10484e5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\fluent-hc-4.2.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7eda2ae9f77415cf92651191e2229eae2caf0b61">
+        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\fluent-hc-4.2.5_54390f9f5495fe69fe08976553877b354681ab63\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\AsProject\ZiChat1.0\app\libs\BaiduLBS_Android.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="283d58e4bfb8a3a53d7bd781375c5235b3e44359">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\BaiduLBS_Android_a5cde2791402b757a3f0ae06db9d6799ef71eba9.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\libs\nineoldandroids.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2013a8ecb330caa20405436640f34b9d426eeef1">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\nineoldandroids_dddad964264f5b9275849a61474663bd41ac881f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\httpcore-4.2.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3b7f38df6de5dd8b500e602ae8c2dd5ee446f883">
+        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\httpcore-4.2.4_23f6d88575e1bc29fb8a62520a98dbb6c826f10a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a4f158b4fca264f94b46bf7eca2263dae576db3a">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_a965c833c107497979b020f904774ce9bf85de9b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\libs\cyberplayer-sdk.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="412f0f2ebc711540ef966d931418e8320783146c">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\cyberplayer-sdk_aa2fc92b00991fc7469ee51da90eba197c74ba3e\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\AsProject\ZiChat1.0\app\libs\fluent-hc-4.2.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7eda2ae9f77415cf92651191e2229eae2caf0b61">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\fluent-hc-4.2.5_20b791b4f748a0280be8bf7cd810930168e0f7a6.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\Rong_IMLib.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b7f0293b75ab626a90bf172a9b630e654794f48a">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\Rong_IMLib_267e7e69955a23f0109ace7269f5a634c281f77a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\libs\httpmime-4.2.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6efc2f9df23c2ac4d3b701a11cab9f9fa6a641d4">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpmime-4.2.5_35964d9cbdc8eafe2cfadafc2615d17b8d875f23\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\ormlite-android-4.48.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5a5cc32a5e4335d1dc012e6f3a3c9cf86eac0e3e">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\ormlite-android-4.48_eb752aa1e1734b9f0faca6ece9e8ac29b3361f3b\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\AsProject\ZiChat1.0\app\libs\pinyin4j-2.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ae353005f973da1cd8545b54354504c2503f6865">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\pinyin4j-2.5.0_3e255df136f1097b48cfab2f91750d77bbfb7ecc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\AsProject\ZiChat1.0\app\libs\asmack.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a712dd7110edeae17f26919275737ef4e97db5c4">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\asmack_58171213ccd88cae371baec73e98f4a73c352f04.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\ormlite-core-4.48.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d76be9684d2bb4e6a40ed6047dae256dfe4c77c1">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\ormlite-core-4.48_3718c31437c2892e46a5d514ee508f4aeb52b54f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\libs\httpclient-4.2.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3bfeb9062b12d5b340445336790dbc14c59c2d79">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpclient-4.2.5_b9c51dd9028060647b0d486d9835f7f75ef18092\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e8671086aa05b4100ba07022038925ebd45fc1e1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\libs\volley.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f1a4c4ec9af6a75c246f48becbc661dbe8ae704b">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\volley_31b3284e7eff55f31b6c8afb70185dd150c8b096\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\libs\httpclient-cache-4.2.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="313cfeb950089985994736aa08885711c56b7e1e">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpclient-cache-4.2.5_a76bdb23a39eb71ef52649009c5b1b7f51eb4437\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\volley.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f1a4c4ec9af6a75c246f48becbc661dbe8ae704b">
+        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\volley_c3dd2d0ab1bd3f659228627468168c8808a8fa1f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\ormlite-android-4.48.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="afa06f539a4026c10b247386312aa67404b80a16">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\2\ormlite-android-4.48_0525896c1d10c6f8271e6d188330cca10e9a8f65\classes.dex" />
+        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\ormlite-android-4.48_ceb05838381f3cfb4da206e88289e03e46aff4df\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\1c0a9fedc12b7b01bd51c6d1723de986f423d7ff\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dc52b5a13bd06830aac1611c32418daa295b7b67">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7bb0a7f29dfddc4691f872eb5165a02b78738e54\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\AsProject\ZiChat1.0\app\libs\nineoldandroids.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2013a8ecb330caa20405436640f34b9d426eeef1">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\nineoldandroids_dddad964264f5b9275849a61474663bd41ac881f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\admin\.android\build-cache\1b7a4e98772745db1fccfb5f56a2a981426f6c27\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ec9ec7eb6df92ae8ffe622562e0e4fbb97386a4d">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\classes_ea3ac78f0d20c2cbb68ccc733926b5dbcc02835c.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="297a0e3ce143ff494a10949c1131238efbf4141d">
+        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_8399559970803e104e3a5e6e23dd7de2e0254f5a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\pinyin4j-2.5.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ae353005f973da1cd8545b54354504c2503f6865">
+        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\pinyin4j-2.5.0_2a9d93fc71ad47c1bf55b3614df96245dd5683b4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\libs\android-async-http-1.4.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\android-async-http-1.4.5_6216aba10f91964d78d16eca7d1d6652be66667d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\TencentMapSDK_Raster_v_1.2.7_51ae0e7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cf015a6120dbed21a076865589c14f1229c1e520">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\TencentMapSDK_Raster_v_1.2.7_51ae0e7_b88a90b128b84215007dec0f0a5f22451fb368fe\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\libs\ormlite-android-4.48.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="afa06f539a4026c10b247386312aa67404b80a16">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\ormlite-android-4.48_3a7b4584dd127a5bae5195f175e1011ed873e5b7\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\AsProject\ZiChat1.0\app\libs\org.xbill.dns_2.1.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c181799179cbd3aad85439268ec65ddb0b0c96f8">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\org.xbill.dns_2.1.6_06842e6f4e08e96737cca45c9f3a792a06573553.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\ZiChat1.0\app\libs\universal-image-loader-1.9.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f667a2f4f27542fe11a6781f5f7ac572d27afcec">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\universal-image-loader-1.9.0_5da63eb6f76686c7fa1b197fd3ca469a3900c9a4\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\AsProject\ZiChat1.0\app\libs\volley.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f1a4c4ec9af6a75c246f48becbc661dbe8ae704b">
+        <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\volley_31b3284e7eff55f31b6c8afb70185dd150c8b096.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\nineoldandroids.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2013a8ecb330caa20405436640f34b9d426eeef1">
+        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\nineoldandroids_2972726357ddc44973296ca81edefb7b6b2fc938\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\BaiduLBS_Android.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dd8511dba59cfdeecfee6046f030affd8f1d29f4">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\BaiduLBS_Android_db12ea82c676b8eb0bbb6e2bab481724a168b74c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\pinyin4j-2.5.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fef719fbca78dba4ee7f0896fb38e446d19ee29a">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\pinyin4j-2.5.0_e5571123d7738ab8cd0f28be69c57fdb92841412\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\libs\android-async-http-1.4.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\android-async-http-1.4.5_65d677e2b74f80d2000ca629d97ece22d9f7ec4a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\d8fd1e8e69c37d9caa23c9ad5f1060e7dad779d2\output\jars\libs\TencentSearch1.1.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="25fce3a58a3efc15892838f1d31c5b55d719aa2d">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\TencentSearch1.1.3_0af435b851a02a97191532bc04762dd9d76edafc\classes.dex" />
     </item>
     <item
         is-multidex="true"
