@@ -1,0 +1,79 @@
+Microsoft Windows [版本 6.1.7601]
+版权所有 (c) 2009 Microsoft Corporation。保留所有权利。
+
+C:\Users\admin>cd D:\AsProject\ZiChat1.1\zizichat\ziziApp
+目录名称无效。
+
+C:\Users\admin>cd D:\AsProject\ZiChat1.1\zizichat
+
+C:\Users\admin>D:\AsProject\ZiChat1.1\zizichat
+'D:\AsProject\ZiChat1.1\zizichat' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+C:\Users\admin>cd D:\AsProject\ZiChat1.1\zizichat
+
+C:\Users\admin>cd ..
+
+C:\Users>cd d
+系统找不到指定的路径。
+
+C:\Users>cd d:
+D:\AsProject\ZiChat1.1\zizichat
+
+C:\Users>cd d:
+D:\AsProject\ZiChat1.1\zizichat
+
+C:\Users>D:\AsProject\ZiChat1.1\zizichat
+'D:\AsProject\ZiChat1.1\zizichat' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+C:\Users>cd D:\AsProject\ZiChat1.1\zizichat
+
+C:\Users>cd ..
+
+C:\>d:
+
+D:\AsProject\ZiChat1.1\zizichat>keytool -list -v -keystore ziziApp
+输入密钥库口令:
+
+密钥库类型: JKS
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: 孜孜网络
+创建日期: 2017-2-22
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=zizi, OU=zizi, O=zizi, L=武汉, ST=武汉, C=CN
+发布者: CN=zizi, OU=zizi, O=zizi, L=武汉, ST=武汉, C=CN
+序列号: 69bfb4e2
+有效期开始日期: Wed Feb 22 16:02:48 CST 2017, 截止日期: Sun Jan 05 16:02:48 CST
+2217
+证书指纹:
+         MD5: 6F:49:B6:EF:C1:86:80:9B:6B:EF:C2:E3:0E:5E:B7:55
+         SHA1: 3C:09:E2:B2:63:5B:23:68:09:35:0D:55:B8:D3:76:7A:8E:B7:91:8A
+         SHA256: F4:C1:93:75:94:63:98:31:C7:D7:F3:78:2A:ED:12:FC:D7:40:56:EC:71:
+E4:4D:BB:B4:93:1B:B6:99:13:47:B2
+         签名算法名称: SHA256withRSA
+         版本: 3
+
+扩展:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 6B 23 0C A3 60 52 C3 87   24 2F 6C 6F A5 58 A7 27  k#..`R..$/lo.X.'
+0010: 49 B7 59 D5                                        I.Y.
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+
+
+D:\AsProject\ZiChat1.1\zizichat>
