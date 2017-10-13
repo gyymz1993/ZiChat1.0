@@ -112,12 +112,11 @@ public class FriendCircleActivity extends SwipeBackActivity<CircleContract.Circl
                 finish();
             }
         });
-        //super.initTitle();
     }
 
     @Override
     protected boolean isImmersionBarEnabled() {
-        return false;
+        return true;
     }
 
     private void setBarEnabled(boolean isEnabled){
@@ -151,6 +150,7 @@ public class FriendCircleActivity extends SwipeBackActivity<CircleContract.Circl
             public void run() {
                 recyclerView.setRefreshing(true);//执行下拉刷新的动画
                 mvpPresenter.requestMyBusiness(mvpPresenter.ON_REFRESH);
+                mvpPresenter.requestUserSpace(ConfigApplication.instance().getLoginUserId());
             }
         });
 
@@ -206,41 +206,41 @@ public class FriendCircleActivity extends SwipeBackActivity<CircleContract.Circl
     protected void initData() {
        // layoutManager = new LinearLayoutManager(this);
 
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false) {
-
-            @Override
-            public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
-                View viewByPosition = layoutManager.findViewByPosition(0);
-                int scrolled = super.scrollVerticallyBy(dy, recycler, state);
-                //View viewForPosition = recycler.getViewForPosition(0);
-                int itme_scrolled;
-                int titleHeight;
-                if (viewByPosition!=null){
-                    //L_.e("viewForPosition.getMeasuredHeight()"+viewByPosition.getMeasuredHeight());
-                    int firstItemPostion=layoutManager.findFirstVisibleItemPosition();
-                    int itemHeight=viewByPosition.getHeight();
-                    int firstItmeBontton=layoutManager.getDecoratedBottom(viewByPosition);
-                    itme_scrolled = UIUtils.px2dip((firstItemPostion + 1) * itemHeight - firstItmeBontton);
-                    titleHeight = UIUtils.px2dip(viewByPosition.getMeasuredHeight());
-                    if (titleHeight-itme_scrolled<15){
-                        ImmersionBar.with(FriendCircleActivity.this)
-                                .statusBarDarkFont(true, 0.0f)
-                                .init();
-                        navigationBarView.setVisibility(View.VISIBLE);
-                        navigationBarView.setTitleText("朋友圈");
-                        //在BaseActivity里初始化
-                    }else if(titleHeight-itme_scrolled>200){
-                        navigationBarView.setVisibility(View.GONE);
-                        ImmersionBar.with(FriendCircleActivity.this)
-                                .statusBarDarkFont(false, 1.0f)
-                                .init();
-                    }
-                }
-
-                return scrolled;
-            }
-        };
-
+//        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false) {
+//
+//            @Override
+//            public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
+//                View viewByPosition = layoutManager.findViewByPosition(0);
+//                int scrolled = super.scrollVerticallyBy(dy, recycler, state);
+//                //View viewForPosition = recycler.getViewForPosition(0);
+//                int itme_scrolled;
+//                int titleHeight;
+//                if (viewByPosition!=null){
+//                    //L_.e("viewForPosition.getMeasuredHeight()"+viewByPosition.getMeasuredHeight());
+//                    int firstItemPostion=layoutManager.findFirstVisibleItemPosition();
+//                    int itemHeight=viewByPosition.getHeight();
+//                    int firstItmeBontton=layoutManager.getDecoratedBottom(viewByPosition);
+//                    itme_scrolled = UIUtils.px2dip((firstItemPostion + 1) * itemHeight - firstItmeBontton);
+//                    titleHeight = UIUtils.px2dip(viewByPosition.getMeasuredHeight());
+//                    if (titleHeight-itme_scrolled<15){
+//                        ImmersionBar.with(FriendCircleActivity.this)
+//                                .statusBarDarkFont(true, 0.0f)
+//                                .init();
+//                        navigationBarView.setVisibility(View.VISIBLE);
+//                        navigationBarView.setTitleText("朋友圈");
+//                        //在BaseActivity里初始化
+//                    }else if(titleHeight-itme_scrolled>200){
+//                        navigationBarView.setVisibility(View.GONE);
+//                        ImmersionBar.with(FriendCircleActivity.this)
+//                                .statusBarDarkFont(false, 1.0f)
+//                                .init();
+//                    }
+//                }
+//
+//                return scrolled;
+//            }
+//        };
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new DivItemDecoration(2, true));
         recyclerView.getMoreProgressView().getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -291,8 +291,8 @@ public class FriendCircleActivity extends SwipeBackActivity<CircleContract.Circl
                 return;
             }
             //清空评论文本
-            editText.setText("");
             mvpPresenter.addCommentUser(content,CircleConstact.getCircleConstact().getCurrentPublicMessage());
+            editText.setText("");
         });
 
     }

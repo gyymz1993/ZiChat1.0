@@ -338,10 +338,13 @@ public class CoreService extends Service {
 			L_.e("mReceiptManager==null");
 		}
 
+
 		if (mXMucChatManager == null || !isAuthenticated() || mReceiptManager == null) {
+			L_.e("mLoginUserId=="+mLoginUserId+"-----------toUserId "+toUserId);
 			ListenerManager.getInstance().notifyMessageSendStateChange(mLoginUserId, toUserId, chatMessage.get_id(),
 					ChatMessageListener.MESSAGE_SEND_FAILED);
 		} else {
+			L_.e("mLoginUserId=="+mLoginUserId+"-----------toUserId "+toUserId);
 			mReceiptManager.addWillSendMessage(toUserId, chatMessage, ReceiptManager.SendType.NORMAL);
 			mXMucChatManager.sendMessage(toUserId, chatMessage);
 		}

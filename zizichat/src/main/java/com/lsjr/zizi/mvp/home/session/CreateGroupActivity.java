@@ -490,7 +490,8 @@ public class CreateGroupActivity extends MvpActivity {
         mucRoomSimple.setUserId(mLoginUserId);
         mucRoomSimple.setTimeSend(TimeUtils.sk_time_current_time());
         String reason = JSON.toJSONString(mucRoomSimple);
-        Log.d("roamer", "reason:" + reason);
+        L_.e("createRoomSuccess-------------"+reason);
+        L_.e("createRoomSuccess-------------"+mSelectPositions.size());
         // 邀请好友
         String[] noticeFriendList = new String[mSelectPositions.size()];
         for (int i = 0; i < mSelectPositions.size(); i++) {
@@ -498,9 +499,12 @@ public class CreateGroupActivity extends MvpActivity {
                 continue;
             }
             String firendUserId = mSelectPositions.get(i);
+            L_.e("createRoomSuccess-------------"+firendUserId);
             noticeFriendList[i] = firendUserId;
             mXmppService.invite(roomJid, firendUserId, reason);
         }
+
+        L_.e("createRoomSuccess-------------"+noticeFriendList.length);
         Intent intent = new Intent(this, ChatActivity.class);
         intent.putExtra(Constants.EXTRA_USER_ID, roomJid);
         intent.putExtra(Constants.EXTRA_NICK_NAME, roomName);

@@ -74,7 +74,7 @@ public class AppConfig {
 	/* 附近 */
 	public static final String NEARBY_USER= CONFIG_IP + "nearby/user";// 获取附近的用户;// 获取附近的用户
 	/* 分页的Size */
-	public static final int PAGE_SIZE = 100;
+	public static final int PAGE_SIZE = 50;
 
 	/* 进入SingleImagePreviewActivity需要带上的参数 */
 	public static final String EXTRA_IMAGE_URI = "image_uri";

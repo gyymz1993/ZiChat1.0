@@ -179,7 +179,7 @@ public class ContactsFragment extends MvpFragment {
 
     class MyIndexStickyViewAdapter extends IndexStickyViewAdapter<Friend> {
 
-        public MyIndexStickyViewAdapter(List<Friend> list) {
+        MyIndexStickyViewAdapter(List<Friend> list) {
 
             super(list);
         }
@@ -306,12 +306,12 @@ public class ContactsFragment extends MvpFragment {
         new Thread(() -> {
             long startTime = System.currentTimeMillis();
             friends = FriendDao.getInstance().getAllFriends(mLoginUserId);
+            L_.e(friends.size()+"开始加载朋友条数");
             if(friends==null||friends.size()==0){
                 return;
             }
             contactList = CNPinyinFactory.createCNPinyinList(friends);
             Collections.sort(contactList);
-            if (friends==null||friends.size()==0)return;
             L_.e("朋友条数-------->"+friends.size());
             long delayTime = 200 - (startTime - System.currentTimeMillis());// 保证至少200ms的刷新过程
             if (delayTime < 0) {

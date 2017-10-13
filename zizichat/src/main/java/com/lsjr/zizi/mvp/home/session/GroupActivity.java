@@ -27,6 +27,7 @@ import com.lsjr.zizi.mvp.home.zichat.CreatNewGroupActivity;
 import com.lsjr.zizi.mvp.home.zichat.presenter.GroupList;
 import com.lsjr.zizi.util.TimeUtils;
 import com.lsjr.zizi.view.CircleImageView;
+import com.lsjr.zizi.view.groupview.DingViewGroup;
 import com.ymz.baselibrary.utils.L_;
 import com.ymz.baselibrary.utils.UIUtils;
 
@@ -69,7 +70,13 @@ public class GroupActivity extends MvpActivity<GroupList.GroupListPresenter> imp
         EventBus.getDefault().register(this);
        registerReceiver(mUpdateReceiver, MucgroupUpdateUtil.getUpdateActionFilter());
        initRvView();
-       mvpPresenter.requestData();
+       //mvpPresenter.requestData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mvpPresenter.requestData();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -175,6 +182,9 @@ public class GroupActivity extends MvpActivity<GroupList.GroupListPresenter> imp
         @Override
         protected void convert(BaseRecyclerHolder holder, MucRoom room, int position) {
             CircleImageView avatar_img = holder.getView(R.id.avatar_img);
+
+              /*群聊头像*/
+            DingViewGroup dingViewGroup = holder.getView(R.id.iv_item_avatar);
             TextView nick_name_tv = holder.getView(R.id.nick_name_tv);
             TextView content_tv = holder.getView(R.id.content_tv);
             TextView time_tv = holder.getView(R.id.time_tv);
@@ -182,7 +192,11 @@ public class GroupActivity extends MvpActivity<GroupList.GroupListPresenter> imp
             Friend friend=new Friend();
             friend.setUserId(room.getUserId());
             friend.setNickName(room.getNickName());
-            AvatarHelper.getInstance().displayAvatar(friend, avatar_img, true);
+
+            L_.e(room.toString());
+            mvpPresenter.loadMembers(room.getId(),dingViewGroup);
+
+            //AvatarHelper.getInstance().displayAvatar(friend, avatar_img, true);
             nick_name_tv.setText(room.getName());
             time_tv.setText(TimeUtils.getFriendlyTimeDesc(UIUtils.getContext(), (int) room.getCreateTime()));
             content_tv.setText(room.getDesc());

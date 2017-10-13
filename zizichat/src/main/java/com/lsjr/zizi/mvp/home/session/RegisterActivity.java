@@ -206,6 +206,7 @@ public class RegisterActivity extends MvpActivity {
                         Bundle bundle=new Bundle();
                         bundle.putBoolean("isLoginJump",true);
                         openActivity(HomeActivity.class);
+                        finish();
                         //uploadAvatar();
                     } else {// 失败
                         if (TextUtils.isEmpty(result.getResultMsg())) {

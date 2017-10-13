@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -29,6 +30,7 @@ import com.lsjr.zizi.chat.xmpp.CoreService;
 import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.mvp.home.Constants;
 import com.lsjr.zizi.mvp.home.session.ChatActivity;
+import com.lsjr.zizi.mvp.home.session.presenter.MessageUtils;
 import com.lsjr.zizi.mvp.home.zichat.presenter.CreateNewGroup;
 import com.lsjr.zizi.mvp.listener.MyEditTextChangeListener;
 import com.lsjr.zizi.util.TimeUtils;
@@ -72,6 +74,7 @@ public class CreatNewGroupActivity extends MvpActivity<CreateNewGroup.CreateGrou
     private String mRoomJid;
     private String mRoomDes;
     private String mRoomName;
+    private String roomUserId;
 
     @Override
     protected void initData() {
@@ -93,12 +96,16 @@ public class CreatNewGroupActivity extends MvpActivity<CreateNewGroup.CreateGrou
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mXmppService = ((CoreService.CoreServiceBinder) service).getService();
+            messageUtils.setmService(mXmppService);
+          //  Friend friend = FriendDao.getInstance().getFriend(mLoginUserId, mUseId);
+           // messageUtils.getmService().joinMucChat(mUseId, mLoginNickName, friend.getTimeSend());
         }
     };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        messageUtils=new MessageUtils();
         if (getIntent() != null) {
             //isAdd = getIntent().getBooleanExtra(Constants.ISADD_USER, false);
             mRoomId = getIntent().getStringExtra("roomId");
@@ -106,6 +113,7 @@ public class CreatNewGroupActivity extends MvpActivity<CreateNewGroup.CreateGrou
             mRoomDes = getIntent().getStringExtra("roomDes");
             mRoomName = getIntent().getStringExtra("roomName");
             String ids = getIntent().getStringExtra("exist_ids");
+            roomUserId= getIntent().getStringExtra("roomUserId");
             mSelectedTeamMemberAccounts = JSON.parseArray(ids, String.class);
         }
         if (mSelectedTeamMemberAccounts == null) {
@@ -128,6 +136,12 @@ public class CreatNewGroupActivity extends MvpActivity<CreateNewGroup.CreateGrou
         });
     }
 
+
+    /*群主ID*/
+    @Override
+    public String getRoomUserId() {
+        return roomUserId;
+    }
 
     @Override
     protected void onDestroy() {
@@ -190,28 +204,51 @@ public class CreatNewGroupActivity extends MvpActivity<CreateNewGroup.CreateGrou
         mucRoomSimple.setUserId(ConfigApplication.instance().getLoginUserId());
         mucRoomSimple.setTimeSend(TimeUtils.sk_time_current_time());
         String reason = JSON.toJSONString(mucRoomSimple);
+        String[] noticeFriendList = new String[mSelectedData.size()];
         // 邀请好友
         for (int i = 0; i < mSelectedData.size(); i++) {
             if (mSelectedData.get(i) == null) {
                 continue;
             }
-
             String firendUserId = mSelectedData.get(i).getUserId();
+            noticeFriendList[i] = firendUserId;
             L_.e("添加成功" + firendUserId);
             mXmppService.invite(mRoomJid, firendUserId, reason);
-            /*Intent broadcast=new Intent(Constants.CHAT_MESSAGE_DELETE_ACTION);
-			broadcast.putExtra(Constants.GROUP_JOIN_NOTICE_FRIEND_ID,firendUserId);
-			broadcast.putExtra(AppConstant.EXTRA_USER_ID, mRoomJid);
-			this.sendBroadcast(broadcast);*/
-
         }
+        Friend friend=new Friend();
+        friend.setUserId(mRoomJid);
+        messageUtils.setmFriend(friend);
+        messageUtils.setGroupChat(true);
+//        Intent intent = new Intent(this, ChatActivity.class);
+//        intent.putExtra(Constants.EXTRA_USER_ID, mRoomJid);
+//        intent.putExtra(Constants.EXTRA_NICK_NAME, mRoomName);
+//        intent.putExtra(Constants.EXTRA_IS_GROUP_CHAT, true);
+//        L_.e("createRoomSuccess"+noticeFriendList.length);
+//        intent.putExtra(Constants.GROUP_JOIN_NOTICE, noticeFriendList);
+//        startActivity(intent);
+//        finish();
+        sendNoticeJoinNewFriend();
         setResult(RESULT_OK);
         finish();
     }
 
+    private MessageUtils messageUtils;
+    /**
+     * 给新加入群的小伙伴们发通知
+     */
+    private void sendNoticeJoinNewFriend(){
+        new Handler().postDelayed(() -> {
+            //L_.e("onServiceConnected  sendNoticeJoinNewFriend------------> 新加入的小伙伴们,快来聊天吧!"+noticeFriendList[0]);
+            //sendNotice("新加入的小伙伴们,快来聊天吧!");
+            messageUtils.sendNotice("新加入的小伙伴们,快来聊天吧!");
+        },1000);
+    }
+
+
+
 
     @Override
-    public void createRoomSuccess(String roomId, String roomJid, String roomName, String roomDesc) {
+    public void createRoomSuccess(List<Friend> mSelectedData,String roomId, String roomJid, String roomName, String roomDesc) {
         Friend friend = new Friend();// 将房间也存为好友
         friend.setOwnerId(ConfigApplication.instance().getLoginUserId());
         friend.setUserId(roomJid);
@@ -239,19 +276,22 @@ public class CreatNewGroupActivity extends MvpActivity<CreateNewGroup.CreateGrou
         String reason = JSON.toJSONString(mucRoomSimple);
         Log.d("roamer", "reason:" + reason);
         // 邀请好友
-        String[] noticeFriendList = new String[mSelectedTeamMemberAccounts.size()];
-        for (int i = 0; i < mSelectedTeamMemberAccounts.size(); i++) {
-            if (mSelectedTeamMemberAccounts.get(i) == null) {
+        String[] noticeFriendList = new String[mSelectedData.size()];
+        L_.e("createRoomSuccess  mSelectedTeamMemberAccounts.size()"+mSelectedData.size());
+        for (int i = 0; i < mSelectedData.size(); i++) {
+            if (mSelectedData.get(i) == null) {
                 continue;
             }
-            String firendUserId = mSelectedTeamMemberAccounts.get(i);
+            String firendUserId = mSelectedData.get(i).getUserId();
             noticeFriendList[i] = firendUserId;
             mXmppService.invite(roomJid, firendUserId, reason);
         }
+
         Intent intent = new Intent(this, ChatActivity.class);
         intent.putExtra(Constants.EXTRA_USER_ID, roomJid);
         intent.putExtra(Constants.EXTRA_NICK_NAME, roomName);
         intent.putExtra(Constants.EXTRA_IS_GROUP_CHAT, true);
+        L_.e("createRoomSuccess"+noticeFriendList.length);
         intent.putExtra(Constants.GROUP_JOIN_NOTICE, noticeFriendList);
         startActivity(intent);
         finish();

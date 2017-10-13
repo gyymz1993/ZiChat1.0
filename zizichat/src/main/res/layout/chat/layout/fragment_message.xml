@@ -25,6 +25,9 @@
             android:drawableLeft="@drawable/search"
             android:drawableRight="@drawable/search_clear"
             android:hint="@string/search"
+            android:maxLength="12"
+            android:maxLines="1"
+            android:singleLine="true"
             android:textColor="@color/dark_grey"
             android:textColorHint="@color/grey"
             android:textSize="15sp" />

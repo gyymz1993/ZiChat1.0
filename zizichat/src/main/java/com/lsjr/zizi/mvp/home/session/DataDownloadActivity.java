@@ -7,6 +7,7 @@ import com.lsjr.bean.ArrayResult;
 import com.lsjr.bean.ObjectResult;
 import com.lsjr.bean.Result;
 import com.lsjr.callback.ChatArrayCallBack;
+import com.lsjr.callback.ChatDownCallBack;
 import com.lsjr.callback.ChatObjectCallBack;
 import com.lsjr.utils.HttpUtils;
 import com.lsjr.zizi.AppConfig;
@@ -157,11 +158,17 @@ public abstract class DataDownloadActivity {
 				}
 				boolean success = ResultCode.defaultParser(result, true);
 				if (success) {
-					CircleMessageDao.getInstance().addMessages(mHandler, mLoginUserId, result.getData(),
-							() -> {
-                                circle_msg_download_status = STATUS_SUCCESS;// 成功
-                                endDownload();
-                            });
+					List<CircleMessage> data = result.getData();
+					if (data.size()==0){
+						circle_msg_download_status = STATUS_SUCCESS;// 成功
+						endDownload();
+					}else {
+						CircleMessageDao.getInstance().addMessages(mHandler, mLoginUserId, data,
+								() -> {
+									circle_msg_download_status = STATUS_SUCCESS;// 成功
+									endDownload();
+								});
+					}
 				} else {
 					circle_msg_download_status = STATUS_FAILED;// 失败
 					endDownload();
@@ -194,10 +201,11 @@ public abstract class DataDownloadActivity {
 					resetLogin();
 					return;
 				}
-				L_.e("我的关注下载成功"+result.getData().toString());
+				List<AttentionUser> data = result.getData();
+				L_.e("我的关注下载成功"+ data.toString());
 				boolean success = ResultCode.defaultParser(result, true);
 				if (success) {
-					FriendDao.getInstance().addAttentionUsers(mHandler, mLoginUserId, result.getData(),
+					FriendDao.getInstance().addAttentionUsers(mHandler, mLoginUserId, data,
 							() -> {
                                 address_user_download_status = STATUS_SUCCESS;// 成功
                                 endDownload();
@@ -298,7 +306,7 @@ public abstract class DataDownloadActivity {
 		params.put("type", "0");
 		params.put("pageIndex", "0");
 		params.put("pageSize", "200");// 给一个尽量大的值
-		HttpUtils.getInstance().postServiceData(AppConfig.ROOM_LIST_HIS, params, new ChatArrayCallBack<MucRoom>(MucRoom.class) {
+		HttpUtils.getInstance().postServiceData(AppConfig.ROOM_LIST_HIS, params, new ChatDownCallBack<MucRoom>(MucRoom.class) {
 			@Override
 			protected void onXError(String exception) {
 				room_download_status = STATUS_FAILED;// 失败
@@ -307,22 +315,19 @@ public abstract class DataDownloadActivity {
 
 			@Override
 			protected void onSuccess(ArrayResult<MucRoom> result) {
-
 				if (result.getResultCode() == Result.CODE_TOKEN_ERROR) {// 注册成功
 					resetLogin();
 					return;
 				}
-				L_.e("我的房间下载成功"+result.getData().toString());
 				boolean success = ResultCode.defaultParser(result, true);
-				List<MucRoom> data = result.getData();
-				for (int i=0;i<data.size();i++){
-					L_.e(data.get(i).toString());
-				}
 				if (success) {
+					L_.e("我的房间下载成功"+result.getData());
+					room_download_status = STATUS_SUCCESS;// 成功
+					endDownload();
 					FriendDao.getInstance().addRooms(mHandler, mLoginUserId, result.getData(),
 							() -> {
-                                room_download_status = STATUS_SUCCESS;// 成功
-                                endDownload();
+                                //room_download_status = STATUS_SUCCESS;// 成功
+                                //endDownload();
                             });
 				} else {
 					room_download_status = STATUS_FAILED;// 失败

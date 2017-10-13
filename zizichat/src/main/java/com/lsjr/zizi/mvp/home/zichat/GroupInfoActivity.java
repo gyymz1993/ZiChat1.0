@@ -164,6 +164,7 @@ public class GroupInfoActivity extends MvpActivity<GroupInfo.Presenter> implemen
         intent.putExtra("roomJid", mRoomJid);
         intent.putExtra("roomName", mucRoom.getName());
         intent.putExtra("roomDes", mRoom.getDescription());
+        intent.putExtra("roomUserId", mucRoom.getUserId());
         intent.putExtra(Constants.ISADD_USER, true);
         startActivityForResult(intent, 1);
     }

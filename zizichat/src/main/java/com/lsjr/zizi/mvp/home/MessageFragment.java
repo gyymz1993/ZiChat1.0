@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +14,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,27 +24,27 @@ import com.lsjr.utils.HttpUtils;
 import com.lsjr.zizi.AppConfig;
 import com.lsjr.zizi.R;
 import com.lsjr.zizi.base.MvpFragment;
+import com.lsjr.zizi.chat.bean.BaseSortModel;
 import com.lsjr.zizi.chat.bean.MucRoom;
 import com.lsjr.zizi.chat.bean.ResultCode;
-import com.lsjr.zizi.chat.dao.ChatMessageDao;
-import com.lsjr.zizi.loader.AvatarHelper;
-import com.lsjr.zizi.mvp.circledemo.MyApplication;
-import com.lsjr.zizi.mvp.home.session.ChatActivity;
-import com.lsjr.zizi.chat.bean.BaseSortModel;
 import com.lsjr.zizi.chat.broad.MsgBroadcast;
 import com.lsjr.zizi.chat.broad.MucgroupUpdateUtil;
+import com.lsjr.zizi.chat.dao.ChatMessageDao;
 import com.lsjr.zizi.chat.dao.FriendDao;
 import com.lsjr.zizi.chat.db.Friend;
+import com.lsjr.zizi.chat.thread.ThreadManager;
 import com.lsjr.zizi.chat.utils.HtmlUtils;
 import com.lsjr.zizi.chat.utils.StringUtils;
 import com.lsjr.zizi.chat.utils.TimeUtils;
 import com.lsjr.zizi.chat.xmpp.XmppMessage;
+import com.lsjr.zizi.loader.AvatarHelper;
+import com.lsjr.zizi.mvp.home.session.ChatActivity;
 import com.lsjr.zizi.mvp.home.session.NewFriendActivity;
-import com.lsjr.zizi.mvp.home.session.adapter.NineGridImageViewAdapter;
 import com.lsjr.zizi.util.PinyinUtils;
 import com.lsjr.zizi.view.ClearEditText;
 import com.lsjr.zizi.view.NineGridImageView;
-import com.nostra13.universalimageloader.utils.L;
+import com.lsjr.zizi.view.groupview.DingViewGroup;
+import com.lsjr.zizi.view.groupview.PerionIconFactory;
 import com.ymz.baselibrary.mvp.BasePresenter;
 import com.ymz.baselibrary.utils.L_;
 import com.ymz.baselibrary.utils.T_;
@@ -56,6 +56,7 @@ import com.ys.uilibrary.swip.SwipeMenuLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -301,7 +302,8 @@ public class MessageFragment extends MvpFragment {
             });
 
             if (item.getBean().getUserId().equals("10000")){
-                swipeMenuLayout.setLeftSwipe(false);
+               // swipeMenuLayout.setLeftSwipe(false);
+                swipeMenuLayout.setSwipeEnable(false);
             }else {
                 swipeMenuLayout.setLeftSwipe(true);
             }
@@ -333,6 +335,9 @@ public class MessageFragment extends MvpFragment {
             TextView content_tv = holder.getView( R.id.content_tv);
             TextView time_tv = holder.getView(R.id.time_tv);
             NineGridImageView ngiv = holder.getView(R.id.ngiv);
+
+            /*群聊头像*/
+            DingViewGroup dingViewGroup = holder.getView(R.id.iv_item_avatar);
             final Friend friend = mFriendList.get(position).getBean();
             if (friend.getRoomFlag() == 0) {// 这是单个人
                 switch (friend.getUserId()) {
@@ -348,34 +353,17 @@ public class MessageFragment extends MvpFragment {
                 }
                 AvatarHelper.getInstance().displayAvatar(friend, avatar_img, true);
                 avatar_img.setVisibility(View.VISIBLE);
+                dingViewGroup.setVisibility(View.GONE);
                 ngiv.setVisibility(View.GONE);
             }else {
                 avatar_img.setVisibility(View.VISIBLE);
                 ngiv.setVisibility(View.GONE);
                 avatar_img.setImageResource(R.drawable.head_group);
-               // AvatarHelper.getInstance().displayAvatar(ConfigApplication.instance().mLoginUser, avatar_img, true);
-//                NineGridImageViewAdapter mNgivAdapter = new NineGridImageViewAdapter<String>() {
-//                    @Override
-//                    public void onDisplayImage(Context context, ImageView imageView, String groupMember) {
-//                        // Glide.with(context).load(groupMember).centerCrop().into(imageView);
-//                        final String url = AvatarHelper.getInstance().getAvatarUrl(ConfigApplication.instance().getLoginUserId(), true);
-//                        //AvatarHelper.getInstance().displayAvatar(groupMember, imageView, true);
-//                        Glide.with(context).load(url).centerCrop().error(R.drawable.ic_default).into(imageView);
-//                    }
-//
-//                    @Override
-//                    public ImageView generateImageView(Context context) {
-//                        return super.generateImageView(context);
-//                    }
-//                };
-//
-//                //九宫格头像
-//                ngiv.setAdapter(mNgivAdapter);
-//                List<String> ids=new ArrayList<>();
-//                for (int i=0;i<4;i++){
-//                    ids.add(ConfigApplication.instance().mLoginUser.getUserId());
-//                }
-//                ngiv.setImagesData(ids);
+
+
+                dingViewGroup.setVisibility(View.VISIBLE);
+                avatar_img.setVisibility(View.GONE);
+                loadMembers(friend.getRoomId(),dingViewGroup);
 
             }
             nick_name_tv.setText(friend.getShowName());
@@ -417,9 +405,50 @@ public class MessageFragment extends MvpFragment {
 
 
 
+    private void getAvatarList(final List<String>  avatarList, DingViewGroup dingViewGroup){
+        ThreadManager.getPool().execute(new Runnable() {
+            @Override
+            public void run() {
+                final List<Bitmap> bitmapList = new ArrayList<>();
+                L_.e("获取群数据a-----"+avatarList.size());
+                for (String decodePic : avatarList) {
+                    L_.e("获取群数据 decodePic----"+decodePic);
+                    String url = AvatarHelper.getAvatarUrl(decodePic, true);
+                    L_.e("获取群数据- url---"+url);
+                    try {
+                        Bitmap myBitmap = Glide.with(UIUtils.getContext())
+                                .load(url)
+                                .asBitmap() //必须
+                                .centerCrop()
+                                .into(500, 500)
+                                .get();
+                        L_.e("获取群数据 myBitmap=============="+myBitmap);
+                        bitmapList.add(myBitmap);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                }
+                final Bitmap result = PerionIconFactory.getAvatar(bitmapList, 200, 200);
+                UIUtils.runInMainThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        dingViewGroup.setImageBitmap(bitmapList.size() == 1 ? bitmapList.get(0) : result);
+                    }
+                });
+            }
+        });
 
-    MucRoom mucRoom;
-    private void loadMembers(String roomId) {
+
+       // L_.e("获取群数据=============="+bitmapList.size()+"==="+bitmapList.get(0)+result);
+
+
+    }
+
+
+
+    private void loadMembers(String roomId, DingViewGroup dingViewGroup) {
        // showProgressDialogWithText("获取数据");
         HashMap<String, String> params = new HashMap<>();
         params.put("access_token", ConfigApplication.instance().mAccessToken);
@@ -428,16 +457,28 @@ public class MessageFragment extends MvpFragment {
 
             @Override
             protected void onXError(String exception) {
-                dismissProgressDialog();
                 T_.showToastReal(exception);
             }
 
             @Override
             protected void onSuccess(ObjectResult<MucRoom> result) {
-                dismissProgressDialog();
+                List<String> existIds = new ArrayList<>();
                 boolean success = ResultCode.defaultParser(result, true);
                 if (success && result.getData() != null) {
-                    mucRoom = result.getData();
+                    MucRoom mucRoom = result.getData();
+                    //L_.e("获取群数据----"+mucRoom.getMembers().size());
+                    if (mucRoom==null)return;
+                    int count;
+                    if (mucRoom.getMembers().size()>4){
+                        count=4;
+                    }else {
+                        count=mucRoom.getMembers().size();
+                    }
+                    for (int i = 0; i < count; i++) {
+                        existIds.add(mucRoom.getMembers().get(i).getUserId());
+                    }
+                    L_.e("获取群数据----"+existIds.get(0));
+                    getAvatarList(existIds,  dingViewGroup);
 
                 }
             }

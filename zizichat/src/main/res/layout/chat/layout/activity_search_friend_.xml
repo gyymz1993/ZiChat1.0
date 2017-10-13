@@ -100,11 +100,20 @@
 
     </LinearLayout>
 
+    <com.andview.refreshview.XRefreshView
+        android:id="@+id/xrefreshview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+
+
     <android.support.v7.widget.RecyclerView
         android:layout_marginTop="5dip"
-        android:visibility="gone"
         android:id="@+id/id_fd_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    </com.andview.refreshview.XRefreshView>
 
 </LinearLayout>

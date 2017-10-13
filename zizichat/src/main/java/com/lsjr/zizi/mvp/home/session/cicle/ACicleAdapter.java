@@ -236,6 +236,11 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
                 CircleConstact.getCircleConstact().setPosition(mCirclePosition);
                 CircleConstact.getCircleConstact().setCurrentComments(comments);
                 //L_.e("当前的："+CircleConstact.getCircleConstact().toString());
+
+                CommentConfig config = new CommentConfig();
+                config.circlePosition = CircleConstact.getCircleConstact().getPosition();
+                config.commentType = CommentConfig.Type.PUBLIC;
+                CircleConstact.getCircleConstact().setConfig(config);
                 //弹出popupwindow
                 snsPopupWindow.showPopupWindow(view);
                 //回复公共部门
@@ -251,10 +256,12 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
                 CircleConstact.getCircleConstact().setCurrentPublicMessage(publicMessage);
                 CircleConstact.getCircleConstact().setPosition(mCirclePosition);
                 CircleConstact.getCircleConstact().setCurrentComments(comments);
+
+                T_.showToastReal("回复别人");
                 Comment comment = comments.get(commentPosition);
                 CircleConstact.getCircleConstact().setCurrentComment(comment);
                 //L_.e("当前的："+CircleConstact.getCircleConstact().toString());
-                T_.showToastReal("回复别人");
+
                 //回复别人的评论
                 CommentConfig config = new CommentConfig();
                 config.circlePosition = mCirclePosition;
@@ -305,10 +312,7 @@ public abstract class ACicleAdapter extends RVBaseCell<PublicMessage> {
                     }
                     break;
                 case 1://发布评论
-                    CommentConfig config = new CommentConfig();
-                    config.circlePosition = CircleConstact.getCircleConstact().getPosition();
-                    config.commentType = CommentConfig.Type.PUBLIC;
-                    CircleConstact.getCircleConstact().setConfig(config);
+                    CommentConfig config = CircleConstact.getCircleConstact().getConfig();
                     if (circlePresenter!=null){
                         circlePresenter.showEditTextBody(config);
                     }

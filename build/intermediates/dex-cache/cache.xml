@@ -20,15 +20,6 @@
         <dex dex="D:\AsProject\SkWeiChat-Baidu\skWeiChatBaidu\build\intermediates\transforms\dex\debug\folders\1000\2\httpclient-cache-4.2.5_6998da8054c72c61ff279ca5d5b22e06f36fa11e\classes.dex" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_ed70dcb784ca54c3af405f503bfb016469e3cddf\classes.dex" />
-    </item>
-    <item
         is-multidex="false"
         jar="D:\AsProject\ZiChat1.0\app\libs\fastjson-1.1.41.jar"
         jumboMode="false"
@@ -137,15 +128,6 @@
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\pre-dexed\debug\httpcore-4.2.4_e4c422036a037a27217f34db1bbeefea77a1878c.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d36cc7af697c296f0a6de6e98b3e4109cb39e305">
-        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_b8ba99d94354ff9ea6ba44b3ec437b71e662bb2d\classes.dex" />
-    </item>
-    <item
         is-multidex="false"
         jar="D:\AsProject\ZiChat1.0\app\libs\pushservice-4.5.5.77.jar"
         jumboMode="false"
@@ -237,6 +219,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="D:\AsProject\ZiChat1.1\utilslibrary\build\intermediates\bundles\default\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8b546c75a935dcb677f8d23cf5dcf24695cf5357">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\4\classes_b1a105e24681b0851e6149e1e3dcbb4302efb27f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\admin\.android\build-cache\741e0c2ee6c48e686097b61bf2843818b187aaf4\output\jars\libs\AMap_Location_V3.2.0_20161205.jar"
         jumboMode="true"
         optimize="true"
@@ -324,6 +315,15 @@
         revision="25.0.2"
         sha1="3b7f38df6de5dd8b500e602ae8c2dd5ee446f883">
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\httpcore-4.2.4_e4c422036a037a27217f34db1bbeefea77a1878c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\9508408307756676d74a0a55344640df6e54aedd\output\jars\libs\com.shove.play.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a4562d21590ddd0e87adf315783d6e4319ba5bc4">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\com.shove.play_869b775935398f2b387e9615cdbe8b2847d17557\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -558,6 +558,15 @@
         revision="25.0.2"
         sha1="f1a4c4ec9af6a75c246f48becbc661dbe8ae704b">
         <dex dex="D:\AsProject\ZiChat1.0\app\build\intermediates\transforms\dex\debug\folders\1000\2\volley_31b3284e7eff55f31b6c8afb70185dd150c8b096\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\admin\.android\build-cache\9508408307756676d74a0a55344640df6e54aedd\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9b605f802d573c83074b698ebf06b577132aba1f">
+        <dex dex="D:\AsProject\ZiChat1.1\zizichat\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8bc0b5eb59f9244dcf4a7ceb014fe03473520ca4\classes.dex" />
     </item>
     <item
         is-multidex="true"

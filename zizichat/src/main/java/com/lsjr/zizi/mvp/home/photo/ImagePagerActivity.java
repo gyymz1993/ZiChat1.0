@@ -1,5 +1,6 @@
 package com.lsjr.zizi.mvp.home.photo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -23,7 +24,6 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.lsjr.zizi.R;
-import com.lsjr.zizi.mvp.circledemo.activity.YWActivity;
 import com.ymz.baselibrary.utils.UIUtils;
 
 import java.io.Serializable;
@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * Created by yiw on 2016/1/6.
  */
-public class ImagePagerActivity extends YWActivity {
+public class ImagePagerActivity extends Activity {
     public static final String INTENT_IMGURLS = "imgurls";
     public static final String INTENT_POSITION = "position";
     public static final String INTENT_IMAGESIZE = "imagesize";

@@ -257,6 +257,7 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        L_.e("noticeFriendList  onCreate----------->");
         mLoginUserId = ConfigApplication.instance().mLoginUser.getUserId();
         Bundle bundle = null;
         if (savedInstanceState != null) {
@@ -270,6 +271,9 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
             mRoomName = bundle.getString(Constants.EXTRA_NICK_NAME);
             isGroupChat = bundle.getBoolean(Constants.EXTRA_IS_GROUP_CHAT, false);
             noticeFriendList=bundle.getStringArray(Constants.GROUP_JOIN_NOTICE);//获得加入群新朋友的列表
+
+
+            L_.e("noticeFriendList----------->"+noticeFriendList);
             //单聊
             mFriend = (Friend) getIntent().getSerializableExtra(Constants.EXTRA_FRIEND);
         }
@@ -285,6 +289,7 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
             mFriend = FriendDao.getInstance().getFriend(mLoginUserId, mUseId);
         }
 
+        L_.e("当前群ID："+mFriend.getUserId());
         ListenerManager.getInstance().addChatMessageListener(this);
         messageUtils=new MessageUtils(chatMessageList);
         messageUtils.setmFriend(mFriend);
@@ -320,6 +325,7 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             messageUtils.setmService(((CoreService.CoreServiceBinder) service).getService());
+            L_.e("onServiceConnected ------------>"+isGroupChat);
             if (isGroupChat){
                 Friend friend = FriendDao.getInstance().getFriend(mLoginUserId, mUseId);
                 messageUtils.getmService().joinMucChat(mUseId, mLoginNickName, friend.getTimeSend());
@@ -353,12 +359,12 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
         mElEmotion.setEmotionExtClickListener(new IEmotionExtClickListener() {
             @Override
             public void onEmotionAddClick(View view) {
-                UIUtils.showToast("add");
+                //UIUtils.showToast("add");
             }
 
             @Override
             public void onEmotionSettingClick(View view) {
-                UIUtils.showToast("setting");
+                //UIUtils.showToast("setting");
             }
         });
         mLlContent.setOnTouchListener((v, event) -> {
@@ -707,14 +713,13 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
      * 给新加入群的小伙伴们发通知
      */
     private void sendNoticeJoinNewFriend(){
+        L_.e("-------"+noticeFriendList);
         if(noticeFriendList!=null){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    //sendNotice("新加入的小伙伴们,快来聊天吧!");
-                    messageUtils.sendNotice("新加入的小伙伴们,快来聊天吧!");
-                    noticeFriendList=null;//防止重复发送提示消息
-                }
+            new Handler().postDelayed(() -> {
+                //L_.e("onServiceConnected  sendNoticeJoinNewFriend------------> 新加入的小伙伴们,快来聊天吧!"+noticeFriendList[0]);
+                //sendNotice("新加入的小伙伴们,快来聊天吧!");
+                messageUtils.sendNotice("新加入的小伙伴们,快来聊天吧!");
+                noticeFriendList=null;//防止重复发送提示消息
             },1000);
         }
     }
@@ -724,6 +729,7 @@ public class ChatActivity extends MvpActivity<ChatAtPresenter> implements ISessi
     protected void onStart() {
         super.onStart();
         if (isGroupChat){
+            L_.e("onServiceConnected onStart------------> 新加入的小伙伴们,快来聊天吧!"+isGroupChat);
             sendNoticeJoinNewFriend();
         }
     }

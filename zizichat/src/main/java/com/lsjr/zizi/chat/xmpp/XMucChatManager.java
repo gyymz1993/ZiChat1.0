@@ -412,8 +412,13 @@ public class XMucChatManager {
 
 		L_.e("群消息------------>"+mMucChatMap.size());
 		String roomJid = XmppStringUtil.getRoomJID(from);
-		String myNickName = mMucChatMap.get(roomJid).getNickname();
-		L_.e("---------->"+roomJid+"-------------->"+myNickName);
+		MultiUserChat multiUserChat = mMucChatMap.get(roomJid);
+		String myNickName = null;
+		if (multiUserChat!=null){
+			 myNickName = multiUserChat.getNickname();
+			L_.e("---------->"+roomJid+"-------------->"+myNickName);
+		}
+
 		String fromUserNick = XmppStringUtil.getRoomUserNick(from);
 		if (TextUtils.isEmpty(fromUserNick)) {// 来自于系统的消息
 			//

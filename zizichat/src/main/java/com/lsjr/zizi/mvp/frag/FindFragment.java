@@ -2,8 +2,8 @@ package com.lsjr.zizi.mvp.frag;
 
 import android.os.Bundle;
 
+import com.example.smackdemo.MainActivity;
 import com.lsjr.zizi.R;
-import com.lsjr.zizi.mvp.circledemo.activity.MainActivity;
 import com.ymz.baselibrary.mvp.BaseMvpFragment;
 import com.ymz.baselibrary.mvp.BasePresenter;
 

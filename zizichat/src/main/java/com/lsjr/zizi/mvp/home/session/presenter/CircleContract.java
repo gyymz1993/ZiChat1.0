@@ -18,6 +18,7 @@ import com.lsjr.zizi.chat.bean.Praise;
 import com.lsjr.zizi.chat.bean.PublicMessage;
 import com.lsjr.zizi.chat.bean.ResultCode;
 import com.lsjr.zizi.chat.dao.CircleMessageDao;
+import com.lsjr.zizi.mvp.circledemo.MyApplication;
 import com.lsjr.zizi.mvp.circledemo.bean.CommentConfig;
 import com.lsjr.zizi.mvp.home.ConfigApplication;
 import com.lsjr.zizi.mvp.home.session.FriendCircleActivity;
@@ -31,6 +32,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.transform.ErrorListener;
 
 public interface CircleContract {
 
@@ -157,20 +160,21 @@ public interface CircleContract {
 
         public void addCommentUser(String context,PublicMessage selectCurrentMessage){
             Comment comment;
-            if (selectCurrentMessage==null){
+            if (selectCurrentMessage==null||TextUtils.isEmpty(context)){
                 T_.showToastReal("请填写完整数据");
                 return;
             }
             if (CircleConstact.getCircleConstact().getConfig().commentType==CommentConfig.Type.PUBLIC){
-                L_.e("回复自己");
+                //L_.e("回复自己");
                 comment = new Comment();
                 comment.setToUserId(selectCurrentMessage.getUserId());
                 comment.setToNickname(selectCurrentMessage.getNickName());
             }else {
                 L_.e("回复评论区");
-                comment = CircleConstact.getCircleConstact().getCurrentComment();
-                comment.setToUserId(comment.getUserId());
-                comment.setToNickname(comment.getNickName());
+                comment = new Comment();
+                Comment commentTemp = CircleConstact.getCircleConstact().getCurrentComment();
+                comment.setToUserId(commentTemp.getUserId());
+                comment.setToNickname(commentTemp.getNickName());
             }
 
             comment.setUserId(mLoginUserId);
@@ -198,23 +202,27 @@ public interface CircleContract {
                 params.put("toNickname", comment.getToNickname());
             }
             params.put("body", comment.getBody());
-
             HttpUtils.getInstance().postServiceData(AppConfig.MSG_COMMENT_ADD, params, new ChatObjectCallBack<String>(String.class) {
                 @Override
                 protected void onXError(String exception) {
                 }
                 @Override
                 protected void onSuccess(ObjectResult<String> result) {
+                    L_.e(result.toString());
                     boolean success = ResultCode.defaultParser(result, true);
                     if (success && result.getData() != null) {
                         List<Comment> comments = CircleConstact.getCircleConstact().getCurrentComments();
                         if (comments == null) {
                             comments = new ArrayList<>();
-                            CircleConstact.getCircleConstact().getCurrentPublicMessage().setComments(comments);
                         }
                         comment.setCommentId(result.getData());
                         comments.add(0, comment);
                         L_.e("评论区  刷新"+comment.toString());
+                        CircleConstact.getCircleConstact().getCurrentPublicMessage().setComments(comments);
+
+                        for (int i=0;i<comments.size();i++){
+                            L_.e(comments.get(i).toString());
+                        }
                         mvpView.notifityChange();
                     }
                 }
@@ -299,5 +307,29 @@ public interface CircleContract {
             });
 
         }
+
+
+        public void requestUserSpace(final String mUserId) {
+            mPageIndex = 0;
+            HashMap<String, String> params = new HashMap<>();
+            params.put("access_token", ConfigApplication.instance().mAccessToken);
+            params.put("ids", JSON.toJSONString(mUserId));
+            HttpUtils.getInstance().postServiceData(AppConfig.MSG_GETS, params, new ChatArrayCallBack<PublicMessage>(PublicMessage.class) {
+                @Override
+                protected void onXError(String exception) {
+                    L_.e("个人朋友圈。。。。"+exception);
+                    if (mvpView!=null){
+                        mvpView.onfaile();
+                    }
+                }
+
+                @Override
+                protected void onSuccess(ArrayResult<PublicMessage> result) {
+                    L_.e("个人朋友圈。。。。"+result.getData().toString());
+                }
+            });
+        }
+
+
     }
 }

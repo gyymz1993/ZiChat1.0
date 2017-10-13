@@ -30,7 +30,7 @@ public class ThreadManager {
      */
     private static final ThreadPoolExecutor threadPool = new ThreadPoolExecutor(ALIVE_THREAD_SIZE,
             MAX_THREAD_SIZE, THREAD_ALIVE_SECONDS, TimeUnit.SECONDS,
-            new ArrayBlockingQueue<Runnable>(MAX_QUEUE_LENGTH),
+            new ArrayBlockingQueue<>(MAX_QUEUE_LENGTH),
             new ThreadPoolExecutor.DiscardOldestPolicy());
 
     /**

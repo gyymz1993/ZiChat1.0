@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="rtnetlibrary-v1.0.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/9508408307756676d74a0a55344640df6e54aedd/output/jars/libs/com.shove.play.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/9508408307756676d74a0a55344640df6e54aedd/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/9508408307756676d74a0a55344640df6e54aedd/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

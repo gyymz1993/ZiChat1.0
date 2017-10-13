@@ -86,10 +86,15 @@ dependencies {
     })
     //noinspection GradleCompatible
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+//    compile ('com.facebook.react:react-native:+'){
+//        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+//        exclude group: 'com.android.support', module: 'support-v4'
+//        exclude group: 'com.android.support', module: 'support-v7'
+//    }
     compile 'com.lcq:citypicker:v1.0.0'
     compile 'com.ys:yping:v1.0.0'
     compile 'com.ys:zizichat:v1.0.5'
-    compile 'com.net:rtnetlibrary:v1.0.3'
+    compile 'com.net:rtnetlibrary:v1.0.4'
     compile 'com.ui:xrefresh:v1.0.3'
     compile 'com.ui:utilsview:v1.1.4'
     compile 'org.ui:baselibrary:v1.1.5'

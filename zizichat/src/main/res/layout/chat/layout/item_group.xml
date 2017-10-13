@@ -24,6 +24,7 @@
             android:src="@drawable/avatar_normal" />
 
         <com.lsjr.zizi.view.CircleImageView
+            android:visibility="gone"
             android:id="@+id/avatar_img"
             android:layout_width="45dip"
             android:layout_height="45dip"
@@ -31,6 +32,15 @@
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:src="@mipmap/default_header"/>
+
+
+        <com.lsjr.zizi.view.groupview.DingViewGroup
+            android:layout_margin="2dp"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/iv_item_avatar"
+            android:layout_width="45dip"
+            android:layout_height="45dip"
+            />
     </FrameLayout>
 
     <RelativeLayout

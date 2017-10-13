@@ -80,7 +80,7 @@ public class MyApp extends MultiDexApplication {
         initImagePicker();
         //初始化表情控件
         LQREmotionKit.init(this, (context, path, imageView) -> Glide.with(context).load(path).centerCrop()
-                .skipMemoryCache(false).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView));
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView));
 
         // test();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)

@@ -18,6 +18,7 @@ import android.view.Display;
 import android.view.WindowManager;
 
 import com.ymz.baselibrary.utils.FileUtils;
+import com.ymz.baselibrary.utils.L_;
 import com.ymz.baselibrary.utils.UIUtils;
 
 import java.io.BufferedInputStream;
@@ -31,8 +32,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * @创建者 CSDN_LQR
- * @描述 图像处理工具类
  */
 public class ImageUtils {
 
@@ -46,6 +45,7 @@ public class ImageUtils {
      * @return
      */
     public static Bitmap getNetBitmap(String imageUri) {
+        L_.e("========getNetBitmap"+imageUri);
         // 显示网络上的图片
         Bitmap bitmap = null;
         try {

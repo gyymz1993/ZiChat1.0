@@ -90,6 +90,7 @@ public class LoginActivity extends MvpActivity implements View.OnClickListener{
         switch (v.getId()) {
             case R.id.register_account_btn:// 注册
                 openActivity(RegisterActivity.class);
+                finish();
                 break;
             case R.id.forget_password_btn:// 忘记密码
                 break;
@@ -159,6 +160,7 @@ public class LoginActivity extends MvpActivity implements View.OnClickListener{
                     Bundle bundle=new Bundle();
                     bundle.putBoolean("isLoginJump",true);
                     openActivity(HomeActivity.class,bundle);
+                    finish();
                 } else {// 登录失败
                     if (TextUtils.isEmpty(result.getResultMsg())) {
                         T_.showToastReal(R.string.login_error);

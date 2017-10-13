@@ -51,6 +51,14 @@ public class MessageUtils {
     private Friend mFriend;
     private boolean isGroupChat;
     private boolean mHasSend = false;// 有没有发送过消息，发送过需要更新界面
+
+    public MessageUtils(){
+        mLoginUserId = ConfigApplication.instance().mLoginUser.getUserId();
+        mLoginNickName = ConfigApplication.instance().mLoginUser.getNickName();
+        getmBlackList();
+        //DataService.startService(UIUtils.getContext(),chatMessages,"1");
+    }
+
     public MessageUtils(List<ChatMessage> chatMessages){
         this.mChatMessages=chatMessages;
         mLoginUserId = ConfigApplication.instance().mLoginUser.getUserId();
@@ -124,6 +132,9 @@ public class MessageUtils {
         message.setFromUserName(mLoginNickName);
         message.setFromUserId(mLoginUserId);
         message.setTimeSend(TimeUtils.sk_time_current_time());
+        if (mChatMessages==null){
+            mChatMessages=new ArrayList<>();
+        }
         mChatMessages.add(message);
         sendMessage(message);
     }
@@ -330,6 +341,7 @@ public class MessageUtils {
         }
         message.setPacketId(UUID.randomUUID().toString().replaceAll("-", ""));
         if (isGroupChat && !TextUtils.isEmpty(mFriend.getRoomMyNickName())) {
+            L_.e("roamer", "开始发送消息,ChatBottomView的回调 sendmessage"+mService+"mFriend.getUserId()"+mFriend.getRoomMyNickName());
             message.setFromUserName(mFriend.getRoomMyNickName());
         }
         ChatMessageDao.getInstance().saveNewSingleChatMessage(mLoginUserId, mFriend.getUserId(), message);
@@ -339,13 +351,13 @@ public class MessageUtils {
                 //TODO  上传文件
                 postFiles(mFriend.getUserId(),message);
             } else {
-                L_.e("roamer", "开始发送消息,ChatBottomView的回调 sendmessage"+mService);
+                L_.e("roamer", "开始发送消息,ChatBottomView的回调 sendmessage"+mService+"mFriend.getUserId()"+mFriend.getUserId());
                 if (mService==null)return;
                 mService.sendMucChatMessage(mFriend.getUserId(), message);
                // getmService().sendChatMessage(mFriend.getUserId(), message);
             }
         } else {
-            L_.e("roamer", "开始发送消息,ChatBottomView的回调 sendmessage"+mService);
+            L_.e("roamer", "开始发送消息,ChatBottomView的回调 sendmessage"+mService+"mFriend.getUserId()"+mFriend.getUserId());
             if (mService==null)return;
             //getmService().sendChatMessage(mFriend.getUserId(), message);
             mService.sendMucChatMessage(mFriend.getUserId(), message);

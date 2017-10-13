@@ -57,9 +57,11 @@ public interface CreateNewGroup {
 
         View getHeaderView();
 
+        String getRoomUserId();
+
         void addFriendSuccess(List<Friend> mSelectedData);
 
-        void createRoomSuccess(String userId,String roomJid, String roomName,String roomDesc);
+        void createRoomSuccess(List<Friend> mSelectedData,String userId,String roomJid, String roomName,String roomDesc);
     }
 
     class CreateGroupPresenter extends BasePresenter<ICreateGroupView> {
@@ -147,7 +149,7 @@ public interface CreateNewGroup {
                     boolean parserResult = ResultCode.defaultParser(result, true);
                     if (parserResult && result.getData() != null) {
                         //createRoomSuccess(result.getData().getId(), roomJid, roomName, roomDesc);
-                        mvpView.createRoomSuccess(result.getData().getId(), roomJid, roomName, roomDesc);
+                        mvpView.createRoomSuccess(mSelectedData,result.getData().getId(), roomJid, roomName, roomDesc);
                     }
                 }
             });
